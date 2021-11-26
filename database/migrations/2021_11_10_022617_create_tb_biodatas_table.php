@@ -34,12 +34,12 @@ class CreateTbBiodatasTable extends Migration
             $table->string('kode_pos',20)->nullable();
             $table->enum('jenis_tinggal', ['Bersama orang tua','Wali','Kos','Asrama','Panti Asuhan'])->nullable();
             $table->enum('mode_transportasi', ['Jalan kaki','Kendaraan pribadi','Kendaraan Umum/angkot','Jemputan Sekolah','Ojek','Andong/Bendi/Sado/ Dokar/Delman/Beca','Perahu penyebrangan/Rakit/Getek'])->nullable();
-            $table->enum('status_KKS', ['Y','N'])->nullable();
+            $table->enum('status_KKS', ['true','false'])->nullable();
             $table->string('nomor_kks',50)->nullable();
             $table->string('no_hp',15)->nullable();
-            $table->enum('status_KPS_PKH', ['Y','N'])->nullable();
+            $table->enum('status_KPS_PKH',  ['true','false'])->nullable();
             $table->string('nomor_KPS_PKH',50)->nullable();
-            $table->enum('status_kip', ['Y','N'])->nullable();
+            $table->enum('status_kip',  ['true','false'])->nullable();
             $table->string('nomor_kip',50)->nullable();
             $table->string('nama_kip',50)->nullable();
             $table->string('berat_badan',5)->nullable();

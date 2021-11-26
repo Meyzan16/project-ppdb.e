@@ -78,11 +78,8 @@
                     </p>
 
                     <div class="button wow fadeInUp" data-wow-delay=".8s">
-                        <form action="/login" method="POST">
-                            @csrf
-                            <button type="submit" class="btn"> Login
-                            </button>
-                        </form>
+                        <a href="{{ route('login') }}" class="btn"> Login </a>
+                      
                     </div>
 
                     {{-- <div >

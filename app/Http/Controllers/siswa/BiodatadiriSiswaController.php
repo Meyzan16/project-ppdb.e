@@ -28,12 +28,6 @@ class BiodatadiriSiswaController extends Controller
             'item' => $query
         ]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     //membuat form biodata diri siswa
     public function create()
     {
@@ -107,17 +101,9 @@ class BiodatadiriSiswaController extends Controller
         $item->update($data);
 
         return \redirect()->route('biodataEdit', $request->nisn)->with('success', 'Data utama berhasil diperbarui, silahkan lengkapi data tambahan');
-
-
-
     }
+    
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

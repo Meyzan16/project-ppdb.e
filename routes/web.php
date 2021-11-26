@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 //SISWA
 use App\Http\Controllers\siswa\DashboardSiswaController;
 use App\Http\Controllers\siswa\BiodatadirisiswaController;
+use App\Http\Controllers\siswa\DataTambahanSiswaController;
 
 //ADMIN
 use App\Http\Controllers\admin\DashboardAdminController;
@@ -40,11 +41,15 @@ Route::group(['middleware' => 'cek_login'] , function(){
     Route::post('/siswa/biodata-diri/{nisn}', [BiodatadiriSiswaController::Class, 'update'])->name('biodataStore');
 });
 
+Route::prefix('siswa')->group(function() {
+    // Route::get('/', [DashboardAdminController::Class, 'index'] )->name('dashboard-admin');
+    Route::resource('data-tambahan', DataTambahanSiswaController::class);
+});
 
 
 
 //admin
-Route::prefix('admin')->namespace('')->group(function() {
+Route::prefix('admin')->group(function() {
     Route::get('/', [DashboardAdminController::Class, 'index'] )->name('dashboard-admin');
     Route::resource('generate-akun', GenerateSiswaController::class);
 });
