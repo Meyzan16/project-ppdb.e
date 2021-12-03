@@ -39,6 +39,8 @@ class User extends Authenticatable
         'password'
     ];
 
+    
+
     /**
      * The attributes that should be cast.
      *

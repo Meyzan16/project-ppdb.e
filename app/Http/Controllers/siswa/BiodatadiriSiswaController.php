@@ -10,11 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class BiodatadiriSiswaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *  
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
 
@@ -24,37 +20,22 @@ class BiodatadiriSiswaController extends Controller
                 ->where('users.nisn', '=', session()->get('nisn'))
                 ->first();
     
-        return view('siswa.main.biodata', [
+        return view('siswa.main.datadiri.biodata', [
             'item' => $query
         ]);
-    }
-    //membuat form biodata diri siswa
-    public function create()
-    {
-           
-    }
-
-  
-    public function store(Request $request)
-    {
-        
-    }
-
-
-    public function show($id)
-    {
-       
     }
 
     public function edit($nisn)
     {
-        $query = User::where('nisn', $nisn)->first();
+        $query = DB::table('users')
+        ->join('tb_biodatas', 'users.nisn', '=', 'tb_biodatas.nisn_biodata')
+        ->select('users.*', 'tb_biodatas.*')
+        ->where('users.nisn', '=', $nisn)
+        ->first();
         
-        return view('siswa.main.biodata-diri', [
+        return view('siswa.main.datadiri.biodata-diri', [
             'item' => $query
         ]); 
-
-        
     }
 
 

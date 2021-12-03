@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\siswa\DashboardSiswaController;
 use App\Http\Controllers\siswa\BiodatadirisiswaController;
 use App\Http\Controllers\siswa\DataTambahanSiswaController;
+use App\Http\Controllers\siswa\DataOrtuSiswaController;
 
 //ADMIN
 use App\Http\Controllers\admin\DashboardAdminController;
@@ -42,8 +43,8 @@ Route::group(['middleware' => 'cek_login'] , function(){
 });
 
 Route::prefix('siswa')->group(function() {
-    // Route::get('/', [DashboardAdminController::Class, 'index'] )->name('dashboard-admin');
-    Route::resource('data-tambahan', DataTambahanSiswaController::class);
+    Route::resource('data-tambahan', DataTambahanSiswaController::class)->middleware('cek_login');
+    Route::resource('data-ortu', DataOrtuSiswaController::class)->middleware('cek_login');;
 });
 
 

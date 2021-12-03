@@ -21,19 +21,19 @@ class CreateTbBiodatasTable extends Migration
             $table->date('tgl_lahir')->nullable();
             $table->string('jml_sdr_kdg',5)->nullable();
             $table->string('anak_keberapa',2)->nullable();
-            $table->enum('agama', ['Islam','Kristen/ Protestan','Katholik','Hindu','Budha','Khonghucu'])->nullable();
-            $table->string('no_akte', 50)->nullable();
-            $table->enum('Status_kewarganegaraan', ['WNI', 'WNA'])->nullable();
-            $table->string('negara_wna', 100)->nullable();
+            $table->enum('agama', ['Islam','Kristen/Protestan','Katholik','Hindu','Budha','Khonghucu'])->nullable();
+            $table->string('no_akte', 100)->nullable();
+            $table->enum('status_kewarganegaraan', ['WNI', 'WNA'])->nullable();
+            // $table->string('negara_wna', 100)->nullable();
             $table->text('alamat')->nullable();
-            $table->integer('rt')->nullable();
-            $table->integer('rw')->nullable();
+            $table->string('rt', 5)->nullable();
+            $table->string('rw', 5)->nullable();
             $table->string('nama_dusun',50)->nullable();
             $table->string('kelurahan_desa',50)->nullable();
             $table->string('kecamatan',50)->nullable();
             $table->string('kode_pos',20)->nullable();
             $table->enum('jenis_tinggal', ['Bersama orang tua','Wali','Kos','Asrama','Panti Asuhan'])->nullable();
-            $table->enum('mode_transportasi', ['Jalan kaki','Kendaraan pribadi','Kendaraan Umum/angkot','Jemputan Sekolah','Ojek','Andong/Bendi/Sado/ Dokar/Delman/Beca','Perahu penyebrangan/Rakit/Getek'])->nullable();
+            $table->enum('mode_transportasi', ['Jalan kaki','Kendaraan pribadi','Kendaraan Umum/angkot','Jemputan Sekolah','Ojek','Andong/Bendi/Sado/Dokar/Delman/Beca','Perahu penyebrangan/Rakit/Getek'])->nullable();
             $table->enum('status_KKS', ['true','false'])->nullable();
             $table->string('nomor_kks',50)->nullable();
             $table->string('no_hp',15)->nullable();
@@ -46,7 +46,7 @@ class CreateTbBiodatasTable extends Migration
             $table->string('tinggi_badan',5)->nullable();
             $table->string('jarak_rumah_sekolah',20)->nullable();
             $table->string('waktu_tempuh',20)->nullable();
-          
+            
             $table->enum('status_tb_biodata', ['Y','N','Belum Diverifikasi'])->default('Belum Diverifikasi');
             $table->softDeletes();
             $table->timestamps();

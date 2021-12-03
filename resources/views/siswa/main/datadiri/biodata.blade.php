@@ -24,14 +24,22 @@
     </div>
   </div>
 
+  @if (session()->has('success'))
+      <div class="row">
+        <div class="col-md-6">
+          <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+          </div>
+        </div>
+      </div>
+      @endif
+
   <div class="row">
       <div class="col-md-8 grid-margin stretch-card">
     
           <a href="{{ route('biodataEdit', $item->nisn) }}" class="btn btn-primary" style="border-radius: 30px;  margin-right:10px">Lengkapi Data Anda</a>
-  
-          {{-- dimunculkan jika data di tabel siswa sudah terisi --}}
       
-            <button type="button" class="btn btn-secondary" style="border-radius: 30px;  margin-right:10px">Lengkapi Data Ortu</button>
+          <a href="{{ route('data-ortu.edit', $item->nisn) }}" class="btn btn-secondary" style="border-radius: 30px;  margin-right:10px">Lengkapi Data Ortu</a>
 
             <button type="button" class="btn btn-warning" style="border-radius: 30px;  margin-right:10px">Lengkapi Berkas</button> 
 
