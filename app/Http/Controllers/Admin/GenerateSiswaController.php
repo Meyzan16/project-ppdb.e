@@ -24,33 +24,19 @@ class GenerateSiswaController extends Controller
         return view('admin.main.generate-akun');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
          //pasang rules
          $rules = [
-            'nisn' => 'required|digits:10',
+            'nisn' => 'required|digits:10|unique:users',
             'name'=> 'required'
         ];
 
         //pasang pesan kesalahan
         $messages = [
             'nisn.numeric'     => 'karakter nisn bersifat numerik',
+            'nisn.unique'     => 'nisn sudah terdaftar',
             'nisn.digits'     => 'Nisn bersifat 10 digit angka',
             'nisn.max'     => 'Nisn maksimal 10 digit angka',
             'name.alpha'     => 'Karakter nama bersifat huruf',

@@ -16,7 +16,8 @@ class DataOrtuSiswaController extends Controller
     {
         $query = DB::table('users')
         ->join('tb_ortus', 'users.nisn', '=', 'tb_ortus.nisn_ortu')
-        ->select('users.*', 'tb_ortus.*')
+        ->join('tb_biodatas', 'users.nisn', '=', 'tb_biodatas.nisn_biodata')
+        ->select('users.*', 'tb_ortus.*', 'tb_biodatas.*')
         ->where('users.nisn', '=', $nisn)
         ->first();
         

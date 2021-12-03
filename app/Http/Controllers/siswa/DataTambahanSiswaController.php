@@ -23,7 +23,7 @@ class DataTambahanSiswaController extends Controller
             'jml_sdr_kdg' => 'required|max:2',
             'anak_keberapa' => 'required|max:2',
             'agama' => 'required',
-            'no_akte' => 'required|max:30',
+            'no_akte' => 'required|max:30|unique:tb_biodatas',
             'is_kewarganegaraan' => 'required',
             'alamat' =>'required',
             'rt' => 'nullable',
@@ -64,6 +64,7 @@ class DataTambahanSiswaController extends Controller
             'agama.required' => 'Form agama tidak boleh kosong',
             'no_akte.required' => 'Form no akte tidak boleh kosong',
             'no_akte.max' => 'panjang form no akte maksimal 30 karakter ',
+            'no_akte.unique'     => 'nomor akte sudah terdaftar',
             
             'rt.digits' => 'panjang form RT maksimal 2 karakter ',
             'rw.digits' => 'panjang form RW maksimal 2 karakter ',

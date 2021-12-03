@@ -67,7 +67,7 @@
           <div class="col-md-6 grid-margin stretch-card" >
               <div class="card tale-bg">
                   <div class="card-body">
-                  <h4 class="card-title">Data Utama</h4>
+                  <h4 class="card-title">Form Data Utama</h4>
                   <p class="card-description text-danger">
                       Data yang sudah disimpan, tidak bisa diubah. mohon dikoreksi kembali data anda
                   </p>
@@ -88,11 +88,11 @@
                       <div class="form-group">
                       <label>Nik</label>
                       <input type="text" name="nik" style="border-radius: 30px" required class="form-control  @error('nik')is-invalid @enderror"  placeholder="NIK" value="{{ old('nik') }}">
-                      @error('nik') 
-                      <div class="invalid-feedback">
-                        kesalahan : {{ $message }}
-                      </div>
-                   @enderror
+                          @error('nik') 
+                          <div class="invalid-feedback">
+                            kesalahan : {{ $message }}
+                          </div>
+                      @enderror
                     </div>
 
                       <div class="form-group">
@@ -161,7 +161,7 @@
         <div class="col-md-8 grid-margin stretch-card">
           <div class="card tale-bg">
             <div class="card-body">
-              <h4 class="card-title">Data Tambahan</h4>
+              <h4 class="card-title">Form Data Tambahan</h4>
               <p class="card-description text-danger">
                 Data yang sudah disimpan, tidak bisa diubah. mohon dikoreksi kembali data anda
               </p>
@@ -401,7 +401,7 @@
 
               <div class="form-group">
                 <label>Nomor Hp</label>
-                <input type="text" required minlength="12" maxlength="13" value="{{ old('no_hp') }}" class="form-control @error('no_hp') is-invalid @enderror" autocomplete  name="no_hp"  />
+                <input type="text" minlength="12" maxlength="13" value="{{ old('no_hp') }}" class="form-control @error('no_hp') is-invalid @enderror" autocomplete  name="no_hp"  />
                 @error('no_hp') 
                   <div class="invalid-feedback">
                     kesalahan : {{ $message }}
