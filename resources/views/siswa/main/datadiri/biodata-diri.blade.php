@@ -152,6 +152,7 @@
         <div class="card tale-bg">
           <div class="card-body">
             <h5 class="card-title text-center" style="color: black; font-size:20px;">Maaf form ini sudah selesai, data anda {{ $item->status_tb_biodata }}</h5>
+            <a href="{{ route('biodata-diri') }}" class="btn btn-warning" style="border-radius: 30px;  margin-right:10px">Kembali</a>
           </div>
         </div>
       </div>

@@ -56,7 +56,6 @@ class LoginController extends Controller
                  session(['roles' => $cek_nisn->roles]);
                  $request->session()->put('nisn', $cek_nisn->nisn);
                  $request->session()->put('nama', $cek_nisn->name);
-                 
                  return redirect()->intended('/siswa');
         }
 
