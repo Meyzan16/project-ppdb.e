@@ -40,9 +40,10 @@
           <a href="{{ route('biodataEdit', $item->nisn) }}" class="btn btn-primary" style="border-radius: 30px;  margin-right:10px">Lengkapi Data Anda</a>
       
           <a href="{{ route('data-ortu.edit', $item->nisn) }}" class="btn btn-secondary" style="border-radius: 30px;  margin-right:10px">Lengkapi Data Ortu</a>
-
-            <button type="button" class="btn btn-warning" style="border-radius: 30px;  margin-right:10px">Lengkapi Berkas</button> 
-
+          
+          <a href="{{ route('data-berkas.edit', $item->nisn) }}" class="btn btn-warning" style="border-radius: 30px;  margin-right:10px">Lengkapi Berkas</a>
+          
+        
       </div>
 
   </div>

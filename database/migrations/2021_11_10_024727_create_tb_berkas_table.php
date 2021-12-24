@@ -20,9 +20,9 @@ class CreateTbBerkasTable extends Migration
             $table->enum('status_kk', ['Y','N','Belum Diverifikasi'])->default('Belum Diverifikasi');
             $table->string('catatan_kk', 100)->nullable();
 
-            $table->string('ijazah', 50)->nullable();
-            $table->enum('status_ijazah', ['Y','N','Belum Diverifikasi'])->default('Belum Diverifikasi');
-            $table->string('catatan_ijazah', 100)->nullable();
+            // $table->string('ijazah', 50)->nullable();
+            // $table->enum('status_ijazah', ['Y','N','Belum Diverifikasi'])->default('Belum Diverifikasi');
+            // $table->string('catatan_ijazah', 100)->nullable();
 
             $table->string('file_nisn', 50)->nullable();
             $table->enum('status_file_nisn', ['Y','N','Belum Diverifikasi'])->default('Belum Diverifikasi');

@@ -8,6 +8,7 @@ use App\Http\Controllers\siswa\DashboardSiswaController;
 use App\Http\Controllers\siswa\BiodatadirisiswaController;
 use App\Http\Controllers\siswa\DataTambahanSiswaController;
 use App\Http\Controllers\siswa\DataOrtuSiswaController;
+use App\Http\Controllers\siswa\DataBerkasSiswaController;
 
 //ADMIN
 use App\Http\Controllers\admin\DashboardAdminController;
@@ -57,6 +58,12 @@ Route::group([
         Route::get('/{nisn}/edit', [DataOrtuSiswaController::Class, 'edit'])->name('data-ortu.edit');
         Route::patch('/{nisn}/update', [DataOrtuSiswaController::Class, 'update'])->name('data-ortu.update');    
     });
+
+    Route::group(['prefix'  => 'data-berkas/'],function(){
+        Route::get('/{nisn}/edit', [DataBerkasSiswaController::Class, 'edit'])->name('data-berkas.edit');
+        Route::patch('/{nisn}/update', [DataBerkasSiswaController::Class, 'update'])->name('data-berkas.update');    
+    });
+
 });
 
 
