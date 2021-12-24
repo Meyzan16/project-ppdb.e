@@ -76,7 +76,7 @@
                 Data yang sudah disimpan, tidak bisa diubah. mohon dikoreksi kembali data anda
               </p>
             <form class="forms-sample" action="{{ route('data-ortu.update', $item->nisn) }}" method="POST">
-              @method('PUT')
+              {{ method_field('PATCH') }}
               @csrf
 
               <h4 class="text-center">Data Ayah</h4>

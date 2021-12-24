@@ -7,7 +7,7 @@
     <div class="col-md-12 grid-margin">
       <div class="row">
         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-          <h3 class="font-weight-bold">Biodata Diri</h3>
+          <h3 class="font-weight-bold">Biodata Diri {{ $item->name }}</h3>
           <h6 class="font-weight-normal mb-0">
 
             @if($item->nik == '')
@@ -166,8 +166,8 @@
               <p class="card-description text-danger">
                 Data yang sudah disimpan, tidak bisa diubah. mohon dikoreksi kembali data anda
               </p>
-            <form class="forms-sample" action="{{ route('data-tambahan.update', $item->nisn) }}" method="POST">
-              @method('PUT')
+            <form class="forms-sample" action="{{ route('datatambahan.update', [$item->nisn]) }}" method="POST">
+              {{ method_field('PATCH') }}
               @csrf
 
               <div class="form-group">

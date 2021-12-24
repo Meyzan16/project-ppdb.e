@@ -28,24 +28,39 @@ Route::get('/', function () {
     return view('homepage.layout_homepage.layout');
 });
 
-// siswa
-// Route::prefix('siswa')->namespace('')->group(function(){
+// Route::group(['prefix' => 'siswa/'], function(){
 //     Route::get('/', [DashboardSiswaController::Class, 'index'])->name('dashboard-siswa');
-//     Route::get('biodata-diri', [BiodatadiriSiswaController::Class, 'index'])->name('select-form');
-//     Route::post('biodata-diri/create', [BiodatadiriSiswaController::Class, 'create'])->name('form-biodata'); 
+//     Route::group(['prefix'  => 'biodata-diri'],function(){
+//         Route::get('/', [BiodatadiriSiswaController::Class, 'index'])->name('biodata-diri');
+//         Route::get('{nisn}/edit', [BiodatadiriSiswaController::Class, 'edit'])->name('biodataEdit');
+//         Route::post('{nisn}/update', [BiodatadiriSiswaController::Class, 'update'])->name('biodataStore');    
+//     });
 // });
 
-Route::group(['middleware' => 'cek_login'] , function(){
-    Route::get('/siswa', [DashboardSiswaController::Class, 'index'])->name('dashboard-siswa');
-    Route::get('/siswa/biodata-diri', [BiodatadiriSiswaController::Class, 'index'])->name('biodata-diri');
-    Route::get('/siswa/biodata-diri/{nisn}/edit', [BiodatadiriSiswaController::Class, 'edit'])->name('biodataEdit');
-    Route::post('/siswa/biodata-diri/{nisn}', [BiodatadiriSiswaController::Class, 'update'])->name('biodataStore');
+
+Route::group([
+    'middleware' => 'cek_login',
+    'prefix' => 'siswa/'], function(){
+    Route::get('/', [DashboardSiswaController::Class, 'index'])->name('dashboard-siswa');
+
+    Route::group(['prefix'  => 'biodata-diri/'],function(){
+        Route::get('/', [BiodatadiriSiswaController::Class, 'index'])->name('biodata-diri');
+        Route::get('/{nisn}/edit', [BiodatadiriSiswaController::Class, 'edit'])->name('biodataEdit');
+        Route::patch('/{nisn}/update', [BiodatadiriSiswaController::Class, 'update'])->name('biodataStore');    
+    });
+
+    Route::group(['prefix'  => 'data-tambahan/'],function(){
+        Route::patch('/{nisn}/update', [DataTambahanSiswaController::class, 'update'])->name('datatambahan.update');
+    });
+
+    Route::group(['prefix'  => 'data-ortu/'],function(){
+        Route::get('/{nisn}/edit', [DataOrtuSiswaController::Class, 'edit'])->name('data-ortu.edit');
+        Route::patch('/{nisn}/update', [DataOrtuSiswaController::Class, 'update'])->name('data-ortu.update');    
+    });
 });
 
-Route::prefix('siswa')->group(function() {
-    Route::resource('data-tambahan', DataTambahanSiswaController::class)->middleware('cek_login');
-    Route::resource('data-ortu', DataOrtuSiswaController::class)->middleware('cek_login');;
-});
+
+
 
 
 
