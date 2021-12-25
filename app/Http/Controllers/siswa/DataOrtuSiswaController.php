@@ -79,8 +79,7 @@ class DataOrtuSiswaController extends Controller
                 return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
 
-
-        $data =  [
+        tb_ortu::where('nisn_ortu', $nisn)->update([
             'nik_ayah' => $request->nik_ayah,
             'nama_ayah' => $request->nama_ayah,
             'tgl_ayah' => $request->tgl_ayah,
@@ -93,10 +92,8 @@ class DataOrtuSiswaController extends Controller
             'pendidikan_ibu' => $request->pendidikan_ibu,
             'pekerjaan_ibu' => $request->pekerjaan_ibu,
             'penghasilan_bulanan_ibu' => $request->penghasilan_bulanan_ibu,
-        ];
+        ]);
 
-        $item = tb_ortu::where('nisn_ortu', $nisn);
-        $item->update($data);
 
         return \redirect()->route('data-ortu.edit', $nisn)->with('success', 'biodata pribadi berhasil diperbarui, silahkan lengkap biodata berikutnya');
 

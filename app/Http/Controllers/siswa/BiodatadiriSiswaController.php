@@ -70,16 +70,13 @@ class BiodatadiriSiswaController extends Controller
                 return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
 
-        $data =  [
+        User::where('nisn', $nisn)->update([
             'nik' => $request->nik,
             'name' => $request->name,
             'email' => $request->email,
             'username' => $request->username,
             'password' => $request->password
-        ];
-
-        $item = User::where('nisn', $nisn);
-        $item->update($data);
+        ]);
 
         return \redirect()->route('biodataEdit', $request->nisn)->with('success', 'Data utama berhasil diperbarui, silahkan lengkapi data tambahan');
     }

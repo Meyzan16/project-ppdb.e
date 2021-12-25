@@ -119,7 +119,7 @@ class DataTambahanSiswaController extends Controller
                 return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
 
-        $data =  [
+        tb_biodata::where('nisn_biodata', $nisn)->update([
             'jenkel' => $request->jenkel,
             'tempat_lahir' => $request->tempat_lahir,
             'tgl_lahir' => $request->tgl_lahir,
@@ -150,11 +150,7 @@ class DataTambahanSiswaController extends Controller
             'tinggi_badan'=> $request->tinggi_badan,
             'jarak_rumah_sekolah'=> $request->jarak_rumah_sekolah,
             'waktu_tempuh'=> $request->waktu_tempuh,
-        ];
-
-
-        $item = tb_biodata::where('nisn_biodata', $nisn);
-        $item->update($data);
+        ]);
 
         return \redirect()->route('biodata-diri')->with('success', 'biodata pribadi berhasil diperbarui, silahkan lengkap biodata berikutnya');
 
