@@ -2,6 +2,7 @@
 @extends('admin.layout_admin.layout')
 
 @section('content')
+<div id="main-content">
 <div class="page-heading">
     <h3>Profile Statistics</h3>
 </div>

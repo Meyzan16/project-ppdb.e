@@ -34,7 +34,7 @@
                         </li>
 
                         <li class="submenu-item">
-                            <a href="{{ route('generate-akun.index') }}"> Data Akun</a>
+                            <a href="{{ route('generate-akun.index') }}"> Data Akun Verifikator</a>
                         </li>
 
                     </ul>
@@ -43,20 +43,20 @@
 
              
 
-                <li class="sidebar-title">Forms &amp; Tables</li>
+                <li class="sidebar-title">Data Siswa</li>
 
 
                 <li class="sidebar-item  ">
                     <a href="https://zuramai.github.io/mazer/docs" class='sidebar-link'>
                         <i class="bi bi-life-preserver"></i>
-                        <span>Documentation</span>
+                        <span>Data Biodata Diri</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item  ">
                     <a href="https://github.com/zuramai/mazer/blob/main/CONTRIBUTING.md" class='sidebar-link'>
                         <i class="bi bi-puzzle"></i>
-                        <span>Contribute</span>
+                        <span>Data Orang Tua</span>
                     </a>
                 </li>
 
@@ -72,3 +72,6 @@
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
     </div>
 </div>
+
+
+ 

@@ -48,7 +48,7 @@
             <div class="col-md-8 grid-margin stretch-card">
             <div class="card tale-bg">
                 <div class="card-body">
-                <h5 class="card-title text-center" style="color: green; font-size:20px;">Maaf, silahkan lengkapi data orang tua dahulu</h5>
+                <h5 class="card-title text-center" style="color: black; font-size:20px;">Maaf, silahkan lengkapi data orang tua dahulu</h5>
                 <a href="{{ route('biodata-diri') }}" class="btn btn-warning" style="border-radius: 30px;  margin-right:10px">Kembali</a>
               </div>
             </div>
@@ -59,8 +59,11 @@
       <div class="col-md-8 grid-margin stretch-card">
         <div class="card tale-bg">
           <div class="card-body">
-            <h5 class="card-title text-center" style="color: black; font-size:20px;">Maaf form ini sudah selesai, data anda {{ $item->status_tb_biodata }}</h5>
+            <h5 class="card-title text-center" style="color: green; font-size:20px;">Selamat anda sudah melengkapi file file berkas yang diperlukan </h5>
+              <h4 class="card-title text-center" style="color: black; font-size:20px;">sekarang data anda {{ $item->status_akhir }} </h4>
             
+              <a class="btn btn-primary btn-sm" href="{{ asset('upload/kartu-keluarga/'.$item->kartu_keluarga) }}" download="{{ $item->kartu_keluarga }}"><i class="fa fa-download"></i>&nbsp; Download</a>
+
             <a href="{{ route('biodata-diri') }}" class="btn btn-warning" style="border-radius: 30px;  margin-right:10px">Kembali</a>
           </div>
         </div>
@@ -75,7 +78,7 @@
               <p class="card-description text-danger">
                 Data yang sudah disimpan, tidak bisa diubah. mohon dikoreksi kembali data anda
               </p>
-            <form class="forms-sample" action="{{ route('data-ortu.update', $item->nisn) }}" enctype="multipart/form-data" method="POST">
+            <form class="forms-sample" action="{{ route('data-berkas.update', $item->nisn) }}" enctype="multipart/form-data" method="POST">
               {{ method_field('PATCH') }}
               @csrf
 
@@ -91,15 +94,15 @@
                     @enderror
               </div>
 
-              <div class="form-group">
-                <label>File Kartu Keluarga</label>
-                <input type="file" name="kartu_keluarga" style="border-radius: 30px" class="form-control @error('kartu_keluarga')is-invalid @enderror"  placeholder="Kartu Keluarga" value="{{ old('kartu_keluarga') }}">
-                        @error('kartu_keluarga') 
+              {{-- <div class="form-group">
+                <label>File nisn</label>
+                <input type="file" name="file_nisn" style="border-radius: 30px" class="form-control @error('file_nisn')is-invalid @enderror"  placeholder="Kartu Keluarga" value="{{ old('file_nisn') }}">
+                        @error('file_nisn') 
                         <div class="invalid-feedback">
                         kesalahan : {{ $message }}
                         </div>
                     @enderror
-              </div>
+              </div> --}}
 
              
              

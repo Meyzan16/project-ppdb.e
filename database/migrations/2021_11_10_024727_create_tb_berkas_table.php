@@ -28,7 +28,7 @@ class CreateTbBerkasTable extends Migration
             $table->enum('status_file_nisn', ['Y','N','Belum Diverifikasi'])->default('Belum Diverifikasi');
             $table->string('catatan_nisn', 100)->nullable();
 
-            $table->enum('status_akhir', ['lengkap','belum lengkap'])->default('belum lengkap');
+            $table->enum('status_akhir', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
 
             $table->softDeletes();
             $table->rememberToken();

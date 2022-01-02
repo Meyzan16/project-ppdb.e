@@ -70,6 +70,8 @@ class BiodatadiriSiswaController extends Controller
                 return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
 
+        //$password = bcrypt($request->password)
+
         User::where('nisn', $nisn)->update([
             'nik' => $request->nik,
             'name' => $request->name,

@@ -72,7 +72,8 @@
                       Data yang sudah disimpan, tidak bisa diubah. mohon dikoreksi kembali data anda
                   </p>
 
-                  <form class="forms-sample" action="{{ route('biodataStore', $item->nisn) }}"  method="POST">
+                  <form class="forms-sample" action="{{ route('biodataStore', [$item->nisn]) }}"  method="POST">
+                    {{ method_field('PATCH') }}
                     @csrf
                       <div class="form-group">
                       <label>Nisn</label>

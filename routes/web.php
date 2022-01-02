@@ -38,7 +38,7 @@ Route::get('/', function () {
 //     });
 // });
 
-
+//SISWA
 Route::group([
     'middleware' => 'cek_login',
     'prefix' => 'siswa/'], function(){
@@ -65,6 +65,8 @@ Route::group([
     });
 
 });
+
+//Admin
 
 
 
