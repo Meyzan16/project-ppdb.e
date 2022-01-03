@@ -130,7 +130,7 @@
 
                       <div class="form-group">
                       <label >Email</label>
-                      <input type="text" name="email" style="border-radius: 30px" required class="form-control  @error('email')is-invalid @enderror"  placeholder="EMAIl" value="{{ old('email') }}">
+                      <input type="email" name="email" style="border-radius: 30px" required class="form-control  @error('email')is-invalid @enderror"  placeholder="EMAIl" value="{{ old('email') }}">
                       @error('email') 
                           <div class="invalid-feedback">
                             kesalahan : {{ $message }}

@@ -19,9 +19,8 @@
 
                             @if(session()->has('success'))
                             <div class="autohide">
-
                                 <div class="alert alert-success autohide" role="alert">
-                                {{ session('success') }}
+                                 {{ session('success') }}
                                 </div>    
                             </div>
                             @endif

@@ -13,6 +13,7 @@ use App\Http\Controllers\siswa\DataBerkasSiswaController;
 //ADMIN
 use App\Http\Controllers\admin\DashboardAdminController;
 use App\Http\Controllers\admin\GenerateSiswaController;
+use App\Http\Controllers\admin\BiodatadiriAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,14 +70,26 @@ Route::group([
 //Admin
 
 
+Route::group([
+    'prefix' => 'admin/'], function(){
+    Route::get('/', [DashboardAdminController::Class, 'index'] )->name('dashboard-admin');
+    Route::resource('generate-akun', GenerateSiswaController::class);
 
+    Route::group(['prefix'  => 'biodata-diri/'],function(){
+        Route::get('/', [BiodatadiriAdminController::Class, 'index'])->name('admin.biodata-diri.index');
+        Route::get('/{nisn}', [BiodatadiriAdminController::Class, 'show'])->name('admin.biodata-diri.show');
+        Route::patch('/verifikasiBiodata/{nisn}', [BiodatadiriAdminController::Class, 'verifikasi'])->name('admin.biodata-diri.verifikasi');
+    });
+
+   
+
+});
 
 
 
 //admin
 Route::prefix('admin')->group(function() {
-    Route::get('/', [DashboardAdminController::Class, 'index'] )->name('dashboard-admin');
-    Route::resource('generate-akun', GenerateSiswaController::class);
+  
 });
 
 

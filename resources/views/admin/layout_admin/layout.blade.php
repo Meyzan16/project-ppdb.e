@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/template-admin/demo/assets/css/bootstrap.css">
 
+    <link rel="stylesheet" href="/template-admin/demo/assets/vendors/simple-datatables/style.css">
+
     <link rel="stylesheet" href="/template-admin/demo/assets/vendors/iconly/bold.css">
 
     <link rel="stylesheet" href="/template-admin/demo/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
@@ -49,7 +51,16 @@
     <script src="/template-admin/demo/assets/vendors/apexcharts/apexcharts.js"></script>
     <script src="/template-admin/demo/assets/js/pages/dashboard.js"></script>
 
+    <script src="/template-admin/demo/assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script>
+        // Simple Datatable
+        let table1 = document.querySelector('#table1');
+        let dataTable = new simpleDatatables.DataTable(table1);
+    </script>
+
     <script src="/template-admin/demo/assets/js/main.js"></script>
+
+
     @stack('prepend-script')
 
     

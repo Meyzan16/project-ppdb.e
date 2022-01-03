@@ -262,6 +262,7 @@
                 <label>Penghasilan Bulanan Ibu</label>
                 <select name="penghasilan_bulanan_ibu" style="border-radius: 30px" class="form-control @error('penghasilan_bulanan_ibu') is-invalid @enderror" >
                   <option value="">--Pilih Data--</option>
+                 
                   <option value="Kurang dari 500,000" @if (old('penghasilan_bulanan_ibu') == "Kurang dari 500,000") {{ 'selected' }} @endif> Kurang dari 500.000,00   </option>
                   <option value="500.000 - 999.999" @if (old('penghasilan_bulanan_ibu') == "500.000 - 999.999") {{ 'selected' }} @endif> 500.000,00 - 999.999,00 </option>
                   <option value="1 juta - 1.999.999 Juta" @if (old('penghasilan_bulanan_ibu') == "1 juta - 1.999.999 Juta") {{ 'selected' }} @endif> 1 juta - 1.999.999 Juta </option>

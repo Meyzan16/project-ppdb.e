@@ -30,11 +30,11 @@
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item {{ request()->is('admin/generate-akun') ? 'active' : '' }} ">
-                            <a href="{{ route('generate-akun.index') }}"> Tambah akun siswa</a>
+                            <a href="{{ route('generate-akun.index') }}"> akun siswa</a>
                         </li>
 
                         <li class="submenu-item">
-                            <a href="{{ route('generate-akun.index') }}"> Data Akun Verifikator</a>
+                            <a href="{{ route('generate-akun.index') }}"> Akun Verifikator</a>
                         </li>
 
                     </ul>
@@ -46,8 +46,8 @@
                 <li class="sidebar-title">Data Siswa</li>
 
 
-                <li class="sidebar-item  ">
-                    <a href="https://zuramai.github.io/mazer/docs" class='sidebar-link'>
+                <li class="sidebar-item ">
+                    <a href="{{ route('admin.biodata-diri.index') }}" class='sidebar-link'>
                         <i class="bi bi-life-preserver"></i>
                         <span>Data Biodata Diri</span>
                     </a>

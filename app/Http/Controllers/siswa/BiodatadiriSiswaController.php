@@ -44,7 +44,7 @@ class BiodatadiriSiswaController extends Controller
        // pasang rules
         $rules = [
             'nik'=> 'required|numeric|digits:16|unique:users',
-            'email'=> 'required|email:dns|unique:users',
+            'email'=> 'required|unique:users',
             'name' => 'required|max:40',
             'username'=> 'required|min:8',
             'password'=> 'required|min:8',

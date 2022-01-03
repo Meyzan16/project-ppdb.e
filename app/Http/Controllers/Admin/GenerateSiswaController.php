@@ -76,7 +76,7 @@ class GenerateSiswaController extends Controller
                         'updated_at'    => date('Y-m-d H:i:s'),
                     ]);
                 
-                    return \redirect()->route('generate-akun.index')->with('success', 'Data Post Berhasil Ditambahkan');
+                    return \redirect()->route('generate-akun.index')->with('success', 'Data Siswa Berhasil Ditambahkan');
 
         }
 
