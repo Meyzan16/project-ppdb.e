@@ -78,6 +78,7 @@ Route::group([
     Route::group(['prefix'  => 'biodata-diri/'],function(){
         Route::get('/', [BiodatadiriAdminController::Class, 'index'])->name('admin.biodata-diri.index');
         Route::get('/{nisn}', [BiodatadiriAdminController::Class, 'show'])->name('admin.biodata-diri.show');
+        Route::get('/{nisn}/edit', [BiodatadiriAdminController::Class, 'edit'])->name('admin.biodata-diri.edit');
         Route::patch('/verifikasiBiodata/{nisn}', [BiodatadiriAdminController::Class, 'verifikasi'])->name('admin.biodata-diri.verifikasi');
     });
 

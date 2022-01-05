@@ -61,7 +61,7 @@
                                     <a href="{{ route('admin.biodata-diri.show', $item->nisn) }}"  class="badge bg-info"><span data-feather="eye">Detail</span></a>
                                         
                                     {{-- aturan default resource tambahakan edit di belakang --}}
-                                    <a href=""  class="badge bg-warning"><span data-feather="edit">Edit</span></a>
+                                    <a href="{{ route('admin.biodata-diri.edit', $item->nisn) }}"  class="badge bg-warning"><span data-feather="edit">Edit</span></a>
 
                                     <form action="" method="POST" class="d-inline">
                                         @method('delete')

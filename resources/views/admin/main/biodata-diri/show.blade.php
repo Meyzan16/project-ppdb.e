@@ -39,8 +39,9 @@
                                             <div class="panel-body">
                                                 <div class="table-responsive">
                                                     <div class="row">
-                                                        <div class="col-lg-3 col-md-4">	
-                                                            <img style="border-radius: 10px; border: 2px solid transparent;" src="/kamu.png" class='img-responsive img-thumbnail'/>	<br>	
+
+                                                        <div class="col-lg-3 col-md-8">	
+                                                            <img style="border-radius: 10px; border: 2px solid transparent;" src="/kamu.png" class='img-responsive img-thumbnail w-100'/>	<br>	
                                                         </div>
                     
                                                         <div class="col-lg-9 col-md-78">

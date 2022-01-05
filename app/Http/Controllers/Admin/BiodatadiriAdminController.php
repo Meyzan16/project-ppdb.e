@@ -79,9 +79,14 @@ class BiodatadiriAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($nisn)
     {
-        //
+        $item = DB::table('users')
+        ->JOIN('tb_biodatas', 'users.nisn','=','tb_biodatas.nisn_biodata')
+        ->select('users.*', 'tb_biodatas.*')
+        ->where('users.nisn', '=', $nisn)
+        ->first();
+        return view('admin.main.biodata-diri.edit', compact('item'));
     }
 
     /**
