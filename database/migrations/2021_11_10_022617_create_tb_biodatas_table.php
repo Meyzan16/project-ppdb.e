@@ -21,7 +21,7 @@ class CreateTbBiodatasTable extends Migration
             $table->date('tgl_lahir')->nullable();
             $table->string('jml_sdr_kdg',5)->nullable();
             $table->string('anak_keberapa',2)->nullable();
-            $table->enum('agama', ['Islam','Kristen/Protestan','Katholik','Hindu','Budha','Khonghucu'])->nullable();
+            $table->foreignId('agama_id')->nullable();
             $table->string('no_akte', 100)->nullable();
             $table->enum('status_kewarganegaraan', ['WNI', 'WNA'])->nullable();
             // $table->string('negara_wna', 100)->nullable();
@@ -32,8 +32,8 @@ class CreateTbBiodatasTable extends Migration
             $table->string('kelurahan_desa',50)->nullable();
             $table->string('kecamatan',50)->nullable();
             $table->string('kode_pos',20)->nullable();
-            $table->enum('jenis_tinggal', ['Bersama orang tua','Wali','Kos','Asrama','Panti Asuhan'])->nullable();
-            $table->enum('mode_transportasi', ['Jalan kaki','Kendaraan pribadi','Kendaraan Umum/angkot','Jemputan Sekolah','Ojek','Andong/Bendi/Sado/Dokar/Delman/Beca','Perahu penyebrangan/Rakit/Getek'])->nullable();
+            $table->foreignId('jenis_tinggal')->nullable();
+            $table->foreignId('mode_transportasi')->nullable();
             $table->enum('status_KKS', ['true','false'])->nullable();
             $table->string('nomor_kks',50)->nullable();
             $table->string('no_hp',15)->nullable();

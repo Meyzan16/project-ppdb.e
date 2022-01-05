@@ -15,6 +15,7 @@ class CreateTbAgamasTable extends Migration
     {
         Schema::create('tb_agamas', function (Blueprint $table) {
             $table->id();
+            $table->string('nama',100)->nullable();
             $table->timestamps();
         });
     }

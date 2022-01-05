@@ -229,16 +229,16 @@
 
               <div class="form-group">
                 <label>Agama</label>
-                <select name="agama" class="form-control @error('agama') is-invalid @enderror" >
-                  <option value="">Pilih Data </option>
-                  <option value="Islam" @if (old('agama') == "Islam") {{ 'selected' }} @endif> Islam   </option>
-                  <option value="Kristen/Protestan" @if (old('agama') == "Kristen/Protestan") {{ 'selected' }} @endif>Kristen/ Protestan </option>
-                  <option value="Katholik" @if (old('agama') == "Katholik") {{ 'selected' }} @endif>Katholik </option>
-                  <option value="Hindu" @if (old('agama') == "Hindu") {{ 'selected' }} @endif>Hindu </option>
-                  <option value="Budha" @if (old('agama') == "Budha") {{ 'selected' }} @endif>Budha </option>
-                  <option value="Khonghucu" @if (old('agama') == "Khonghucu") {{ 'selected' }} @endif>Khonghucu </option>
-                </select>
-                @error('agama')
+                <select name="agama_id" class="form-control @error('agama_id') is-invalid @enderror" >
+                      @foreach ($agama as $agama)
+                          @if(old('agama_id') == $agama->id )
+                            <option value="{{ $agama->id }}" selected>{{ $agama->nama }}</option>      
+                          @else
+                            <option value="{{ $agama->id }}">{{ $agama->nama }}</option>    
+                          @endif
+                      @endforeach
+                  </select>
+                    @error('agama_id')
                 <div class="invalid-feedback">
                   kesalahan : {{ $message }}
                 </div>
@@ -369,13 +369,15 @@
               <div class="form-group">
                 <label>Tempat tinggal</label>
                 <select name="jenis_tinggal" required class="form-control @error('jenis_tinggal') is-invalid @enderror ">
-                  <option value="">Pilih Data </option>
-                  <option value="Bersama orang tua"@if (old('jenis_tinggal') == "Bersama orang tua") {{ 'selected' }} @endif> Bersama orang tua</option>
-                  <option value="Wali"@if (old('jenis_tinggal') == "Wali") {{ 'selected' }} @endif>Wali </option>
-                  <option value="Kos"@if (old('jenis_tinggal') == "Kos") {{ 'selected' }} @endif>Kos </option>
-                  <option value="Asrama"@if (old('jenis_tinggal') == "Asrama") {{ 'selected' }} @endif>Asrama </option>
-                  <option value="Panti Asuhan"@if (old('jenis_tinggal') == "Panti Asuhan") {{ 'selected' }} @endif>Panti Asuhan </option>
+                  @foreach ($jenis_tinggal as $jenis_tinggal)
+                      @if(old('jenis_tinggal') == $jenis_tinggal->id )
+                        <option value="{{ $jenis_tinggal->id }}" selected>{{ $jenis_tinggal->nama }}</option>      
+                      @else
+                        <option value="{{ $jenis_tinggal->id }}">{{ $jenis_tinggal->nama }}</option>    
+                      @endif
+                  @endforeach
                 </select>
+
                 @error('jenis_tinggal') 
                   <div class="invalid-feedback">
                     kesalahan : {{ $message }}
@@ -386,14 +388,14 @@
               <div class="form-group">
                 <label>Mode Tranportasi</label>
                 <select name="mode_transportasi" required class="form-control @error('mode_transportasi') is-invalid @enderror">
-                  <option value="">Pilih Data </option>
-                  <option value="Jalan kaki" @if (old('mode_transportasi') == "Jalan kaki") {{ 'selected' }} @endif> Jalan kaki</option>
-                  <option value="Kendaraan pribadi"@if (old('mode_transportasi') == "Kendaraan pribadi") {{ 'selected' }} @endif>Kendaraan pribadi </option>
-                  <option value="Kendaraan Umum/angkot"@if (old('mode_transportasi') == "Kendaraan Umum/angko") {{ 'selected' }} @endif>Kendaraan Umum/angkot </option>
-                  <option value="Jemputan Sekolah"@if (old('mode_transportasi') == "Jemputan Sekolah") {{ 'selected' }} @endif>Jemputan Sekolah </option>
-                  <option value="Ojek"@if (old('mode_transportasi') == "Ojek") {{ 'selected' }} @endif>Ojek</option>
-                  <option value="Andong/Bendi/Sado/Dokar/Delman/Beca"@if (old('mode_transportasi') == "Andong/Bendi/Sado/Dokar/Delman/Beca") {{ 'selected' }} @endif>Andong/Bendi/Sado/Dokar/Delman/Beca </option>
-                  <option value="Perahu penyebrangan/Rakit/Getek"@if (old('mode_transportasi') == "Perahu penyebrangan/Rakit/Getek") {{ 'selected' }} @endif>Perahu penyebrangan/Rakit/Getek </option>
+                  @foreach ($mode_trans as $mode_trans)
+                    @if(old('mode_transportasi') == $mode_trans->id )
+                      <option value="{{ $mode_trans->id }}" selected>{{ $mode_trans->nama }}</option>      
+                    @else
+                      <option value="{{ $mode_trans->id }}">{{ $mode_trans->nama }}</option>    
+                    @endif
+                 @endforeach
+                  
                 </select>
                 @error('mode_transportasi') 
                   <div class="invalid-feedback">

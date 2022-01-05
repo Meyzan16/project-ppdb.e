@@ -5,6 +5,9 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\tb_agama;
+use App\Models\tb_jenis_tinggal;
+use App\Models\mode_transportasi;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
@@ -27,15 +30,17 @@ class BiodatadiriSiswaController extends Controller
 
     public function edit($nisn)
     {
-        $query = DB::table('users')
+        $agama =  tb_agama::all();
+        $jenis_tinggal = tb_jenis_tinggal::all();
+        $mode_trans = mode_transportasi::all();       
+
+        $item = DB::table('users')
         ->join('tb_biodatas', 'users.nisn', '=', 'tb_biodatas.nisn_biodata')
         ->select('users.*', 'tb_biodatas.*')
         ->where('users.nisn', '=', $nisn)
         ->first();
         
-        return view('siswa.main.datadiri.biodata-diri', [
-            'item' => $query
-        ]); 
+        return view('siswa.main.datadiri.biodata-diri', compact('item','jenis_tinggal' , 'mode_trans','agama')); 
     }
 
 

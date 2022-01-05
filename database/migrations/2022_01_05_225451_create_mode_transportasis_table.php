@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTbJenisTinggalsTable extends Migration
+class CreateModeTransportasisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTbJenisTinggalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_jenis_tinggals', function (Blueprint $table) {
+        Schema::create('mode_transportasis', function (Blueprint $table) {
             $table->id();
             $table->string('nama',100)->nullable();
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateTbJenisTinggalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_jenis_tinggals');
+        Schema::dropIfExists('mode_transportasis');
     }
 }
