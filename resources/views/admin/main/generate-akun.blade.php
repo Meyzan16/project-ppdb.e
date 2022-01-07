@@ -2,9 +2,11 @@
 @extends('admin.layout_admin.layout')
 
 @section('content')
-<div class="page-heading">
-    <h3>Generate Akun / Membuat Akun Siswa</h3>
-</div>
+
+<div id="main-content">
+    <div class="page-heading">
+        <h3>Generate Akun / Membuat Akun Siswa</h3>
+    </div>
 
 <div class="page-content">
     <section id="multiple-column-form">

@@ -230,7 +230,8 @@
               <div class="form-group">
                 <label>Agama</label>
                 <select name="agama_id" class="form-control @error('agama_id') is-invalid @enderror" >
-                      @foreach ($agama as $agama)
+                  <option value="">--Pilih Data--</option>   
+                  @foreach ($agama as $agama)
                           @if(old('agama_id') == $agama->id )
                             <option value="{{ $agama->id }}" selected>{{ $agama->nama }}</option>      
                           @else
@@ -369,6 +370,7 @@
               <div class="form-group">
                 <label>Tempat tinggal</label>
                 <select name="jenis_tinggal" required class="form-control @error('jenis_tinggal') is-invalid @enderror ">
+                  <option value="">--Pilih Data--</option>
                   @foreach ($jenis_tinggal as $jenis_tinggal)
                       @if(old('jenis_tinggal') == $jenis_tinggal->id )
                         <option value="{{ $jenis_tinggal->id }}" selected>{{ $jenis_tinggal->nama }}</option>      
@@ -388,6 +390,7 @@
               <div class="form-group">
                 <label>Mode Tranportasi</label>
                 <select name="mode_transportasi" required class="form-control @error('mode_transportasi') is-invalid @enderror">
+                  <option value="">--Pilih Data--</option>
                   @foreach ($mode_trans as $mode_trans)
                     @if(old('mode_transportasi') == $mode_trans->id )
                       <option value="{{ $mode_trans->id }}" selected>{{ $mode_trans->nama }}</option>      

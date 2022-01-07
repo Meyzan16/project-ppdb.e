@@ -41,9 +41,10 @@
                     </div>
                 </div>
             </footer>
+
+            </div>
         </div>
     </div>
-</div>
     @stack('addon-script')
     <script src="/template-admin/demo/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="/template-admin/demo/assets/js/bootstrap.bundle.min.js"></script>

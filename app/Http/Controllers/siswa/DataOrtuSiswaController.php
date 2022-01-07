@@ -5,6 +5,9 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\tb_ortu;
+use App\Models\tb_pekerjaan;
+use App\Models\tb_pendidikan;
+use App\Models\tb_penghasilan;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
@@ -14,16 +17,21 @@ class DataOrtuSiswaController extends Controller
 
     public function edit($nisn)
     {
-        $query = DB::table('users')
+        $pekerjaan = tb_pekerjaan::all();
+        $penghasilan = tb_penghasilan::all();
+        $pendidikan = tb_pendidikan::all();
+        $pendidikan_ibu = tb_pendidikan::all();
+        $pekerjaan_ibu = tb_pekerjaan::all();
+        $penghasilan_ibu = tb_penghasilan::all();
+
+        $item = DB::table('users')
         ->join('tb_ortus', 'users.nisn', '=', 'tb_ortus.nisn_ortu')
         ->join('tb_biodatas', 'users.nisn', '=', 'tb_biodatas.nisn_biodata')
         ->select('users.*', 'tb_ortus.*', 'tb_biodatas.*')
         ->where('users.nisn', '=', $nisn)
         ->first();
         
-        return view('siswa.main.dataortu.index', [
-            'item' => $query
-        ]); 
+        return view('siswa.main.dataortu.index', compact('item', 'pekerjaan' ,'penghasilan' , 'pendidikan', 'pekerjaan_ibu','penghasilan_ibu' ,'pendidikan_ibu' )); 
     }
 
     public function update(Request $request, $nisn)
@@ -31,14 +39,14 @@ class DataOrtuSiswaController extends Controller
         
         // pasang rules
         $rules = [
-            'nik_ayah' =>'required|digits:16|numeric|unique:tb_ortus',
+            'nik_ayah' =>'required|numeric|digits:16||unique:tb_ortus',
             'nama_ayah' => 'required',
             'tgl_ayah' => 'required',
             'pendidikan_ayah' => 'required',
             'pekerjaan_ayah' => 'required',
             'penghasilan_bulanan_ayah' => 'required',
 
-            'nik_ibu' =>'required|digits:16|numeric|unique:tb_ortus',
+            'nik_ibu' =>'required|numeric|digits:16|unique:tb_ortus',
             'nama_ibu' => 'required',
             'tgl_ibu' => 'required',
             'pendidikan_ibu' => 'required',
@@ -61,8 +69,8 @@ class DataOrtuSiswaController extends Controller
             'penghasilan_bulanan_ayah.required' => 'Form penghasilan ayah tidak boleh kosong',
 
             'nik_ibu.required' => 'Form nik ibu tidak boleh kosong',
-            'nik_ibu.digits' => 'Form nik ibu wajib 16 digit',
             'nik_ibu.numeric' => 'Form nik ibu bersifat angka',
+            'nik_ibu.digits' => 'Form nik ibu wajib 16 digit',
             'nik_ibu.unique' => 'Nik ibu sudah terdaftar',
             'nama_ibu.required' => 'Form nama ibu tidak boleh kosong',
             'tgl_ibu.required' => 'Form tanggal lahir ibu tidak boleh kosong',

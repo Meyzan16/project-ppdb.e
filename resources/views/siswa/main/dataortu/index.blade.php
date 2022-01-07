@@ -116,17 +116,14 @@
               <div class="form-group">
                 <label>Pendidikan Ayah</label>
                 <select name="pendidikan_ayah" style="border-radius: 30px" class="form-control @error('pendidikan_ayah') is-invalid @enderror" >
-                  <option value="">--Pilih Data--</option>
-                  <option value="Tidak sekolah" @if (old('pendidikan_ayah') == "Tidak sekolah") {{ 'selected' }} @endif> Tidak sekolah   </option>
-                  <option value="SD Sederajat" @if (old('pendidikan_ayah') == "SD Sederajat") {{ 'selected' }} @endif> SD Sederajat </option>
-                  <option value="SMP Sederajat" @if (old('pendidikan_ayah') == "SMP Sederajat") {{ 'selected' }} @endif> SMP Sederajat </option>
-                  <option value="SMA Sederajat" @if (old('pendidikan_ayah') == "SMA Sederajat") {{ 'selected' }} @endif> SMA Sederajat </option>
-                  <option value="D1" @if (old('pendidikan_ayah') == "D1") {{ 'selected' }} @endif> D1 </option>
-                  <option value="D2" @if (old('pendidikan_ayah') == "D2") {{ 'selected' }} @endif> D2 </option>
-                  <option value="D3" @if (old('pendidikan_ayah') == "D3") {{ 'selected' }} @endif> D3 </option>
-                  <option value="D4/S1" @if (old('pendidikan_ayah') == "D4/S1") {{ 'selected' }} @endif> D4/S1 </option>
-                  <option value="S2" @if (old('pendidikan_ayah') == "S2") {{ 'selected' }} @endif> S2 </option>
-                  <option value="S3" @if (old('pendidikan_ayah') == "S3") {{ 'selected' }} @endif> S3 </option>
+                    <option value="">--Pilih Data--</option>
+                  @foreach ($pendidikan as $pendidikan)
+                      @if(old('pendidikan_ayah') == $pendidikan->id )
+                        <option value="{{ $pendidikan->id }}" selected>{{ $pendidikan->nama }}</option>      
+                      @else
+                        <option value="{{ $pendidikan->id }}">{{ $pendidikan->nama }}</option>    
+                      @endif
+                  @endforeach
                 </select>
                 @error('pendidikan_ayah') 
                   <div class="invalid-feedback">
@@ -139,17 +136,13 @@
                 <label>Pekerjaan Ayah</label>
                 <select name="pekerjaan_ayah" style="border-radius: 30px" class="form-control @error('pekerjaan_ayah') is-invalid @enderror" >
                   <option value="">--Pilih Data--</option>
-                  <option value="Tidak bekerja" @if (old('pekerjaan_ayah') == "Tidak bekerja") {{ 'selected' }} @endif> Tidak bekerja   </option>
-                  <option value="Nelayan" @if (old('pekerjaan_ayah') == "Nelayan") {{ 'selected' }} @endif> Nelayan </option>
-                  <option value="Peternak" @if (old('pekerjaan_ayah') == "Peternak") {{ 'selected' }} @endif> Peternak </option>
-                  <option value="PNS/TNI/POLRI" @if (old('pekerjaan_ayah') == "PNS/TNI/POLRI") {{ 'selected' }} @endif> PNS/TNI/POLRI </option>
-                  <option value="Karyawan Swasta" @if (old('pekerjaan_ayah') == "Karyawan Swasta") {{ 'selected' }} @endif> Karyawan Swasta </option>
-                  <option value="Pedagang" @if (old('pekerjaan_ayah') == "Pedagang") {{ 'selected' }} @endif> Pedagang </option>
-                  <option value="Wiraswasta" @if (old('pekerjaan_ayah') == "Wiraswasta") {{ 'selected' }} @endif> Wiraswasta </option>
-                  <option value="Wirausaha" @if (old('pekerjaan_ayah') == "Wirausaha") {{ 'selected' }} @endif> Wirausaha </option>
-                  <option value="Buruh" @if (old('pekerjaan_ayah') == "Buruh") {{ 'selected' }} @endif> Buruh </option>
-                  <option value="Pensiunan" @if (old('pekerjaan_ayah') == "Pensiunan") {{ 'selected' }} @endif> Pensiunan </option>
-                  <option value="Meninggal Dunia" @if (old('pekerjaan_ayah') == "Meninggal Dunia") {{ 'selected' }} @endif> Meninggal Dunia </option>
+                  @foreach ($pekerjaan as $pekerjaan)
+                      @if(old('pekerjaan_ayah') == $pekerjaan->id )
+                        <option value="{{ $pekerjaan->id }}" selected>{{ $pekerjaan->nama }}</option>      
+                      @else
+                        <option value="{{ $pekerjaan->id }}">{{ $pekerjaan->nama }}</option>    
+                      @endif
+                  @endforeach
                 </select>
                 @error('pekerjaan_ayah') 
                   <div class="invalid-feedback">
@@ -162,14 +155,13 @@
                 <label>Penghasilan Bulanan Ayah</label>
                 <select name="penghasilan_bulanan_ayah" style="border-radius: 30px" class="form-control @error('penghasilan_bulanan_ayah') is-invalid @enderror" >
                   <option value="">--Pilih Data--</option>
-                  
-                  <option value="Kurang dari 500,000" @if (old('penghasilan_bulanan_ayah') == "Kurang dari 500,000") {{ 'selected' }} @endif> Kurang dari 500.000,00   </option>
-                  <option value="500.000 - 999.999" @if (old('penghasilan_bulanan_ayah') == "500.000 - 999.999") {{ 'selected' }} @endif> 500.000,00 - 999.999,00 </option>
-                  <option value="1 juta - 1.999.999 Juta" @if (old('penghasilan_bulanan_ayah') == "1 juta - 1.999.999 Juta") {{ 'selected' }} @endif> 1 juta - 1.999.999 Juta </option>
-                  <option value="2 juta - 4.999.999 Juta" @if (old('penghasilan_bulanan_ayah') == "2 juta - 4.999.999 Juta") {{ 'selected' }} @endif> 2 juta - 4.999.999 Juta </option>
-                  <option value="5 juta - 9.999.999 juta" @if (old('penghasilan_bulanan_ayah') == "5 juta - 9.999.999 juta") {{ 'selected' }} @endif> 5 juta - 9.999.999 juta </option>
-                  <option value="10 juta - 19.999.999 juta" @if (old('penghasilan_bulanan_ayah') == "10 juta - 19.999.999 juta") {{ 'selected' }} @endif> 10 juta - 19.999.999 juta </option>
-                  <option value="lebih dari 20 juta" @if (old('penghasilan_bulanan_ayah') == "lebih dari 20 juta") {{ 'selected' }} @endif> lebih dari 20 juta </option>
+                  @foreach ($penghasilan as $penghasilan)
+                      @if(old('penghasilan_bulanan_ayah') == $penghasilan->id )
+                        <option value="{{ $penghasilan->id }}" selected>{{ $penghasilan->nama }}</option>      
+                      @else
+                        <option value="{{ $penghasilan->id }}">{{ $penghasilan->nama }}</option>    
+                      @endif
+                  @endforeach
                 </select>
                 @error('penghasilan_bulanan_ayah') 
                   <div class="invalid-feedback">
@@ -217,16 +209,13 @@
                 <label>Pendidikan Ibu</label>
                 <select name="pendidikan_ibu" style="border-radius: 30px" class="form-control @error('pendidikan_ibu') is-invalid @enderror" >
                   <option value="">--Pilih Data--</option>
-                  <option value="Tidak sekolah" @if (old('pendidikan_ibu') == "Tidak sekolah") {{ 'selected' }} @endif> Tidak sekolah   </option>
-                  <option value="SD Sederajat" @if (old('pendidikan_ibu') == "SD Sederajat") {{ 'selected' }} @endif> SD Sederajat </option>
-                  <option value="SMP Sederajat" @if (old('pendidikan_ibu') == "SMP Sederajat") {{ 'selected' }} @endif> SMP Sederajat </option>
-                  <option value="SMA Sederajat" @if (old('pendidikan_ibu') == "SMA Sederajat") {{ 'selected' }} @endif> SMA Sederajat </option>
-                  <option value="D1" @if (old('pendidikan_ibu') == "D1") {{ 'selected' }} @endif> D1 </option>
-                  <option value="D2" @if (old('pendidikan_ibu') == "D2") {{ 'selected' }} @endif> D2 </option>
-                  <option value="D3" @if (old('pendidikan_ibu') == "D3") {{ 'selected' }} @endif> D3 </option>
-                  <option value="D4/S1" @if (old('pendidikan_ibu') == "D4/S1") {{ 'selected' }} @endif> D4/S1 </option>
-                  <option value="S2" @if (old('pendidikan_ibu') == "S2") {{ 'selected' }} @endif> S2 </option>
-                  <option value="S3" @if (old('pendidikan_ibu') == "S3") {{ 'selected' }} @endif> S3 </option>
+                    @foreach ($pendidikan_ibu as $pendidikan_ibu)
+                        @if(old('pendidikan_ibu') == $pendidikan_ibu->id )
+                          <option value="{{ $pendidikan_ibu->id }}" selected>{{ $pendidikan_ibu->nama }}</option>      
+                        @else
+                          <option value="{{ $pendidikan_ibu->id }}">{{ $pendidikan_ibu->nama }}</option>    
+                        @endif
+                    @endforeach
                 </select>
                 @error('pendidikan_ibu') 
                   <div class="invalid-feedback">
@@ -239,17 +228,13 @@
                 <label>Pekerjaan Ibu</label>
                 <select name="pekerjaan_ibu" style="border-radius: 30px" class="form-control @error('pekerjaan_ibu') is-invalid @enderror" >
                   <option value="">--Pilih Data--</option>
-                  <option value="Tidak bekerja" @if (old('pekerjaan_ibu') == "Tidak bekerja") {{ 'selected' }} @endif> Tidak bekerja   </option>
-                  <option value="Nelayan" @if (old('pekerjaan_ibu') == "Nelayan") {{ 'selected' }} @endif> Nelayan </option>
-                  <option value="Peternak" @if (old('pekerjaan_ibu') == "Peternak") {{ 'selected' }} @endif> Peternak </option>
-                  <option value="PNS/TNI/POLRI" @if (old('pekerjaan_ibu') == "PNS/TNI/POLRI") {{ 'selected' }} @endif> PNS/TNI/POLRI </option>
-                  <option value="Karyawan Swasta" @if (old('pekerjaan_ibu') == "Karyawan Swasta") {{ 'selected' }} @endif> Karyawan Swasta </option>
-                  <option value="Pedagang" @if (old('pekerjaan_ibu') == "Pedagang") {{ 'selected' }} @endif> Pedagang </option>
-                  <option value="Wiraswasta" @if (old('pekerjaan_ibu') == "Wiraswasta") {{ 'selected' }} @endif> Wiraswasta </option>
-                  <option value="Wirausaha" @if (old('pekerjaan_ibu') == "Wirausaha") {{ 'selected' }} @endif> Wirausaha </option>
-                  <option value="Buruh" @if (old('pekerjaan_ibu') == "Buruh") {{ 'selected' }} @endif> Buruh </option>
-                  <option value="Pensiunan" @if (old('pekerjaan_ibu') == "Pensiunan") {{ 'selected' }} @endif> Pensiunan </option>
-                  <option value="Meninggal Dunia" @if (old('pekerjaan_ibu') == "Meninggal Dunia") {{ 'selected' }} @endif> Meninggal Dunia </option>
+                    @foreach ($pekerjaan_ibu as $pekerjaan_ibu)
+                        @if(old('pekerjaan_ibu') == $pekerjaan_ibu->id )
+                          <option value="{{ $pekerjaan_ibu->id }}" selected>{{ $pekerjaan_ibu->nama }}</option>      
+                        @else
+                          <option value="{{ $pekerjaan_ibu->id }}">{{ $pekerjaan_ibu->nama }}</option>    
+                        @endif
+                    @endforeach
                 </select>
                 @error('pekerjaan_ibu') 
                   <div class="invalid-feedback">
@@ -262,14 +247,13 @@
                 <label>Penghasilan Bulanan Ibu</label>
                 <select name="penghasilan_bulanan_ibu" style="border-radius: 30px" class="form-control @error('penghasilan_bulanan_ibu') is-invalid @enderror" >
                   <option value="">--Pilih Data--</option>
-                 
-                  <option value="Kurang dari 500,000" @if (old('penghasilan_bulanan_ibu') == "Kurang dari 500,000") {{ 'selected' }} @endif> Kurang dari 500.000,00   </option>
-                  <option value="500.000 - 999.999" @if (old('penghasilan_bulanan_ibu') == "500.000 - 999.999") {{ 'selected' }} @endif> 500.000,00 - 999.999,00 </option>
-                  <option value="1 juta - 1.999.999 Juta" @if (old('penghasilan_bulanan_ibu') == "1 juta - 1.999.999 Juta") {{ 'selected' }} @endif> 1 juta - 1.999.999 Juta </option>
-                  <option value="2 juta - 4.999.999 Juta" @if (old('penghasilan_bulanan_ibu') == "2 juta - 4.999.999 Juta") {{ 'selected' }} @endif> 2 juta - 4.999.999 Juta </option>
-                  <option value="5 juta - 9.999.999 juta" @if (old('penghasilan_bulanan_ibu') == "5 juta - 9.999.999 juta") {{ 'selected' }} @endif> 5 juta - 9.999.999 juta </option>
-                  <option value="10 juta - 19.999.999 juta" @if (old('penghasilan_bulanan_ibu') == "10 juta - 19.999.999 juta") {{ 'selected' }} @endif> 10 juta - 19.999.999 juta </option>
-                  <option value="lebih dari 20 juta" @if (old('penghasilan_bulanan_ibu') == "lebih dari 20 juta") {{ 'selected' }} @endif> lebih dari 20 juta </option>
+                  @foreach ($penghasilan_ibu as $penghasilan_ibu)
+                  @if(old('penghasilan_bulanan_ibu') == $penghasilan_ibu->id )
+                    <option value="{{ $penghasilan_ibu->id }}" selected>{{ $penghasilan_ibu->nama }}</option>      
+                  @else
+                    <option value="{{ $penghasilan_ibu->id }}">{{ $penghasilan_ibu->nama }}</option>    
+                  @endif
+              @endforeach
                 </select>
                 @error('penghasilan_bulanan_ibu') 
                   <div class="invalid-feedback">
@@ -277,6 +261,7 @@
                   </div>                      
                   @enderror
               </div>
+
                 <button type="submit" class="btn btn-primary mr-2" style="border-radius: 30px;" onclick="return confirm('Apakah data anda sudah benar ?')" >Kirim</button>
                 <a href="{{ route('biodata-diri') }}" class="btn btn-warning" style="border-radius: 30px;  margin-right:10px">Kembali</a>
               </form>
