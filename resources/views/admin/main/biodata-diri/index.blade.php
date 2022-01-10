@@ -4,7 +4,7 @@
 @section('content')
 <div id="main-content">
     <div class="page-heading">
-        <h3>Data Biodata Diri</h3>
+        <h3>Data Siswa</h3>
     </div>
 
     <div class="page-content">

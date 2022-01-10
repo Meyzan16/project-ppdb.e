@@ -37,14 +37,15 @@ class DataTambahanSiswaController extends Controller
 
             'jenis_tinggal' => 'required',
             'mode_transportasi' => 'required',
-            'no_hp' => 'required|numeric|digits:12',
+            'no_hp' => 'required|numeric',
 
-            'nomor_kks'=> 'nullable|alpha_num|unique:tb_biodatas',
+            'nomor_kks'=> 'nullable|unique:tb_biodatas',
 
-            'nomor_KPS_PKH'=> 'nullable|alpha_num|unique:tb_biodatas', 
+            'nomor_KPS_PKH'=> 'nullable|unique:tb_biodatas', 
 
-            'nomor_kip'=> 'nullable|alpha_num|unique:tb_biodatas',
+            'nomor_kip'=> 'nullable|unique:tb_biodatas',
             'nama_kip'=> 'nullable|max:50',
+            
             'berat_badan' => 'required',
             'tinggi_badan' => 'required',
             'jarak_rumah_sekolah' => 'required',
@@ -87,19 +88,19 @@ class DataTambahanSiswaController extends Controller
             'mode_transportasi.required' => 'Form mode transportasi tidak boleh kosong',
             'no_hp.required' => 'Form no hp tidak boleh kosong',
             'no_hp.numeric'     => 'form no hp bersifat angka',
-            'no_hp.digits' => 'panjang form no hp wajib 12 karakter ',  
+          
       
-            'nomor_kks.alpha_num' => 'nomor kks hanya terdiri huruf dan angka tanpa spasi',
+            // 'nomor_kks.alpha_num' => 'nomor kks hanya terdiri huruf dan angka tanpa spasi',
             'nomor_kks.unique'     => 'nomor kks sudah terdaftar',
             // 'nomor_kks.digits'     => 'form panjang nomor kks 16 karakter'
 
-            'nomor_KPS_PKH.alpha_num' => 'nomor kps/pkh hanya terdiri huruf dan angka tanpa spasi',
+            // 'nomor_KPS_PKH.alpha_num' => 'nomor kps/pkh hanya terdiri huruf dan angka tanpa spasi',
             'nomor_KPS_PKH.unique'     => 'form nomor kps/pkh sudah terdaftar',
 
             
             'nomor_kip.unique'     => 'nomor kip sudah terdaftar',
             'nomor_kip.digits'     => 'form panjang nomor kip 6 karakter',
-            'nomor_kip.alpha_num'     => 'form nomor kip bersifat angka dan huruf tanpa spasi',
+            // 'nomor_kip.alpha_num'     => 'form nomor kip bersifat angka dan huruf tanpa spasi',
             'nama_kip.max'     => 'maksimal nama kip 50 karakter',
 
             'berat_badan.required' => 'Form berat badan tidak boleh kosong',

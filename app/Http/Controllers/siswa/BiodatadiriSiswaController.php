@@ -51,7 +51,7 @@ class BiodatadiriSiswaController extends Controller
             'nik'=> 'required|numeric|digits:16|unique:users',
             'email'=> 'required|unique:users',
             'name' => 'required|max:40',
-            'username'=> 'required|min:8',
+            'username'=> 'required|alpha_num|min:8',
             'password'=> 'required|min:8',
         ];
 
@@ -65,6 +65,7 @@ class BiodatadiriSiswaController extends Controller
             'name.max'     => 'maksimal nama 40 karakter',
             'email.unique'     => 'email sudah terdaftar',
             'username.min'     => 'username minimal 8 karakter',
+            'username.alpha_num'     => 'username bersifat huruf dan angka',
             'password.min'     => 'password minimal 8 karakter',
         ];
 
