@@ -99,7 +99,7 @@ class DataOrtuSiswaController extends Controller
         ]);
 
 
-        return \redirect()->route('data-ortu.edit', $nisn)->with('success', 'biodata pribadi berhasil diperbarui, silahkan lengkap biodata berikutnya');
+        return \redirect()->route('data-ortu.edit', $nisn)->with('success', 'biodata orangtua berhasil diperbarui, silahkan lengkap biodata berikutnya');
 
     }
 

@@ -33,7 +33,7 @@
                                     <div class="col-lg-12">
                                         <div class="panel panel-default">
                                             <button type="button" class="mb-2 btn btn-danger" aria-label="Left Align" onclick="location.href='{{ route('admin.biodata-diri.index') }}'">
-                                                <span class="fa fa-arrow-circle-left"> Kembali</span>
+                                                <i class="fa fa-arrow-circle-left"> </i> Kembali
                                             </button>
                                             <!-- /.panel-heading -->
                                             <div class="panel-body">
@@ -222,7 +222,7 @@
                                                                     <tr>
                                                                         <th scope='row'>Nomor KKS</th>
                                                                         <td>
-                                                                            <span>{{ $query->nomor_KKS }}</span>
+                                                                            <span>{{ $query->nomor_kks }}</span>
                                                                         </td>
                                                                     </tr>
                                                                 @else

@@ -24,7 +24,7 @@ class BiodatadiriAdminController extends Controller
      */
     public function index()
     {
-        $data = User::all(); 
+        $data = User::all()->sortByDesc('updated_at'); 
     
         return view('admin.main.biodata-diri.index',compact('data'));
     }
@@ -329,7 +329,7 @@ class BiodatadiriAdminController extends Controller
     public function trash()
     {
       
-        $data = User::onlyTrashed()->get();
+        $data = User::onlyTrashed()->latest()->get();
         
         return view('admin.main.biodata-diri.trash',compact('data'));
     }

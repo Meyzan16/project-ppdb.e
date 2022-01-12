@@ -153,7 +153,7 @@ class DataTambahanSiswaController extends Controller
             'waktu_tempuh'=> $request->waktu_tempuh,
         ]);
 
-        return \redirect()->route('data-ortu.edit', $nisn)->with('success', 'biodata pribadi berhasil diperbarui, silahkan lengkap biodata berikutnya');
+        return \redirect()->route('biodataEdit', $nisn)->with('success', 'biodata diri tambahan berhasil diperbarui, silahkan lengkap biodata berikutnya');
 
     }
 

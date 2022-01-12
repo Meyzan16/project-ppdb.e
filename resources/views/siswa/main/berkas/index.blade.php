@@ -62,7 +62,7 @@
             <h5 class="card-title text-center" style="color: green; font-size:20px;">Selamat anda sudah melengkapi file file berkas yang diperlukan </h5>
               <h4 class="card-title text-center" style="color: black; font-size:20px;">sekarang data anda {{ $item->tb_berkas->status_akhir }} </h4>
             
-              <a class="btn btn-primary btn-sm" href="{{ asset('upload/kartu-keluarga/'.$item->kartu_keluarga) }}" download="{{ $item->kartu_keluarga }}"><i class="fa fa-download"></i>&nbsp; Download</a>
+              <a class="btn btn-primary btn-sm" href="{{ asset('upload/kartu-keluarga/'.$item->tb_berkas->kartu_keluarga) }}" download="{{ $item->tb_berkas->kartu_keluarga }}"><i class="fa fa-download"></i>&nbsp; Download</a>
 
             <a href="{{ route('biodata-diri') }}" class="btn btn-warning" style="border-radius: 30px;  margin-right:10px">Kembali</a>
           </div>

@@ -24,7 +24,7 @@
                         <a href="{{ route('admin.sampah.restoreAll') }}" class='sidebar-link'>
                             <i class="fas fa-trash-restore"></i>
                             <span>Kembalikan semua</span>
-                        </a>||
+                        </a>
                     
                     </div>
 
