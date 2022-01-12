@@ -19,6 +19,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nisn</th>
+                                    <th>Jenis Kelamin</th>
                                     <th>Nama</th>
                                     <th>Status Lulus</th> 
                                     <th>Status Verifikasi</th>
@@ -30,7 +31,9 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->nisn }}</td>
-                                    <td>{{ $item->name }}</td>    
+                                    <td>{{ $item->tb_biodata->jenkel }}</td>   
+                                    <td>{{ $item->name }}</td> 
+
                                     @if ($item->status_lulus == 'N') 
                                         <td>
                                             <span class="badge bg-danger">Belum Lulus</span>
@@ -63,9 +66,9 @@
                                         {{-- aturan default resource tambahakan edit di belakang --}}
                                         <a href="{{ route('admin.biodata-diri.edit', $item->nisn) }}"  class="badge bg-warning"><span data-feather="edit">Edit</span></a>
 
-                                        <form action="" method="POST" class="d-inline">
-                                            @method('delete')
-                                            @csrf
+                              
+                                        <form action="{{ route('admin.biodata-diri.destroy', $item->id) }}" method="POST" class="d-inline">
+                                            {{ csrf_field() }}  {{ method_field("DELETE") }}
                                             <button class="badge bg-danger border-0" onclick="return confirm('Yakin Hapus Data')" >Hapus <span data-feather="x-circle"> </span>
                                             </button>
                                         </form>

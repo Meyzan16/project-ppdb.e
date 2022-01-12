@@ -31,7 +31,6 @@ class CreateTbOrtusTable extends Migration
             $table->foreignId('pekerjaan_ibu')->nullable();
             $table->foreignId('penghasilan_bulanan_ibu')->nullable();
             $table->enum('status_ortu', ['Y','N','Belum Diverifikasi'])->default('Belum Diverifikasi');
-            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
 

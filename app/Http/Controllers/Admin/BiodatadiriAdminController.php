@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\user;
 use Illuminate\Http\Request;
 use App\Models\tb_berkas;
+use App\Models\tb_ortu;
 use App\Models\tb_biodata;
 use App\Models\tb_agama;
 use App\Models\tb_jenis_tinggal;
@@ -23,10 +24,8 @@ class BiodatadiriAdminController extends Controller
      */
     public function index()
     {
-        $data =  $query = DB::table('users')
-        ->join('tb_biodatas', 'users.nisn', '=', 'tb_biodatas.nisn_biodata')
-        ->select('users.*', 'tb_biodatas.status_tb_biodata')
-        ->get();
+        $data = User::all(); 
+    
         return view('admin.main.biodata-diri.index',compact('data'));
     }
 
@@ -322,6 +321,13 @@ class BiodatadiriAdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        tb_biodata::findorfail($id)->delete();
+        tb_ortu::findorfail($id)->delete();
+        tb_berkas::findorfail($id)->delete();
+        user::findorfail($id)->delete();
+        
+        
+
+        return redirect()->route('admin.biodata-diri.index');
     }
 }

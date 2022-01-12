@@ -8,10 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\tb_ortu;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +21,7 @@ class User extends Authenticatable
      */
 
     protected $primaryKey = 'id';
+    protected $dates = ['deleted_at'];
     
     protected $fillable = [
         'nisn',
@@ -38,6 +40,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password'
     ];
+
+    public function tb_biodata()
+    {                                      //primarykey    //foreignkey
+        return $this->belongsTo(tb_biodata::class, 'id' , 'nisn_biodata');
+    }
+
 
     
 
