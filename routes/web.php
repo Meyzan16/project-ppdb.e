@@ -77,13 +77,26 @@ Route::group([
 
     Route::group(['prefix'  => 'biodata-diri/'],function(){
         Route::get('/', [BiodatadiriAdminController::Class, 'index'])->name('admin.biodata-diri.index');
-        Route::get('{nisn}', [BiodatadiriAdminController::Class, 'show'])->name('admin.biodata-diri.show');
+        Route::get('{nisn}/show', [BiodatadiriAdminController::Class, 'show'])->name('admin.biodata-diri.show');
         Route::get('{nisn}/edit', [BiodatadiriAdminController::Class, 'edit'])->name('admin.biodata-diri.edit');
         Route::patch('{nisn}/update', [BiodatadiriAdminController::Class, 'update'])->name('admin.biodata-diri.update');
         Route::delete('{nisn}/destroy',[BiodatadiriAdminController::class, 'destroy'])->name('admin.biodata-diri.destroy');
         
+        //trash 
+        Route::get('trash', [BiodatadiriAdminController::Class, 'trash'])->name('admin.biodata-diri.trash');
+
         //verifikasi data biodata diri
         Route::patch('/verifikasiBiodata/{nisn}', [BiodatadiriAdminController::Class, 'verifikasi'])->name('admin.biodata-diri.verifikasi');
+    });
+
+    Route::group(['prefix'  => 'restore-data/'],function(){
+        //retsore mana yang ingin dipilih
+        Route::get('{nisn}/restore', [BiodatadiriAdminController::class, 'restore'])->name('admin.sampah.restore');
+        //delete secara permanenen yang ingin dipilih
+        Route::get('{nisn}/force-delete', [BiodatadiriAdminController::class, 'forcedelete'])->name('admin.sampah.force-delete');
+        //restore semua data secara permanen
+        Route::get('restore-all', [BiodatadiriAdminController::class, 'restoreAll'])->name('admin.sampah.restoreAll');
+      
     });
 
    

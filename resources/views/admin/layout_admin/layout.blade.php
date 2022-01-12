@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/template-admin/demo/assets/vendors/simple-datatables/style.css">
 
     <link rel="stylesheet" href="/template-admin/demo/assets/vendors/iconly/bold.css">
+    <link rel="stylesheet" href="/template-admin/demo/assets/vendors/fontawesome/all.min.css">
 
     <link rel="stylesheet" href="/template-admin/demo/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="/template-admin/demo/assets/vendors/bootstrap-icons/bootstrap-icons.css">
@@ -51,6 +52,7 @@
 
     <script src="/template-admin/demo/assets/vendors/apexcharts/apexcharts.js"></script>
     <script src="/template-admin/demo/assets/js/pages/dashboard.js"></script>
+    <script src="/template-admin/demo/assets/vendors/fontawesome/all.min.js"></script>
 
     <script src="/template-admin/demo/assets/vendors/simple-datatables/simple-datatables.js"></script>
     <script>

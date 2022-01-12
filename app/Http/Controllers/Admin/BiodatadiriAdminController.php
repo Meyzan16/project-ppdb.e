@@ -321,13 +321,44 @@ class BiodatadiriAdminController extends Controller
      */
     public function destroy($id)
     {
-        tb_biodata::findorfail($id)->delete();
-        tb_ortu::findorfail($id)->delete();
-        tb_berkas::findorfail($id)->delete();
-        user::findorfail($id)->delete();
-        
-        
-
-        return redirect()->route('admin.biodata-diri.index');
+        user::findorfail($id)->delete();   
+        return redirect()->route('admin.biodata-diri.index')->with('success', 'Data Berhasil Dihapus');
     }
+
+    // menampilkan data guru yang sudah dihapus
+    public function trash()
+    {
+      
+        $data = User::onlyTrashed()->get();
+        
+        return view('admin.main.biodata-diri.trash',compact('data'));
+    }
+
+    public function restore($nisn) 
+    {
+        User::where('nisn', $nisn)->withTrashed()->restore();
+
+        return redirect()->route('admin.biodata-diri.index')->with('success', 'Data berhasil di kembalikan');
+    }
+
+    public function restoreAll()
+    {
+        User::onlyTrashed()->restore();
+        
+        return redirect()->route('admin.biodata-diri.index')->with('success', 'Semua data berhasil di kembalikan');
+    }
+
+    public function forcedelete($nisn)
+    {
+
+        User::onlyTrashed()->where('nisn',$nisn)->forceDelete();
+        tb_biodata::where('nisn_biodata', $nisn)->delete();
+        tb_berkas::where('nisn_berkas', $nisn)->delete();
+        tb_ortu::where('nisn_ortu', $nisn)->delete();
+        return redirect()->route('admin.biodata-diri.trash')->with('success', 'Data berhasil dihapus secara permanen');
+    }
+
+   
+    
+
 }
