@@ -147,13 +147,13 @@
                 
           </div>
         </div>
-    @elseif($item->jenkel != '')
+    @elseif($item->tb_biodata->jenkel != '')
     <div class="row">
       <div class="col-md-8 grid-margin stretch-card">
         <div class="card tale-bg">
           <div class="card-body">
             <h5 class="card-title text-center" style="color: green; font-size:20px;">Selamat anda sudah melengkapi data biodata diri</h5>
-            <h4 class="card-title text-center" style="color: black; font-size:20px;">sekarang data anda {{ $item->status_tb_biodata }} </h4>
+            <h4 class="card-title text-center" style="color: black; font-size:20px;">sekarang data anda {{ $item->tb_biodata->status_tb_biodata }} </h4>
             <a href="{{ route('biodata-diri') }}" class="btn btn-warning" style="border-radius: 30px;  margin-right:10px">Kembali</a>
           </div>
         </div>

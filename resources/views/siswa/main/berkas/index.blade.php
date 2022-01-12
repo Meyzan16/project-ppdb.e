@@ -43,7 +43,7 @@
       @endif
 
 
-    @if ($item->nik_ayah == '')
+    @if ($item->tb_ortu->nik_ayah == '')
         <div class="row">
             <div class="col-md-8 grid-margin stretch-card">
             <div class="card tale-bg">
@@ -54,13 +54,13 @@
             </div>
             </div>
         </div>
-    @elseif($item->kartu_keluarga != '')
+    @elseif($item->tb_berkas->kartu_keluarga != '')
     <div class="row">
       <div class="col-md-8 grid-margin stretch-card">
         <div class="card tale-bg">
           <div class="card-body">
             <h5 class="card-title text-center" style="color: green; font-size:20px;">Selamat anda sudah melengkapi file file berkas yang diperlukan </h5>
-              <h4 class="card-title text-center" style="color: black; font-size:20px;">sekarang data anda {{ $item->status_akhir }} </h4>
+              <h4 class="card-title text-center" style="color: black; font-size:20px;">sekarang data anda {{ $item->tb_berkas->status_akhir }} </h4>
             
               <a class="btn btn-primary btn-sm" href="{{ asset('upload/kartu-keluarga/'.$item->kartu_keluarga) }}" download="{{ $item->kartu_keluarga }}"><i class="fa fa-download"></i>&nbsp; Download</a>
 
