@@ -55,6 +55,30 @@ class GenerateSiswaController extends Controller
                     $data['roles'] = 'SISWA';   
             
                     User::create($data);
+
+                    $item = User::where('nisn', $request->nisn)->first();
+
+                    DB::table('tb_ortus')->insert([
+                        'user_ortu' => $item->id,
+                        'nisn_ortu' => $request->nisn,
+                        'created_at'    => date('Y-m-d H:i:s'),
+                        'updated_at'    => date('Y-m-d H:i:s'),
+                    ]);
+    
+                    DB::table('tb_berkas')->insert([
+                        'user_berkas' => $item->id,
+                        'nisn_berkas' => $request->nisn,
+                        'created_at'    => date('Y-m-d H:i:s'),
+                        'updated_at'    => date('Y-m-d H:i:s'),
+                    ]);
+    
+                    DB::table('tb_biodatas')->insert([
+                        'user_biodata' => $item->id,
+                        'nisn_biodata' => $request->nisn,
+                        'created_at'    => date('Y-m-d H:i:s'),
+                        'updated_at'    => date('Y-m-d H:i:s'),
+                    ]);
+
         
                     return \redirect()->route('generate-akun.index')->with('success', 'Data Siswa Berhasil Ditambahkan');
 

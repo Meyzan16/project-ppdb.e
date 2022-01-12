@@ -5,9 +5,6 @@ use App\Http\Controllers\Controller;
 
 
 use Illuminate\Http\Request;
-use App\Models\tb_ortu;
-use App\Models\tb_berkas;
-use App\Models\tb_biodata;
 use App\Models\user;
 
 use Illuminate\Support\Facades\Auth;
@@ -52,24 +49,6 @@ class LoginController extends Controller
         $cek_password = user::where('password', $request->password)->first();
 
         if ($cek_nisn && $cek_password) {
-                  DB::table('tb_ortus')->insert([
-                        'nisn_ortu' => $cek_nisn->id,
-                        'created_at'    => date('Y-m-d H:i:s'),
-                        'updated_at'    => date('Y-m-d H:i:s'),
-                    ]);
-    
-                    DB::table('tb_berkas')->insert([
-                        'nisn_berkas' => $cek_nisn->id,
-                        'created_at'    => date('Y-m-d H:i:s'),
-                        'updated_at'    => date('Y-m-d H:i:s'),
-                    ]);
-    
-                    DB::table('tb_biodatas')->insert([
-                        'nisn_biodata' => $cek_nisn->id,
-                        'created_at'    => date('Y-m-d H:i:s'),
-                        'updated_at'    => date('Y-m-d H:i:s'),
-                    ]);
-
                  session(['berhasil_login' => true]);
                  session(['roles' => $cek_nisn->roles]);
                  $request->session()->put('nisn', $cek_nisn->nisn);

@@ -428,7 +428,7 @@
                         class="custom-control-input"
                         name="status_KKS"
                         id="openKKSTrue"
-                        {{-- required --}}   
+                        {{-- required --}}
                         v-model="status_KKS"
                         :value="true"
                       />
