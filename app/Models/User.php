@@ -45,17 +45,17 @@ class User extends Authenticatable
 
     public function tb_biodata()
     {                                      //primarykey    //foreignkey
-        return $this->belongsTo(tb_biodata::class, 'id' , 'nisn_biodata');
+        return $this->belongsTo(tb_biodata::class, 'id' , 'user_biodata');
     }
 
     public function tb_ortu()
     {                                      //primarykey    //foreignkey
-        return $this->belongsTo(tb_ortu::class, 'id' , 'nisn_ortu');
+        return $this->belongsTo(tb_ortu::class, 'id' , 'user_ortu');
     }
 
     public function tb_berkas()
     {                                      //primarykey    //foreignkey
-        return $this->belongsTo(tb_berkas::class, 'id' , 'nisn_berkas');
+        return $this->belongsTo(tb_berkas::class, 'id' , 'user_berkas');
     }
 
 

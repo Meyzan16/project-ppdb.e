@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\tb_berkas;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
@@ -13,7 +14,7 @@ class DataBerkasSiswaController extends Controller
 
     public function edit($nisn){
 
-        $query = User::where('nisn', session()->get('nisn'))->first();
+        $query = User::where('nisn', $nisn)->first();
         
         return view('siswa.main.berkas.index', [
             'item' => $query

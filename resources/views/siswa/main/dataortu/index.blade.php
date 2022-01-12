@@ -43,7 +43,7 @@
       @endif
 
 
-    @if ($item->jenkel == '')
+    @if ($item->tb_biodata->jenkel == '')
         <div class="row">
             <div class="col-md-8 grid-margin stretch-card">
             <div class="card tale-bg">
@@ -54,7 +54,7 @@
             </div>
             </div>
         </div>
-    @elseif($item->nik_ayah != '')
+    @elseif($item->tb_biodata->nik_ayah != '')
     <div class="row">
       <div class="col-md-8 grid-margin stretch-card">
         <div class="card tale-bg">
