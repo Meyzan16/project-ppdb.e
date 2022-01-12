@@ -15,6 +15,7 @@ class CreateTbBiodatasTable extends Migration
     {
         Schema::create('tb_biodatas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_biodata')->nullable();
             $table->string('nisn_biodata',20)->unique()->nullable();
             $table->enum('jenkel', ['L','P'])->nullable();
             $table->text('tempat_lahir')->nullable();

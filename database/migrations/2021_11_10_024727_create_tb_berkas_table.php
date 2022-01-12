@@ -15,6 +15,7 @@ class CreateTbBerkasTable extends Migration
     {
         Schema::create('tb_berkas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_berkas')->nullable();
             $table->string('nisn_berkas',20)->unique()->nullable();
             $table->string('kartu_keluarga', 50)->nullable();
             $table->enum('status_kk', ['Y','N','Belum Diverifikasi'])->default('Belum Diverifikasi');

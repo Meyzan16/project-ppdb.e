@@ -15,6 +15,7 @@ class CreateTbOrtusTable extends Migration
     {
         Schema::create('tb_ortus', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_ortu')->nullable();
             $table->string('nisn_ortu',20)->unique()->nullable();
             $table->string('nik_ayah', 25)->unique()->nullable();
             $table->string('nama_ayah', 50)->nullable();

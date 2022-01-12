@@ -8,9 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Models\User;
-use App\Models\tb_ortu;
-use App\Models\tb_berkas;
-use App\Models\tb_biodata;
+
 
 class GenerateSiswaController extends Controller
 {
@@ -50,32 +48,14 @@ class GenerateSiswaController extends Controller
         } else{
                     $data = $request->all();
                     $generate_pass =  Str::random(12);
-            
+
                     $data['password'] =$generate_pass;
                     $data['tahun_daftar'] = date('y');
                     $data['status_lulus'] = 'N';
                     $data['roles'] = 'SISWA';   
             
                     User::create($data);
-            
-                    DB::table('tb_ortus')->insert([
-                        'nisn_ortu' => $request->nisn,
-                        'created_at'    => date('Y-m-d H:i:s'),
-                        'updated_at'    => date('Y-m-d H:i:s'),
-                    ]);
-    
-                    DB::table('tb_berkas')->insert([
-                        'nisn_berkas' => $request->nisn,
-                        'created_at'    => date('Y-m-d H:i:s'),
-                        'updated_at'    => date('Y-m-d H:i:s'),
-                    ]);
-    
-                    DB::table('tb_biodatas')->insert([
-                        'nisn_biodata' => $request->nisn,
-                        'created_at'    => date('Y-m-d H:i:s'),
-                        'updated_at'    => date('Y-m-d H:i:s'),
-                    ]);
-                
+        
                     return \redirect()->route('generate-akun.index')->with('success', 'Data Siswa Berhasil Ditambahkan');
 
         }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\tb_ortu;
+use App\Models\user;
 use App\Models\tb_pekerjaan;
 use App\Models\tb_pendidikan;
 use App\Models\tb_penghasilan;
@@ -24,12 +25,7 @@ class DataOrtuSiswaController extends Controller
         $pekerjaan_ibu = tb_pekerjaan::all();
         $penghasilan_ibu = tb_penghasilan::all();
 
-        $item = DB::table('users')
-        ->join('tb_ortus', 'users.nisn', '=', 'tb_ortus.nisn_ortu')
-        ->join('tb_biodatas', 'users.nisn', '=', 'tb_biodatas.nisn_biodata')
-        ->select('users.*', 'tb_ortus.*', 'tb_biodatas.*')
-        ->where('users.nisn', '=', $nisn)
-        ->first();
+        $item = User::where('nisn', session()->get('nisn'))->first();
         
         return view('siswa.main.dataortu.index', compact('item', 'pekerjaan' ,'penghasilan' , 'pendidikan', 'pekerjaan_ibu','penghasilan_ibu' ,'pendidikan_ibu' )); 
     }

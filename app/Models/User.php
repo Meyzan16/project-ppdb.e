@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\tb_ortu;
+use App\Models\tb_berkas;
+use App\Models\tb_biodata;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
@@ -44,6 +46,16 @@ class User extends Authenticatable
     public function tb_biodata()
     {                                      //primarykey    //foreignkey
         return $this->belongsTo(tb_biodata::class, 'id' , 'nisn_biodata');
+    }
+
+    public function tb_ortu()
+    {                                      //primarykey    //foreignkey
+        return $this->belongsTo(tb_ortu::class, 'id' , 'nisn_ortu');
+    }
+
+    public function tb_berkas()
+    {                                      //primarykey    //foreignkey
+        return $this->belongsTo(tb_berkas::class, 'id' , 'nisn_berkas');
     }
 
 
