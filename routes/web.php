@@ -96,7 +96,16 @@ Route::group([
         Route::get('{nisn}/force-delete', [BiodatadiriAdminController::class, 'forcedelete'])->name('admin.sampah.force-delete');
         //restore semua data secara permanen
         Route::get('restore-all', [BiodatadiriAdminController::class, 'restoreAll'])->name('admin.sampah.restoreAll');
-      
+    });
+
+    Route::group(['prefix'  => 'orang-tua/'],function(){
+        Route::get('{nisn}/show', [BiodatadiriAdminController::Class, 'show'])->name('admin.orang-tua.show');
+        Route::get('{nisn}/edit', [BiodatadiriAdminController::Class, 'edit'])->name('admin.orang-tua.edit');
+        Route::patch('{nisn}/update', [BiodatadiriAdminController::Class, 'update'])->name('admin.orang-tua.update');
+    
+
+        //verifikasi data biodata diri
+        Route::patch('/verifikasiOrangtua/{nisn}', [BiodatadiriAdminController::Class, 'verifikasi'])->name('admin.orang-tua.verifikasi');
     });
 
    

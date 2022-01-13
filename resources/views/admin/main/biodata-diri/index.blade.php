@@ -77,17 +77,27 @@
                                     @endif
 
                                     <td>
-                                        
 
-                                        <a href="{{ route('admin.biodata-diri.show', $item->nisn) }}"  class="badge bg-info"><span data-feather="eye">Detail</span></a>
+                                        
+                                            <a class="badge bg-info dropdown-toggle" type="button"
+                                                data-bs-toggle="dropdown"
+                                               > <span> data</span> </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">Orang Tua</a></li>
+                                                <li><a class="dropdown-item" href="#">Berkas</a></li>
+                                            </ul>
+                                           
+                                     
+
+                                        <a href="{{ route('admin.biodata-diri.show', $item->nisn) }}"  class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
                                             
                                         {{-- aturan default resource tambahakan edit di belakang --}}
-                                        <a href="{{ route('admin.biodata-diri.edit', $item->nisn) }}"  class="badge bg-warning"><span data-feather="edit">Edit</span></a>
+                                        <a href="{{ route('admin.biodata-diri.edit', $item->nisn) }}"  class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
 
                               
                                         <form action="{{ route('admin.biodata-diri.destroy', $item->id) }}" method="POST" class="d-inline">
                                             {{ csrf_field() }}  {{ method_field("DELETE") }}
-                                            <button class="badge bg-danger border-0" onclick="return confirm('Data akan dihapus secara sementara, data bisa dikembalikan kembali oleh admin')" >Hapus <span data-feather="x-circle"> </span>
+                                            <button class="badge bg-danger border-0" onclick="return confirm('Data akan dihapus secara sementara, data bisa dikembalikan kembali oleh admin')" >  <i class="fa fa-trash"> </i>
                                             </button>
                                         </form>
                                     </td>
