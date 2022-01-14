@@ -26,26 +26,6 @@ class DataOrtuAdminController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -53,9 +33,18 @@ class DataOrtuAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($nisn)
     {
-        //
+        $query = tb_ortu::where('nisn_ortu', $nisn)->first();
+        
+    //    $query = DB::table('users')
+    //     ->join('tb_ortus', 'users.nisn', '=', 'tb_ortus.nisn_ortu')
+    //     ->join('tb_pendidikans', 'tb_ortus.pendidikan_ayah', '=', 'tb_pendidikans.id')
+    //     ->select('users.*', 'tb_ortus.*' , 'tb_pendidikans.*')
+    //     ->where('users.nisn', '=', $nisn)
+    //     ->first();
+        
+        return view('admin.main.data-ortu.show',compact('query'));
     }
 
     /**

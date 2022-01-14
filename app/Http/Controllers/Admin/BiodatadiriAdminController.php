@@ -66,6 +66,8 @@ class BiodatadiriAdminController extends Controller
         ->select('users.*', 'tb_biodatas.*' , 'mode_transportasis.nama as nama_mode_trans', 'tb_agamas.nama as nama_agama', 'tb_jenis_tinggals.nama as nama_jenis_tinggal')
         ->where('users.nisn', '=', $nisn)
         ->first();
+
+        // User::where('nisn', session()->get('nisn'))->first(); 
         
         return view('admin.main.biodata-diri.show',compact('query'));
        

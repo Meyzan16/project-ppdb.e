@@ -14,6 +14,7 @@ use App\Http\Controllers\siswa\DataBerkasSiswaController;
 use App\Http\Controllers\admin\DashboardAdminController;
 use App\Http\Controllers\admin\GenerateSiswaController;
 use App\Http\Controllers\admin\BiodatadiriAdminController;
+use App\Http\Controllers\admin\DataOrtuAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,13 +100,11 @@ Route::group([
     });
 
     Route::group(['prefix'  => 'orang-tua/'],function(){
-        Route::get('{nisn}/show', [BiodatadiriAdminController::Class, 'show'])->name('admin.orang-tua.show');
-        Route::get('{nisn}/edit', [BiodatadiriAdminController::Class, 'edit'])->name('admin.orang-tua.edit');
-        Route::patch('{nisn}/update', [BiodatadiriAdminController::Class, 'update'])->name('admin.orang-tua.update');
-    
-
+        Route::get('{nisn}/show', [DataOrtuAdminController::Class, 'show'])->name('admin.data-ortu.show');
+        Route::get('{nisn}/edit', [DataOrtuAdminController::Class, 'edit'])->name('admin.data-ortu.edit');
+        Route::patch('{nisn}/update', [DataOrtuAdminController::Class, 'update'])->name('admin.data-ortu.update');
         //verifikasi data biodata diri
-        Route::patch('/verifikasiOrangtua/{nisn}', [BiodatadiriAdminController::Class, 'verifikasi'])->name('admin.orang-tua.verifikasi');
+        Route::patch('/verifikasiOrangtua/{nisn}', [DataOrtuAdminController::Class, 'verifikasi'])->name('admin.data-ortu.verifikasi');
     });
 
    

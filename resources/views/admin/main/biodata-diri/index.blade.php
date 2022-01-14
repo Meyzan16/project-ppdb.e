@@ -40,7 +40,8 @@
                                     <th>Jenis Kelamin</th>
                                     <th>Nama</th>
                                     <th>Status Lulus</th> 
-                                    <th>Status Verifikasi</th>
+                                    <th>Status Data Diri</th>
+                                    <th>Status Akhir</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -77,14 +78,18 @@
                                     @endif
 
                                     <td>
+                                        <span class="badge bg-primary">Belum Diverifikasi</span>
+                                    </td>
+
+                                    <td>
 
                                         
                                             <a class="badge bg-info dropdown-toggle" type="button"
                                                 data-bs-toggle="dropdown"
                                                > <span> data</span> </a>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Orang Tua</a></li>
-                                                <li><a class="dropdown-item" href="#">Berkas</a></li>
+                                                <li><a class="dropdown-item" href="{{ route('admin.data-ortu.show', $item->nisn) }}">Orang Tua <span>({{ $item->tb_ortu->status_ortu }})</span> </a> </li>
+                                                <li><a class="dropdown-item" href="#">Berkas <span>({{ $item->tb_berkas->status_akhir }})</span></a></li>
                                             </ul>
                                            
                                      

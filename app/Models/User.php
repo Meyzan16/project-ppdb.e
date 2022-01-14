@@ -44,18 +44,18 @@ class User extends Authenticatable
     ];
 
     public function tb_biodata()
-    {                                      //primarykey    //foreignkey
-        return $this->belongsTo(tb_biodata::class, 'id' , 'user_biodata');
+    {                                      
+        return $this->hasOne(tb_biodata::class, 'user_biodata');
     }
 
     public function tb_ortu()
-    {                                      //primarykey    //foreignkey
-        return $this->belongsTo(tb_ortu::class, 'id' , 'user_ortu');
+    {                                      
+        return $this->hasOne(tb_ortu::class, 'user_ortu');
     }
 
     public function tb_berkas()
-    {                                      //primarykey    //foreignkey
-        return $this->belongsTo(tb_berkas::class, 'id' , 'user_berkas');
+    {                                      
+        return $this->hasOne(tb_berkas::class, 'user_berkas');
     }
 
 
