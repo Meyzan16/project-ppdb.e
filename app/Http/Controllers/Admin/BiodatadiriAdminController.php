@@ -58,14 +58,7 @@ class BiodatadiriAdminController extends Controller
      */
     public function show($nisn)
     {
-        $query = DB::table('users')
-        ->join('tb_biodatas', 'users.nisn', '=', 'tb_biodatas.nisn_biodata')
-        ->join('tb_agamas', 'tb_biodatas.agama_id', '=', 'tb_agamas.id')
-        ->join('tb_jenis_tinggals', 'tb_biodatas.jenis_tinggal', '=', 'tb_jenis_tinggals.id')
-        ->join('mode_transportasis', 'tb_biodatas.mode_transportasi', '=', 'mode_transportasis.id')
-        ->select('users.*', 'tb_biodatas.*' , 'mode_transportasis.nama as nama_mode_trans', 'tb_agamas.nama as nama_agama', 'tb_jenis_tinggals.nama as nama_jenis_tinggal')
-        ->where('users.nisn', '=', $nisn)
-        ->first();
+        $query = tb_biodata::where('nisn_biodata', $nisn)->first();
 
         // User::where('nisn', session()->get('nisn'))->first(); 
         
@@ -75,9 +68,19 @@ class BiodatadiriAdminController extends Controller
 
     public function verifikasi($nisn){
         tb_biodata::where('nisn_biodata',$nisn)->update([
+            'catatan_biodata'   => NULL,
             'status_tb_biodata'    =>  'Y'
         ]);
         return redirect()->route('admin.biodata-diri.show', $nisn)->with(['success' =>  'Data Berhasil Di Verifikasi !!']);
+    }
+
+    public function verifikasi_tolak(Request $request, $nisn){
+
+        tb_biodata::where('nisn_biodata',$nisn)->update([
+            'catatan_biodata'   => $request->catatan_biodata,
+            'status_tb_biodata'    =>  'N'
+        ]);
+        return redirect()->route('admin.biodata-diri.show', $nisn)->with(['success_tolak' =>  'Data Berhasil Di Verifikasi !!']);
     }
 
     /**

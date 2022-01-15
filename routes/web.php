@@ -87,7 +87,8 @@ Route::group([
         Route::get('trash', [BiodatadiriAdminController::Class, 'trash'])->name('admin.biodata-diri.trash');
 
         //verifikasi data biodata diri
-        Route::patch('verifikasiBiodata/{nisn}', [BiodatadiriAdminController::Class, 'verifikasi'])->name('admin.biodata-diri.verifikasi');
+        Route::patch('{nisn}/verifikasiBiodata', [BiodatadiriAdminController::Class, 'verifikasi'])->name('admin.biodata-diri.verifikasi');
+        Route::patch('{nisn}/verifikasiBiodataTolak', [BiodatadiriAdminController::Class, 'verifikasi_tolak'])->name('admin.biodata-diri.verifikasi_tolak');
     });
 
     Route::group(['prefix'  => 'restore-data/'],function(){

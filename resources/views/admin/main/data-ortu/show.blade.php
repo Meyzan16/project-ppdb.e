@@ -28,9 +28,6 @@
 
                         <h4 class="card-title">Status Data Orang Tua : {{ $a }}</h4>
 
-                        @php
-                       $catatan = "";
-                        @endphp
 
                         @if ($query->catatan_ortu != '' && $query->status_ortu == 'N')
                             <button type="button" class="mb-2 btn btn-outline-danger block"
@@ -126,28 +123,28 @@
                                                             <table class='table table-striped'>	
                                                                 
                                                                 <tr>
-                                                                    <th scope='row'>NIK Ayah</th>
+                                                                    <th scope='row'>NIK Ibu</th>
                                                                     <td>{{ $query->nik_ibu}}</td>
                                                                 </tr>		
                                                                 <tr>
-                                                                    <th scope='row'>Nama Ayah</th>
+                                                                    <th scope='row'>Nama Ibu</th>
                                                                     <td>{{ $query->nama_ibu}}</td>
                                                                 </tr>
                                                                 
                                                                 <tr>
-                                                                    <th scope='row'>Tanggal Lahir Ayah</th>
+                                                                    <th scope='row'>Tanggal Lahir Ibu</th>
                                                                     <td>{{ $query->tgl_ibu}}</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th scope='row'>Pendidikan Ayah</th>
+                                                                    <th scope='row'>Pendidikan Ibu</th>
                                                                     <td>{{ $query->pendidikan_i->nama }}</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th scope='row'>Pekerjaan Ayah</th>
+                                                                    <th scope='row'>Pekerjaan Ibu</th>
                                                                     <td>{{ $query->pekerjaan_i->nama }}</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th scope='row'>Penghasilan Bulanan Ayah</th>
+                                                                    <th scope='row'>Penghasilan Bulanan Ibu</th>
                                                                     <td>{{ $query->penghasilan_bulanan_i->nama }}</td>
                                                                 </tr>
                                                                 

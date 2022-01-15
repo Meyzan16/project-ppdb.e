@@ -13,7 +13,32 @@
             <div class="col-md-10 col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Data Biodata Diri</h4>
+                        <h4 class="card-title">Nama :  {{ $query->user->name }}</h4>
+
+                        @php
+                                $a = "";
+                            @endphp
+
+                            @if ($query->status_tb_biodata == 'Y')
+                                <?php $a = "Verifikasi Diterima" ?>
+                            @elseif($query->status_tb_biodata == 'N')
+                                <?php $a = "Verifikasi Ditolak" ?>
+                            @else
+                                <?php $a = "Belum Diverifikasi" ?>
+                            @endif
+
+                            <h4 class="card-title">Status Biodata Diri : {{ $a }}</h4>
+
+                           
+                            @if ($query->catatan_biodata != '' && $query->status_tb_biodata == 'N')
+                                <button type="button" class="mb-2 btn btn-outline-danger block"
+                                data-bs-toggle="modal" data-bs-target="#catatan_penolakan">
+                                &nbsp;Catatan Penolakan
+                                </button>
+                            @endif
+
+
+
                     </div>
 
                     <div class="div">
@@ -21,6 +46,16 @@
                         <div class="autohide">
                             <div class="alert alert-success autohide" role="alert">
                              {{ session('success') }}
+                            </div>    
+                        </div>
+                        @endif
+                    </div>
+
+                    <div class="div">
+                        @if(session()->has('success_tolak'))
+                        <div class="autohide">
+                            <div class="alert alert-danger autohide" role="alert">
+                             {{ session('success_tolak') }}
                             </div>    
                         </div>
                         @endif
@@ -48,41 +83,41 @@
                                                             <table class='table table-striped'>
                                                                 <tr>
                                                                     <th scope='row'>Nisn</th>
-                                                                    <td id="">{{ $query->nisn }}</td>
+                                                                    <td id="">{{ $query->user->nisn }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope='row'>Nama</th>
-                                                                    <td id="">{{ $query->name }}</td>
+                                                                    <td id="">{{ $query->user->name }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope='row'>Email</th>
-                                                                    <td id="">{{ $query->email }}</td>
+                                                                    <td id="">{{ $query->user->email }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope='row'>Username</th>
-                                                                    <td id="">{{ $query->username }}</td>
+                                                                    <td id="">{{ $query->user->username }}</td>
                                                                 </tr>
 
                                                                 @if ($query->status_tb_biodata == 'N') 
                                                                     <tr>
                                                                         <th scope='row'>Status Verifikasi</th>
-                                                                        <span class="badge bg-danger">Gagal Diverifikasi</span>
+                                                                        <span class="badge bg-danger">Verifikasi ditolak</span>
                                                                     </tr>
                                                                 @elseif($query->status_tb_biodata == 'Y')
                                                                     <tr>
                                                                         <th scope='row'>Status Verifikasi</th>
                                                                         <td>
-                                                                            <span class="badge bg-success">Selesai Diverifikasi</span>
+                                                                            <span class="badge bg-success">Verifikasi diterima</span>
                                                                         </td>
                                                                     </tr>
                                                                     
                                                                 @else
-                                                                <tr>
-                                                                    <th scope='row'>Status Verifikasi</th>
-                                                                    <td>
-                                                                        <span class="badge bg-primary">Belum Diverifikasi</span>
-                                                                    </td>
-                                                                </tr>
+                                                                    <tr>
+                                                                        <th scope='row'>Status Verifikasi</th>
+                                                                        <td>
+                                                                            <span class="badge bg-primary">Belum Diverifikasi</span>
+                                                                        </td>
+                                                                    </tr>
                                                                 @endif
                                                             
                                                                 	
@@ -97,11 +132,11 @@
                                                                 
                                                                 <tr>
                                                                     <th scope='row'>NIK</th>
-                                                                    <td>{{ $query->nik }}</td>
+                                                                    <td>{{ $query->user->nik }}</td>
                                                                 </tr>		
                                                                 <tr>
                                                                     <th scope='row'>Tahun Masuk</th>
-                                                                    <td>{{ $query->tahun_daftar }}</td>
+                                                                    <td>{{ $query->user->tahun_daftar }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope='row'>Jenis Kelamin</th>
@@ -117,7 +152,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope='row'>Agama</th>
-                                                                    <td>{{ $query->nama_agama }}</td>
+                                                                    <td>{{ $query->tb_agama->nama }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope='row'>Anak keberapa</th>
@@ -191,11 +226,11 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope='row'>Jenis Tinggal</th>
-                                                                    <td>{{ $query->nama_jenis_tinggal }}</td>
+                                                                    <td>{{ $query->tb_jenis_tinggal->nama }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope='row'>Mode Transportasi</th>
-                                                                    <td>{{ $query->nama_mode_trans }}</td>
+                                                                    <td>{{ $query->transportasi->nama }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope='row'>No Hp</th>
@@ -318,7 +353,7 @@
 
 
                                                                 
-                                                                @if ($query->status_lulus == 'N') 
+                                                                @if ($query->user->status_lulus == 'N') 
                                                                     <tr>
                                                                         <th scope='row'>Status Lulus</th>
                                                                         <td>
@@ -334,11 +369,11 @@
                                                                     </tr>
                                                                 @endif
                                                                 
-                                                                @if ($query->tahun_lulus != '') 
+                                                                @if ($query->user->tahun_lulus != '') 
                                                                     <tr>
                                                                         <th scope='row'>Tahun Lulus</th>
                                                                         <td>
-                                                                            <span class="badge bg-danger">{{ $query->tahun_lulus }}</span>
+                                                                            <span class="badge bg-danger">{{ $query->user->tahun_lulus }}</span>
                                                                         </td>
                                                                     </tr>
                                                                 @else
@@ -375,10 +410,29 @@
 
                                                     </div>
 
+                                                    @if ($query->status_tb_biodata == 'N')
                                                         <button type="button" class="mb-2 btn btn-outline-success block"
-                                                            data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
-                                                            &nbsp;Konfirmasi
-                                                            </button>
+                                                        data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                                                        &nbsp;Diterima
+                                                        </button>
+
+                                                        <button type="button" class="mb-2 btn btn-outline-danger block"
+                                                        data-bs-toggle="modal" data-bs-target="#exampleModalTolak">
+                                                        &nbsp;Ditolak
+                                                        </button> 
+                                                    @elseif($query->status_tb_biodata == 'belum diverifikasi')   
+                                                        <button type="button" class="mb-2 btn btn-outline-success block"
+                                                        data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                                                        &nbsp;Diterima
+                                                        </button>
+
+                                                        <button type="button" class="mb-2 btn btn-outline-danger block"
+                                                        data-bs-toggle="modal" data-bs-target="#exampleModalTolak">
+                                                        &nbsp;Ditolak
+                                                        </button> 
+                                                    @endif
+
+                                                        
 
                                                 </div>
                                             </div>
@@ -405,7 +459,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle"> Validasi Data {{ $query->name }}
+            <h5 class="modal-title" id="exampleModalCenterTitle"> Validasi Data {{ $query->user->name }}
             </h5>
             <button type="button" class="close" data-bs-dismiss="modal"
                 aria-label="Close">
@@ -428,7 +482,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <span class="d-none d-sm-block">Kembali</span>
             </button>
 
-            <form action="{{ route('admin.biodata-diri.verifikasi', [$query->nisn]) }}" method="POST">
+            <form action="{{ route('admin.biodata-diri.verifikasi', [$query->nisn_biodata]) }}" method="POST">
                 {{ csrf_field() }} {{ method_field('PATCH') }}
                 <button type="submit" class="btn btn-primary ml-1">
                     <i class="bx bx-check d-block d-sm-none"></i>
@@ -436,6 +490,73 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 </button>
             </form>
             
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="exampleModalTolak" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+    role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle"> Validasi Ditolak {{ $query->user->name }}
+            </h5>
+            <button type="button" class="close" data-bs-dismiss="modal"
+                aria-label="Close">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+        <form action="{{ route('admin.biodata-diri.verifikasi_tolak', [$query->nisn_biodata]) }}" method="POST">
+            @csrf {{ method_field('PATCH') }}
+            <div class="modal-body">
+                <h5 class="modal-title" id="exampleModalCenterTitle"> Catatan </h5>
+                <textarea name="catatan_biodata" cols="52" rows="5"> </textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-secondary"
+                    data-bs-dismiss="modal">
+                    <i class="bx bx-x d-block d-sm-none"></i>
+                    <span class="d-none d-sm-block">Kembali</span>
+                </button>
+
+                  
+                    <button type="submit" class="btn btn-primary ml-1">
+                        <i class="bx bx-check d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Verifikasi</span>
+                    </button>
+                
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="catatan_penolakan" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+    role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle"> Catatan Penolakan {{ $query->user->name }}
+            </h5>
+            <button type="button" class="close" data-bs-dismiss="modal"
+                aria-label="Close">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>
+                {!! $query->catatan_biodata  !!}
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-light-secondary"
+                data-bs-dismiss="modal">
+                <i class="bx bx-x d-block d-sm-none"></i>
+                <span class="d-none d-sm-block">Kembali</span>
+            </button>
         </div>
     </div>
 </div>

@@ -63,13 +63,14 @@
                                         </td>
                                     @endif
 
-                                    @if ($item->status_tb_biodata == 'N') 
+
+                                    @if ($item->tb_biodata->status_tb_biodata == 'N') 
                                         <td>
-                                            <span class="badge bg-danger">Gagal Diverifikasi</span>
+                                            <span class="badge bg-danger">Verifikasi Ditolak</span>
                                         </td>
-                                    @elseif($item->status_tb_biodata == 'Y')
+                                    @elseif($item->tb_biodata->status_tb_biodata == 'Y')
                                         <td>
-                                            <span class="badge bg-success">Selesai Diverifikasi</span>
+                                            <span class="badge bg-success">Verifikasi Diterima</span>
                                         </td>
                                     @else
                                         <td>
