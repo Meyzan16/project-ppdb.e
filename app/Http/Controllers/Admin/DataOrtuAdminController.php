@@ -47,7 +47,8 @@ class DataOrtuAdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $query = tb_ortu::where('nisn_ortu', $nisn)->first();        
+        return view('admin.main.data-ortu.edit',compact('query'));
     }
 
     /**
@@ -64,9 +65,19 @@ class DataOrtuAdminController extends Controller
 
     public function verifikasi($nisn){
         tb_ortu::where('nisn_ortu',$nisn)->update([
+            'catatan_ortu'   => NULL,
             'status_ortu'    =>  'Y'
         ]);
         return redirect()->route('admin.data-ortu.show', $nisn)->with(['success' =>  'Data Berhasil Di Verifikasi !!']);
+    }
+
+    public function verifikasi_tolak(Request $request, $nisn){
+
+        tb_ortu::where('nisn_ortu',$nisn)->update([
+            'catatan_ortu'   => $request->catatan_ortu,
+            'status_ortu'    =>  'N'
+        ]);
+        return redirect()->route('admin.data-ortu.show', $nisn)->with(['success_tolak' =>  'Data Berhasil Di Verifikasi !!']);
     }
 
     /**

@@ -1,4 +1,3 @@
-
 @extends('admin.layout_admin.layout')
 
 @section('content')
@@ -24,10 +23,23 @@
                         @elseif($query->status_ortu == 'N')
                             <?php $a = "Verifikasi Ditolak" ?>
                         @else
-                            <?php $a = "Belum DIverifikasi" ?>
+                            <?php $a = "Belum Diverifikasi" ?>
                         @endif
 
                         <h4 class="card-title">Status Data Orang Tua : {{ $a }}</h4>
+
+                        @php
+                       $catatan = "";
+                        @endphp
+
+                        @if ($query->catatan_ortu != '' && $query->status_ortu == 'N')
+                            <button type="button" class="mb-2 btn btn-outline-danger block"
+                            data-bs-toggle="modal" data-bs-target="#catatan_penolakan">
+                            &nbsp;Catatan Penolakan
+                            </button>
+                        @endif
+
+                       
                     </div>
 
                     <div class="div">
@@ -40,15 +52,37 @@
                         @endif
                     </div>
 
+                    <div class="div">
+                        @if(session()->has('success_tolak'))
+                        <div class="autohide">
+                            <div class="alert alert-danger autohide" role="alert">
+                             {{ session('success_tolak') }}
+                            </div>    
+                        </div>
+                        @endif
+                    </div>
+
                     <div class="card-content">
                         <div class="card-body">
                             <form class="form form-horizontal">
                                 <div class="form-body">
                                     <div class="col-lg-12">
                                         <div class="panel panel-default">
-                                            <button type="button" class="mb-2 btn btn-danger" aria-label="Left Align" onclick="location.href='{{ route('admin.biodata-diri.index') }}'">
+                                            <button type="button" class="mb-1 btn btn-danger" aria-label="Left Align" onclick="location.href='{{ route('admin.biodata-diri.index') }}'">
                                                 <i class="fa fa-arrow-circle-left"> </i> Kembali
                                             </button>
+
+                                       
+                                            @if ($query->status_ortu == 'N')
+                                                <button type="button" class="mb-1 btn btn-warning" aria-label="Left Align" onclick="location.href='{{ route('admin.data-ortu.edit', $query->nisn_ortu) }}'">
+                                                    <i class="fa fa-edit"> </i> Edit
+                                                </button>       
+                                            @elseif($query->status_ortu == 'belum diverifikasi')   
+                                                <button type="button" class="mb-1 btn btn-warning" aria-label="Left Align" onclick="location.href='{{ route('admin.data-ortu.edit', $query->nisn_ortu) }}'">
+                                                    <i class="fa fa-edit"> </i> Edit
+                                                </button>                         
+                                            @endif
+
                                             <!-- /.panel-heading -->
                                             <div class="panel-body">
                                                 <div class="table-responsive">
@@ -122,10 +156,28 @@
 
                                                     </div>
 
-                                                        <button type="button" class="mb-2 btn btn-outline-success block"
+                                                    @if ($query->status_ortu == 'N')
+                                                            <button type="button" class="mb-2 btn btn-outline-success block"
                                                             data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
-                                                            &nbsp;Konfirmasi
+                                                            &nbsp;Diterima
                                                             </button>
+
+                                                            <button type="button" class="mb-2 btn btn-outline-danger block"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModalTolak">
+                                                            &nbsp;Ditolak
+                                                            </button>   
+                                                    @elseif($query->status_ortu == 'belum diverifikasi')   
+                                                            <button type="button" class="mb-2 btn btn-outline-success block"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                                                            &nbsp;Diterima
+                                                            </button>
+
+                                                            <button type="button" class="mb-2 btn btn-outline-danger block"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModalTolak">
+                                                            &nbsp;Ditolak
+                                                            </button>                       
+                                                    @endif
+                                                            
 
                                                 </div>
                                             </div>
@@ -152,7 +204,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle"> Validasi Data {{ $query->name }}
+            <h5 class="modal-title" id="exampleModalCenterTitle"> Validasi Diterima {{ $query->user->name }}
             </h5>
             <button type="button" class="close" data-bs-dismiss="modal"
                 aria-label="Close">
@@ -183,6 +235,74 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 </button>
             </form>
             
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div class="modal fade" id="exampleModalTolak" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+    role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle"> Validasi Ditolak {{ $query->user->name }}
+            </h5>
+            <button type="button" class="close" data-bs-dismiss="modal"
+                aria-label="Close">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+        <form action="{{ route('admin.data-ortu.verifikasi_tolak', [$query->nisn_ortu]) }}" method="POST">
+            @csrf {{ method_field('PATCH') }}
+            <div class="modal-body">
+                <h5 class="modal-title" id="exampleModalCenterTitle"> Catatan </h5>
+                <textarea name="catatan_ortu" cols="52" rows="5"> </textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-secondary"
+                    data-bs-dismiss="modal">
+                    <i class="bx bx-x d-block d-sm-none"></i>
+                    <span class="d-none d-sm-block">Kembali</span>
+                </button>
+
+                  
+                    <button type="submit" class="btn btn-primary ml-1">
+                        <i class="bx bx-check d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Verifikasi</span>
+                    </button>
+                
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="catatan_penolakan" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+    role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle"> Catatan Penolakan {{ $query->user->name }}
+            </h5>
+            <button type="button" class="close" data-bs-dismiss="modal"
+                aria-label="Close">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>
+                {!! $query->catatan_ortu  !!}
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-light-secondary"
+                data-bs-dismiss="modal">
+                <i class="bx bx-x d-block d-sm-none"></i>
+                <span class="d-none d-sm-block">Kembali</span>
+            </button>
         </div>
     </div>
 </div>

@@ -87,7 +87,7 @@ Route::group([
         Route::get('trash', [BiodatadiriAdminController::Class, 'trash'])->name('admin.biodata-diri.trash');
 
         //verifikasi data biodata diri
-        Route::patch('/verifikasiBiodata/{nisn}', [BiodatadiriAdminController::Class, 'verifikasi'])->name('admin.biodata-diri.verifikasi');
+        Route::patch('verifikasiBiodata/{nisn}', [BiodatadiriAdminController::Class, 'verifikasi'])->name('admin.biodata-diri.verifikasi');
     });
 
     Route::group(['prefix'  => 'restore-data/'],function(){
@@ -104,7 +104,8 @@ Route::group([
         Route::get('{nisn}/edit', [DataOrtuAdminController::Class, 'edit'])->name('admin.data-ortu.edit');
         Route::patch('{nisn}/update', [DataOrtuAdminController::Class, 'update'])->name('admin.data-ortu.update');
         //verifikasi data biodata diri
-        Route::patch('/verifikasiOrangtua/{nisn}', [DataOrtuAdminController::Class, 'verifikasi'])->name('admin.data-ortu.verifikasi');
+        Route::patch('{nisn}/verifikasiOrangtua', [DataOrtuAdminController::Class, 'verifikasi'])->name('admin.data-ortu.verifikasi');
+        Route::patch('{nisn}/verifikasiOrangtuaTolak', [DataOrtuAdminController::Class, 'verifikasi_tolak'])->name('admin.data-ortu.verifikasi_tolak');
     });
 
    

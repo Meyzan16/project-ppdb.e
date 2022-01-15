@@ -85,6 +85,7 @@
 
                                             @php
                                                 $a = "";
+                                                $b = "";
                                             @endphp
                     
                                             @if ($item->tb_ortu->status_ortu == 'Y')
@@ -95,12 +96,22 @@
                                                 <?php $a = "Belum Diverifikasi" ?>
                                             @endif
 
+                                        
+                
+                                            @if ($item->tb_berkas->status_akhir == 'Y')
+                                                <?php $b = "Verifikasi Diterima" ?>
+                                            @elseif($item->tb_berkas->status_akhir == 'N')
+                                                <?php $b = "Verifikasi Ditolak" ?>
+                                            @else
+                                                <?php $b = "Belum Diverifikasi" ?>
+                                            @endif
+
                                             <a class="badge bg-info dropdown-toggle" type="button"
                                                 data-bs-toggle="dropdown"
                                                > <span> data</span> </a>
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="{{ route('admin.data-ortu.show', $item->nisn) }}">Orang Tua <span>({{ $a }})</span> </a> </li>
-                                                <li><a class="dropdown-item" href="#">Berkas <span>({{ $item->tb_berkas->status_akhir }})</span></a></li>
+                                                <li><a class="dropdown-item" href="#">Berkas <span>({{ $b }})</span></a></li>
                                             </ul>
                                            
                                      
