@@ -4,7 +4,7 @@
 @section('content')
 <div id="main-content">
 <div class="page-heading">
-    <h3>Edit Data {{ $item->name }}</h3>
+    <h3>Edit Biodata Diri {{ $item->name }}</h3>
 </div>
 
 <div class="page-content">

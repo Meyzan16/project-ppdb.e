@@ -14,27 +14,14 @@
                     <div class="card-header">
                         <h4 class="card-title">Nama : {{ $query->user->name }}</h4>
 
-                        @php
-                            $a = "";
-                        @endphp
-
-                        @if ($query->status_ortu == 'Y')
-                            <?php $a = "Verifikasi Diterima" ?>
-                        @elseif($query->status_ortu == 'N')
-                            <?php $a = "Verifikasi Ditolak" ?>
-                        @else
-                            <?php $a = "Belum Diverifikasi" ?>
-                        @endif
-
-                        <h4 class="card-title">Status Data Orang Tua : {{ $a }}</h4>
-
+                       
 
                         @if ($query->catatan_ortu != '' && $query->status_ortu == 'N')
-                            <button type="button" class="mb-2 btn btn-outline-danger block"
-                            data-bs-toggle="modal" data-bs-target="#catatan_penolakan">
-                            &nbsp;Catatan Penolakan
-                            </button>
-                        @endif
+                        <button type="button" class="mb-2 btn btn-outline-danger block"
+                        data-bs-toggle="modal" data-bs-target="#catatan_penolakan">
+                        &nbsp;Catatan Penolakan
+                        </button>
+                    @endif
 
                        
                     </div>
@@ -90,6 +77,29 @@
                                                         <div class="col-lg-12 col-md-12">
                                                             <table class='table table-striped'>	
                                                                 
+                                                                @if ($query->status_ortu == 'N') 
+                                                                    <tr>
+                                                                        <th scope='row'>Status Verifikasi</th>
+                                                                        <td><span class="badge bg-danger">Verifikasi ditolak</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                @elseif($query->status_ortu == 'Y')
+                                                                    <tr>
+                                                                        <th scope='row'>Status Verifikasi</th>
+                                                                        <td>
+                                                                            <span class="badge bg-success">Verifikasi diterima</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    
+                                                                @else
+                                                                    <tr>
+                                                                        <th scope='row'>Status Verifikasi</th>
+                                                                        <td>
+                                                                            <span class="badge bg-primary">Belum Diverifikasi</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                @endif
+
                                                                 <tr>
                                                                     <th scope='row'>NIK Ayah</th>
                                                                     <td>{{ $query->nik_ayah }}</td>

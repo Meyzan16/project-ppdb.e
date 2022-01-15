@@ -4,7 +4,7 @@
 @section('content')
 <div id="main-content">
 <div class="page-heading">
-    <h3>Detail Data {{ $query->name }}</h3>
+    <h3>Detail Biodata Data Diri</h3>
 </div>
 
 <div class="page-content">
@@ -14,30 +14,13 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Nama :  {{ $query->user->name }}</h4>
-
-                        @php
-                                $a = "";
-                            @endphp
-
-                            @if ($query->status_tb_biodata == 'Y')
-                                <?php $a = "Verifikasi Diterima" ?>
-                            @elseif($query->status_tb_biodata == 'N')
-                                <?php $a = "Verifikasi Ditolak" ?>
-                            @else
-                                <?php $a = "Belum Diverifikasi" ?>
-                            @endif
-
-                            <h4 class="card-title">Status Biodata Diri : {{ $a }}</h4>
-
-                           
-                            @if ($query->catatan_biodata != '' && $query->status_tb_biodata == 'N')
-                                <button type="button" class="mb-2 btn btn-outline-danger block"
-                                data-bs-toggle="modal" data-bs-target="#catatan_penolakan">
-                                &nbsp;Catatan Penolakan
-                                </button>
-                            @endif
-
-
+  
+                        @if ($query->catatan_biodata != '' && $query->status_tb_biodata == 'N')
+                            <button type="button" class="mr-3 btn btn-outline-danger block"
+                            data-bs-toggle="modal" data-bs-target="#catatan_penolakan">
+                            &nbsp;Catatan Penolakan
+                            </button>
+                        @endif
 
                     </div>
 
@@ -76,10 +59,10 @@
                                                     <div class="row">
 
                                                         <div class="col-lg-3 col-md-8">	
-                                                            <img style="border-radius: 10px; border: 2px solid transparent;" src="/kamu.png" class='img-responsive img-thumbnail w-100'/>	<br>	
+                                                            <img style="border-radius: 10px; border: 2px solid transparent;" src="/kamu.png" class='img-responsive img-thumbnail w-100'/>		
                                                         </div>
                     
-                                                        <div class="col-lg-9 col-md-78">
+                                                        <div class="col-lg-9 col-md-8">
                                                             <table class='table table-striped'>
                                                                 <tr>
                                                                     <th scope='row'>Nisn</th>
@@ -101,7 +84,8 @@
                                                                 @if ($query->status_tb_biodata == 'N') 
                                                                     <tr>
                                                                         <th scope='row'>Status Verifikasi</th>
-                                                                        <span class="badge bg-danger">Verifikasi ditolak</span>
+                                                                        <td><span class="badge bg-danger">Verifikasi ditolak</span>
+                                                                        </td>
                                                                     </tr>
                                                                 @elseif($query->status_tb_biodata == 'Y')
                                                                     <tr>
@@ -112,12 +96,12 @@
                                                                     </tr>
                                                                     
                                                                 @else
-                                                                    <tr>
-                                                                        <th scope='row'>Status Verifikasi</th>
-                                                                        <td>
-                                                                            <span class="badge bg-primary">Belum Diverifikasi</span>
-                                                                        </td>
-                                                                    </tr>
+                                                                <tr>
+                                                                    <th scope='row'>Status Verifikasi</th>
+                                                                    <td>
+                                                                        <span class="badge bg-primary">Belum Diverifikasi</span>
+                                                                    </td>
+                                                                </tr>
                                                                 @endif
                                                             
                                                                 	
