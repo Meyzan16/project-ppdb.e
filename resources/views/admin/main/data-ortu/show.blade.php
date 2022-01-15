@@ -14,7 +14,20 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Nama : {{ $query->user->name }}</h4>
-                        <h4 class="card-title">Status Data Orang Tua : {{ $query->status_ortu }}</h4>
+
+                        @php
+                            $a = "";
+                        @endphp
+
+                        @if ($query->status_ortu == 'Y')
+                            <?php $a = "Verifikasi Diterima" ?>
+                        @elseif($query->status_ortu == 'N')
+                            <?php $a = "Verifikasi Ditolak" ?>
+                        @else
+                            <?php $a = "Belum DIverifikasi" ?>
+                        @endif
+
+                        <h4 class="card-title">Status Data Orang Tua : {{ $a }}</h4>
                     </div>
 
                     <div class="div">
@@ -162,7 +175,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <span class="d-none d-sm-block">Kembali</span>
             </button>
 
-            <form action="{{ route('admin.biodata-diri.verifikasi', [$query->nisn_ortu]) }}" method="POST">
+            <form action="{{ route('admin.data-ortu.verifikasi', [$query->nisn_ortu]) }}" method="POST">
                 {{ csrf_field() }} {{ method_field('PATCH') }}
                 <button type="submit" class="btn btn-primary ml-1">
                     <i class="bx bx-check d-block d-sm-none"></i>

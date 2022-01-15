@@ -49,6 +49,7 @@ class CreateTbBiodatasTable extends Migration
             $table->string('waktu_tempuh',20)->nullable();
 
             // $table->text('catattan')->nullable();
+            $table->text('catatan_biodata')->nullable();
             $table->enum('status_tb_biodata', ['Y','belum diverifikasi'])->default('belum diverifikasi');
             $table->timestamps();
 
