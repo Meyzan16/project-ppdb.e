@@ -67,10 +67,26 @@ class BiodatadiriAdminController extends Controller
     }
 
     public function verifikasi($nisn){
-        tb_biodata::where('nisn_biodata',$nisn)->update([
-            'catatan_biodata'   => NULL,
-            'status_tb_biodata'    =>  'Y'
-        ]);
+        $query = tb_biodata::where('nisn_biodata', $nisn)->first();
+
+        if($query->catatan_biodata != '' && $query->status_tb_biodata == 'N'){
+            tb_biodata::where('nisn_biodata',$nisn)->update([
+                'catatan_biodata'   => NULL,
+                'status_tb_biodata'    =>  'Y'
+            ]);
+        }elseif($query->catatan_biodata != '' && $query->status_tb_biodata == 'Y'){
+            tb_biodata::where('nisn_biodata',$nisn)->update([
+                'catatan_biodata'   => NULL,
+                'status_tb_biodata'    =>  'Y'
+            ]);
+        }elseif($query->catatan_biodata == '' && $query->status_tb_biodata == 'belum diverifikasi'){
+            tb_biodata::where('nisn_biodata',$nisn)->update([
+                'catatan_biodata'   => NULL,
+                'status_tb_biodata'    =>  'Y'
+            ]);
+        }
+
+        
         return redirect()->route('admin.biodata-diri.show', $nisn)->with(['success' =>  'Data Berhasil Di Verifikasi !!']);
     }
 

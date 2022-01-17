@@ -38,7 +38,6 @@
                                                 <div class="col-md-8 form-group">
                                                     <input type="text" value="{{ old('nisn', $item->nisn) }}" class="form-control"
                                                         name="nisn" readonly>
-                                                        
                                                 </div>
 
                                                 <div class="col-md-4">

@@ -25,6 +25,18 @@
       </div>
     </div>
   </div>
+
+  @if (session()->has('success'))
+      <div class="row">
+        <div class="col-md-8">
+          <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+          </div>
+        </div>
+      </div>
+      @endif
+
+
   <div class="row">
     <div class="col-md-6 grid-margin stretch-card">
       <div class="card tale-bg">
@@ -51,11 +63,13 @@
           <div class="card card-tale">
             <div class="card-body">
               <h4 class="mb-4">Data Biodata Diri</h4>
-              @if ($query->tb_biodata->status_tb_biodata == 'N') 
+              @if ($query->tb_biodata->status_tb_biodata == 'N' && $query->tb_biodata->catatan_biodata != '') 
                  <h5 class="mb-2">Status : Verifikasi Ditolak</h5>
-              @elseif($query->tb_biodata->status_tb_biodata == 'Y')
+              @elseif($query->tb_biodata->status_tb_biodata == 'Y' && $query->tb_biodata->catatan_biodata == '')
                  <h5 class="mb-2">Status : Verifikasi Diterima</h5>
-              @else
+              @elseif($query->tb_biodata->status_tb_biodata == 'Y' && $query->tb_biodata->catatan_biodata != '')
+                <h5 class="mb-2">Status : Menunggu diverifikasi ulang</h5>
+              @elseif($query->tb_biodata->status_tb_biodata == 'belum diverifikasi' && $query->tb_biodata->catatan_biodata == '')
                 <h5 class="mb-2">Status : Belum Diverifikasi</h5>
               @endif
 
@@ -131,7 +145,11 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary"></button>
+        
+        <button type="button" class="mb-2 btn btn-primary" aria-label="Left Align" onclick="location.href='{{ route('siswa.biodata-diri.perbaikan_data', $query->tb_biodata->nisn_biodata) }}'">
+          <i class="fa fa-arrow-circle-left"> </i> Perbaiki Data
+        </button>
+
       </div>
     </div>
   </div>

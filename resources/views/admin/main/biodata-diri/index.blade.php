@@ -63,20 +63,25 @@
                                         </td>
                                     @endif
 
-
-                                    @if ($item->tb_biodata->status_tb_biodata == 'N') 
+                                    @if ($item->tb_biodata->status_tb_biodata == 'N' && $item->tb_biodata->catatan_biodata != '') 
                                         <td>
                                             <span class="badge bg-danger">Verifikasi Ditolak</span>
                                         </td>
-                                    @elseif($item->tb_biodata->status_tb_biodata == 'Y')
+                                    @elseif($item->tb_biodata->status_tb_biodata == 'Y' && $item->tb_biodata->catatan_biodata == '')
                                         <td>
                                             <span class="badge bg-success">Verifikasi Diterima</span>
                                         </td>
-                                    @else
+                                    @elseif($item->tb_biodata->status_tb_biodata == 'Y' && $item->tb_biodata->catatan_biodata != '')
+                                        <td>
+                                            <span class="badge bg-warning">Menunggu diverifikasi ulang</span>
+                                        </td>
+                                    @elseif($item->tb_biodata->status_tb_biodata == 'belum diverifikasi' && $item->tb_biodata->catatan_biodata == '')
                                         <td>
                                             <span class="badge bg-primary">Belum Diverifikasi</span>
                                         </td>
                                     @endif
+
+                                
 
                                     <td>
                                         <span class="badge bg-primary">Belum Diverifikasi</span>

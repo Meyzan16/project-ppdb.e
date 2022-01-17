@@ -48,8 +48,11 @@ Route::group([
 
     Route::group(['prefix'  => 'biodata-diri/'],function(){
         Route::get('/', [BiodatadiriSiswaController::Class, 'index'])->name('biodata-diri');
-        Route::get('/{nisn}/edit', [BiodatadiriSiswaController::Class, 'edit'])->name('biodataEdit');
-        Route::patch('/{nisn}/update', [BiodatadiriSiswaController::Class, 'update'])->name('biodataStore');    
+        Route::get('{nisn}/edit', [BiodatadiriSiswaController::Class, 'edit'])->name('biodataEdit');
+        Route::patch('{nisn}/update', [BiodatadiriSiswaController::Class, 'update'])->name('biodataStore');    
+        
+        Route::get('{nisn}/perbaikan-data', [BiodatadiriSiswaController::Class, 'perbaikan_data'])->name('siswa.biodata-diri.perbaikan_data');
+        Route::patch('{nisn}/update', [BiodatadiriSiswaController::Class, 'update_perbaikan_data'])->name('siswa.biodata-diri.updateperbaikan_data');  
     });
 
     Route::group(['prefix'  => 'data-tambahan/'],function(){
@@ -57,13 +60,13 @@ Route::group([
     });
 
     Route::group(['prefix'  => 'data-ortu/'],function(){
-        Route::get('/{nisn}/edit', [DataOrtuSiswaController::Class, 'edit'])->name('data-ortu.edit');
-        Route::patch('/{nisn}/update', [DataOrtuSiswaController::Class, 'update'])->name('data-ortu.update');    
+        Route::get('{nisn}/edit', [DataOrtuSiswaController::Class, 'edit'])->name('data-ortu.edit');
+        Route::patch('{nisn}/update', [DataOrtuSiswaController::Class, 'update'])->name('data-ortu.update');    
     });
 
     Route::group(['prefix'  => 'data-berkas/'],function(){
-        Route::get('/{nisn}/edit', [DataBerkasSiswaController::Class, 'edit'])->name('data-berkas.edit');
-        Route::patch('/{nisn}/update', [DataBerkasSiswaController::Class, 'update'])->name('data-berkas.update');    
+        Route::get('{nisn}/edit', [DataBerkasSiswaController::Class, 'edit'])->name('data-berkas.edit');
+        Route::patch('{nisn}/update', [DataBerkasSiswaController::Class, 'update'])->name('data-berkas.update');    
     });
 
 });

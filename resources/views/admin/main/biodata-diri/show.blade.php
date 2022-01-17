@@ -20,6 +20,11 @@
                             data-bs-toggle="modal" data-bs-target="#catatan_penolakan">
                             &nbsp;Catatan Penolakan
                             </button>
+                        @elseif($query->catatan_biodata != '' && $query->status_tb_biodata == 'Y')
+                            <button type="button" class="mr-3 btn btn-outline-warning block"
+                            data-bs-toggle="modal" data-bs-target="#catatan_penolakan">
+                            &nbsp;Catatan Penolakan
+                            </button>
                         @endif
 
                     </div>
@@ -81,21 +86,27 @@
                                                                     <td id="">{{ $query->user->username }}</td>
                                                                 </tr>
 
-                                                                @if ($query->status_tb_biodata == 'N') 
+                                                                @if ($query->status_tb_biodata == 'N' && $query->catatan_biodata != '') 
                                                                     <tr>
                                                                         <th scope='row'>Status Verifikasi</th>
                                                                         <td><span class="badge bg-danger">Verifikasi ditolak</span>
                                                                         </td>
                                                                     </tr>
-                                                                @elseif($query->status_tb_biodata == 'Y')
+                                                                @elseif($query->status_tb_biodata == 'Y' && $query->catatan_biodata == '')
                                                                     <tr>
                                                                         <th scope='row'>Status Verifikasi</th>
                                                                         <td>
                                                                             <span class="badge bg-success">Verifikasi diterima</span>
                                                                         </td>
                                                                     </tr>
-                                                                    
-                                                                @else
+                                                                @elseif($query->status_tb_biodata == 'Y' && $query->catatan_biodata != '')
+                                                                <tr>
+                                                                    <th scope='row'>Status Verifikasi</th>
+                                                                    <td>
+                                                                        <span class="badge bg-warning">Menunggu diverifikasi ulang</span>
+                                                                    </td>
+                                                                </tr>
+                                                                @elseif($query->status_tb_biodata == 'belum diverifikasi' && $query->catatan_biodata == '')
                                                                 <tr>
                                                                     <th scope='row'>Status Verifikasi</th>
                                                                     <td>
@@ -103,9 +114,6 @@
                                                                     </td>
                                                                 </tr>
                                                                 @endif
-                                                            
-                                                                	
-                                                                	
                                                             </table>
                                                         </div>
                                                    
@@ -394,30 +402,37 @@
 
                                                     </div>
 
-                                                    @if ($query->status_tb_biodata == 'N')
-                                                        <button type="button" class="mb-2 btn btn-outline-success block"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
-                                                        &nbsp;Diterima
-                                                        </button>
+                                                            @if ($query->status_tb_biodata == 'N' && $query->catatan_biodata != '') 
+                                                                <button type="button" class="mb-2 btn btn-outline-success block"
+                                                                data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                                                                &nbsp;Diterima
+                                                                </button>
+        
+                                                                <button type="button" class="mb-2 btn btn-outline-danger block"
+                                                                data-bs-toggle="modal" data-bs-target="#exampleModalTolak">
+                                                                &nbsp;Ditolak
+                                                                </button> 
+                                                            @elseif($query->status_tb_biodata == 'Y' && $query->catatan_biodata != '')
+                                                                    <button type="button" class="mb-2 btn btn-outline-success block"
+                                                                        data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                                                                        &nbsp;Diterima
+                                                                        </button>
 
-                                                        <button type="button" class="mb-2 btn btn-outline-danger block"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModalTolak">
-                                                        &nbsp;Ditolak
-                                                        </button> 
-                                                    @elseif($query->status_tb_biodata == 'belum diverifikasi')   
-                                                        <button type="button" class="mb-2 btn btn-outline-success block"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
-                                                        &nbsp;Diterima
-                                                        </button>
-
-                                                        <button type="button" class="mb-2 btn btn-outline-danger block"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModalTolak">
-                                                        &nbsp;Ditolak
-                                                        </button> 
-                                                    @endif
-
-                                                        
-
+                                                                        <button type="button" class="mb-2 btn btn-outline-danger block"
+                                                                        data-bs-toggle="modal" data-bs-target="#exampleModalTolak">
+                                                                        &nbsp;Ditolak
+                                                                    </button> 
+                                                            @elseif($query->status_tb_biodata == 'belum diverifikasi' && $query->catatan_biodata == '')
+                                                                    <button type="button" class="mb-2 btn btn-outline-success block"
+                                                                        data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                                                                        &nbsp;Diterima
+                                                                        </button>
+                
+                                                                        <button type="button" class="mb-2 btn btn-outline-danger block"
+                                                                        data-bs-toggle="modal" data-bs-target="#exampleModalTolak">
+                                                                        &nbsp;Ditolak
+                                                                    </button> 
+                                                                @endif
                                                 </div>
                                             </div>
                                             <!-- /.panel-body -->
