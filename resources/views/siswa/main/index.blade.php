@@ -37,7 +37,7 @@
               </div>
               <div class="ml-2">
                 <h4 class="location font-weight-normal">Bangalore</h4>
-                <h6 class="font-weight-normal">India</h6>
+                <h6 class="font-weight-normal">Indonesia</h6>
               </div>
             </div>
           </div>
@@ -46,15 +46,32 @@
     </div>
     <div class="col-md-6 grid-margin transparent">
       <div class="row">
+
         <div class="col-md-6 mb-4 stretch-card transparent">
           <div class="card card-tale">
             <div class="card-body">
-              <p class="mb-4">Today’s Bookings</p>
-              <p class="fs-30 mb-2">4006</p>
-              <p>10.00% (30 days)</p>
+              <h4 class="mb-4">Data Biodata Diri</h4>
+              @if ($query->tb_biodata->status_tb_biodata == 'N') 
+                 <h5 class="mb-2">Status : Verifikasi Ditolak</h5>
+              @elseif($query->tb_biodata->status_tb_biodata == 'Y')
+                 <h5 class="mb-2">Status : Verifikasi Diterima</h5>
+              @else
+                <h5 class="mb-2">Status : Belum Diverifikasi</h5>
+              @endif
+
+             
+             
+              @if ($query->tb_biodata->catatan_biodata != '' && $query->tb_biodata->status_tb_biodata == 'N')
+              <button type="button" class="mb-2 btn btn-outline-primary block" data-toggle="modal" data-target="#exampleModalCenter">
+                &nbsp;Catatan Kesalahan
+              </button>
+              @endif
+
             </div>
           </div>
         </div>
+
+        
         <div class="col-md-6 mb-4 stretch-card transparent">
           <div class="card card-dark-blue">
             <div class="card-body">
@@ -94,6 +111,30 @@
   <div class="row">
   </div>
 
+</div>
+
+ <!-- Modal -->
+ <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Catatan Kesalahan Biodata Diri</h5>
+        <button type="button" class="close" data-bs-dismiss="modal"
+            aria-label="Close">
+            <i data-feather="x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          {!! $query->tb_biodata->catatan_biodata  !!}
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"></button>
+      </div>
+    </div>
+  </div>
 </div>
 
 @endsection
