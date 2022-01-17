@@ -496,7 +496,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             @csrf {{ method_field('PATCH') }}
             <div class="modal-body">
                 <h5 class="modal-title" id="exampleModalCenterTitle"> Catatan </h5>
-                <textarea name="catatan_biodata" cols="52" rows="5"> </textarea>
+                <textarea  id="editor" name="catatan_biodata" cols="52" rows="7"> </textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light-secondary"

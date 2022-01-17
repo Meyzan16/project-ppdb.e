@@ -63,6 +63,16 @@
 
     <script src="/template-admin/demo/assets/js/main.js"></script>
 
+    <script src="/template-admin/demo/assets/vendors/ckeditor/ckeditor.js"></script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
 
     @stack('prepend-script')
 

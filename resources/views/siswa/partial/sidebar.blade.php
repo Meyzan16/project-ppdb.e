@@ -18,7 +18,7 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ route('biodata-diri') }}">
           <i class="icon-paper menu-icon"></i>
-          <span class="menu-title">Biodata Diri</span>
+          <span class="menu-title">Manajemen Data</span>
         </a>
       </li>
 

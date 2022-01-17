@@ -36,12 +36,14 @@
 
   <div class="row">
       <div class="col-md-8 grid-margin stretch-card">
-    
+        
+     
+
           <a href="{{ route('biodataEdit', $item->nisn) }}" class="btn btn-primary" style="border-radius: 30px;  margin-right:10px">Lengkapi Data Anda</a>
       
           <a href="{{ route('data-ortu.edit', $item->nisn) }}" class="btn btn-secondary" style="border-radius: 30px;  margin-right:10px">Lengkapi Data Ortu</a>
           
-          <a href="{{ route('data-berkas.edit', $item->nisn) }}" class="btn btn-warning" style="border-radius: 30px;  margin-right:10px">Lengkapi Berkas</a>
+          <a href="{{ route('data-berkas.edit', $item->nisn) }}" class="btn btn-warning" style="border-radius: 30px;  margin-right:10px">Lengkapi Data Berkas</a>
           
         
       </div>

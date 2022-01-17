@@ -18,16 +18,16 @@ class CreateTbBerkasTable extends Migration
             $table->foreignId('user_berkas')->nullable();
             $table->string('nisn_berkas',20)->unique()->nullable();
             $table->string('kartu_keluarga', 50)->nullable();
-            $table->enum('status_kk', ['Y','N','Belum Diverifikasi'])->default('Belum Diverifikasi');
             $table->string('catatan_kk', 100)->nullable();
+            $table->enum('status_kk', ['Y','N','Belum Diverifikasi'])->default('Belum Diverifikasi');
 
             // $table->string('ijazah', 50)->nullable();
             // $table->enum('status_ijazah', ['Y','N','Belum Diverifikasi'])->default('Belum Diverifikasi');
             // $table->string('catatan_ijazah', 100)->nullable();
 
             $table->string('file_nisn', 50)->nullable();
-            $table->enum('status_file_nisn', ['Y','N','Belum Diverifikasi'])->default('Belum Diverifikasi');
             $table->string('catatan_nisn', 100)->nullable();
+            $table->enum('status_file_nisn', ['Y','N','Belum Diverifikasi'])->default('Belum Diverifikasi');
 
             $table->enum('status_akhir', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
             $table->rememberToken();
