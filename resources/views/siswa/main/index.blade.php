@@ -81,6 +81,8 @@
               </button>
               @endif
 
+              <p>Waktu diperbarui : {{ $query->tb_biodata->updated_at }}</p>
+
             </div>
           </div>
         </div>

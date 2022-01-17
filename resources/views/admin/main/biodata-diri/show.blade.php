@@ -471,7 +471,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 Data yang sudah di validasi tidak bisa di perbarui, atau pun diedit dimohon untuk
                 diteliti kembali data siswa tersebut, kesalahan data bisa 
                 mengakibat kan masalah-masalah berikutnya.....
-                <span class="badge bg-primary" >Untuk validasi data kembali, silahkan hubungi Administrator</span>
+                <span class="badge bg-primary" >Untuk memperbarui data kembali, silahkan hubungi Administrator</span>
             </p>
         </div>
         <div class="modal-footer">

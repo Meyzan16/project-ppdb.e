@@ -124,8 +124,12 @@
 
                                         <a href="{{ route('admin.biodata-diri.show', $item->nisn) }}"  class="badge bg-primary"> <i class="fa fa-eye"> </i> </a>
                                             
-                                        {{-- aturan default resource tambahakan edit di belakang --}}
-                                        <a href="{{ route('admin.biodata-diri.edit', $item->nisn) }}"  class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
+                                        @if ($item->tb_biodata->status_tb_biodata == 'Y' && $item->tb_biodata->catatan_biodata == '')
+
+                                            @else
+                                            {{-- aturan default resource tambahakan edit di belakang --}}
+                                            <a href="{{ route('admin.biodata-diri.edit', $item->nisn) }}"  class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
+                                            @endif
 
                               
                                         <form action="{{ route('admin.biodata-diri.destroy', $item->id) }}" method="POST" class="d-inline">
