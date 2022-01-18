@@ -76,7 +76,7 @@
              
              
               @if ($query->tb_biodata->catatan_biodata != '' && $query->tb_biodata->status_tb_biodata == 'N')
-              <button type="button" class="mb-2 btn btn-outline-primary block" data-toggle="modal" data-target="#exampleModalCenter">
+              <button type="button" class="mb-2 btn btn-outline-danger block" data-toggle="modal" data-target="#exampleModalCenter">
                 &nbsp;Catatan Kesalahan
               </button>
               @endif
@@ -91,13 +91,35 @@
         <div class="col-md-6 mb-4 stretch-card transparent">
           <div class="card card-dark-blue">
             <div class="card-body">
-              <p class="mb-4">Total Bookings</p>
-              <p class="fs-30 mb-2">61344</p>
-              <p>22.00% (30 days)</p>
+
+              <h4 class="mb-4">Data Orang Tua</h4>
+              @if ($query->tb_ortu->status_ortu == 'N' && $query->tb_ortu->catatan_ortu != '') 
+                 <h5 class="mb-2">Status : Verifikasi Ditolak</h5>
+              @elseif($query->tb_ortu->status_ortu == 'Y' && $query->tb_ortu->catatan_ortu == '')
+                 <h5 class="mb-2">Status : Verifikasi Diterima</h5>
+              @elseif($query->tb_ortu->status_ortu == 'Y' && $query->tb_ortu->catatan_ortu != '')
+                <h5 class="mb-2">Status : Menunggu diverifikasi ulang</h5>
+              @elseif($query->tb_ortu->status_ortu == 'belum diverifikasi' && $query->tb_ortu->catatan_ortu == '')
+                <h5 class="mb-2">Status : Belum Diverifikasi</h5>
+              @endif
+
+             
+             
+              @if ($query->tb_ortu->catatan_ortu != '' && $query->tb_ortu->status_ortu == 'N')
+              <button type="button" class="mb-2 btn btn-outline-danger block" data-toggle="modal" data-target="#exampleModalOrtu">
+                &nbsp;Catatan Kesalahan
+              </button>
+              @endif
+
+              <p>Waktu diperbarui : {{ $query->tb_ortu->updated_at }}</p>
+
+
             </div>
           </div>
         </div>
       </div>
+
+
       <div class="row">
         <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
           <div class="card card-light-blue">
@@ -149,6 +171,33 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         
         <button type="button" class="mb-2 btn btn-primary" aria-label="Left Align" onclick="location.href='{{ route('siswa.biodata-diri.perbaikan_data', $query->tb_biodata->nisn_biodata) }}'">
+          <i class="fa fa-arrow-circle-left"> </i> Perbaiki Data
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalOrtu" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Catatan Kesalahan Data Ortu</h5>
+        <button type="button" class="close" data-bs-dismiss="modal"
+            aria-label="Close">
+            <i data-feather="x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          {!! $query->tb_ortu->catatan_ortu  !!}
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+        <button type="button" class="mb-2 btn btn-primary" aria-label="Left Align" onclick="location.href='{{ route('siswa.data-ortu.perbaikan_data', $query->tb_ortu->nisn_ortu) }}'">
           <i class="fa fa-arrow-circle-left"> </i> Perbaiki Data
         </button>
 

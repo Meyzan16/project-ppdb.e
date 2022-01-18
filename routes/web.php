@@ -51,7 +51,7 @@ Route::group([
         Route::get('{nisn}/edit', [BiodatadiriSiswaController::Class, 'edit'])->name('biodataEdit');
         Route::patch('{nisn}/update', [BiodatadiriSiswaController::Class, 'update'])->name('biodataStore');    
         
-        Route::get('{nisn}/perbaikan-data', [BiodatadiriSiswaController::Class, 'perbaikan_data'])->name('siswa.biodata-diri.perbaikan_data');
+        Route::get('{nisn}/perbaikan-data', [BiodatadiriSiswaController::Class, 'perbaikan_data'])->name('siswa.biodata-diri.perbaikan_data')->middleware('perbaikanDatadiri-siswa');
         Route::patch('{nisn}/update', [BiodatadiriSiswaController::Class, 'update_perbaikan_data'])->name('siswa.biodata-diri.updateperbaikan_data');  
     });
 
@@ -61,7 +61,10 @@ Route::group([
 
     Route::group(['prefix'  => 'data-ortu/'],function(){
         Route::get('{nisn}/edit', [DataOrtuSiswaController::Class, 'edit'])->name('data-ortu.edit');
-        Route::patch('{nisn}/update', [DataOrtuSiswaController::Class, 'update'])->name('data-ortu.update');    
+        Route::patch('{nisn}/update', [DataOrtuSiswaController::Class, 'update'])->name('data-ortu.update'); 
+        
+        Route::get('{nisn}/perbaikan-data', [DataOrtuSiswaController::Class, 'perbaikan_data'])->name('siswa.data-ortu.perbaikan_data');
+        Route::patch('{nisn}/update', [DataOrtuSiswaController::Class, 'update_perbaikan_data'])->name('siswa.data-ortu.updateperbaikan_data');  
     });
 
     Route::group(['prefix'  => 'data-berkas/'],function(){
