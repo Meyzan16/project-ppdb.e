@@ -63,7 +63,7 @@ Route::group([
         Route::get('{nisn}/edit', [DataOrtuSiswaController::Class, 'edit'])->name('data-ortu.edit');
         Route::patch('{nisn}/update', [DataOrtuSiswaController::Class, 'update'])->name('data-ortu.update'); 
         
-        Route::get('{nisn}/perbaikan-data', [DataOrtuSiswaController::Class, 'perbaikan_data'])->name('siswa.data-ortu.perbaikan_data');
+        Route::get('{nisn}/perbaikan-data', [DataOrtuSiswaController::Class, 'perbaikan_data'])->name('siswa.data-ortu.perbaikan_data')->middleware('perbaikanDataortu-siswa');;
         Route::patch('{nisn}/update', [DataOrtuSiswaController::Class, 'update_perbaikan_data'])->name('siswa.data-ortu.updateperbaikan_data');  
     });
 
