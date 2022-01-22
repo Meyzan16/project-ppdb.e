@@ -93,14 +93,18 @@
                                                 $a = "";
                                                 $b = "";
                                             @endphp
-                    
-                                            @if ($item->tb_ortu->status_ortu == 'Y')
-                                                <?php $a = "Verifikasi Diterima" ?>
-                                            @elseif($item->tb_ortu->status_ortu == 'N')
-                                                <?php $a = "Verifikasi Ditolak" ?>
-                                            @else
-                                                <?php $a = "Belum Diverifikasi" ?>
-                                            @endif
+
+                                        @if ($item->tb_ortu->status_ortu == 'N' && $item->tb_ortu->catatan_ortu != '') 
+                                            <?php $a = "Verifikasi Ditolak" ?>
+                                        @elseif($item->tb_ortu->status_ortu == 'Y' && $item->tb_ortu->catatan_ortu == '')
+                                            <?php $a = "Verifikasi Diterima" ?>
+                                        @elseif($item->tb_ortu->status_ortu == 'Y' && $item->tb_ortu->catatan_ortu != '')
+                                            <?php $a = "Menunggu verifikasi ulang" ?>
+                                        @elseif($item->tb_ortu->status_ortu == 'belum diverifikasi' && $item->tb_ortu->catatan_ortu == '')
+                                            <?php $a = "Belum Diverifikasi" ?>
+                                        @endif
+
+                                        
 
                                         
                 
@@ -129,7 +133,7 @@
                                             @else
                                             {{-- aturan default resource tambahakan edit di belakang --}}
                                             <a href="{{ route('admin.biodata-diri.edit', $item->nisn) }}"  class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
-                                            @endif
+                                        @endif
 
                               
                                         <form action="{{ route('admin.biodata-diri.destroy', $item->id) }}" method="POST" class="d-inline">

@@ -14,14 +14,18 @@
                     <div class="card-header">
                         <h4 class="card-title">Nama : {{ $query->user->name }}</h4>
 
-                       
-
                         @if ($query->catatan_ortu != '' && $query->status_ortu == 'N')
-                        <button type="button" class="mb-2 btn btn-outline-danger block"
+                        <button type="button" class="mr-3 btn btn-outline-danger block"
+                        data-bs-toggle="modal" data-bs-target="#catatan_penolakan">
+                        &nbsp;Catatan Penolakan
+                        </button>
+                    @elseif($query->catatan_ortu != '' && $query->status_ortu == 'Y')
+                        <button type="button" class="mr-3 btn btn-outline-warning block"
                         data-bs-toggle="modal" data-bs-target="#catatan_penolakan">
                         &nbsp;Catatan Penolakan
                         </button>
                     @endif
+
 
                        
                     </div>
@@ -56,16 +60,15 @@
                                                 <i class="fa fa-arrow-circle-left"> </i> Kembali
                                             </button>
 
-                                       
-                                            @if ($query->status_ortu == 'N')
+                                            @if ($query->status_ortu == 'Y' && $query->catatan_ortu == '')
+
+                                            @else
                                                 <button type="button" class="mb-1 btn btn-warning" aria-label="Left Align" onclick="location.href='{{ route('admin.data-ortu.edit', $query->nisn_ortu) }}'">
                                                     <i class="fa fa-edit"> </i> Edit
-                                                </button>       
-                                            @elseif($query->status_ortu == 'belum diverifikasi')   
-                                                <button type="button" class="mb-1 btn btn-warning" aria-label="Left Align" onclick="location.href='{{ route('admin.data-ortu.edit', $query->nisn_ortu) }}'">
-                                                    <i class="fa fa-edit"> </i> Edit
-                                                </button>                         
+                                                </button> 
                                             @endif
+
+                                         
 
                                             <!-- /.panel-heading -->
                                             <div class="panel-body">
@@ -76,29 +79,37 @@
                                                         <legend></legend>
                                                         <div class="col-lg-12 col-md-12">
                                                             <table class='table table-striped'>	
-                                                                
-                                                                @if ($query->status_ortu == 'N') 
+
+                                                                @if ($query->status_ortu == 'N' && $query->catatan_ortu != '') 
                                                                     <tr>
                                                                         <th scope='row'>Status Verifikasi</th>
                                                                         <td><span class="badge bg-danger">Verifikasi ditolak</span>
                                                                         </td>
                                                                     </tr>
-                                                                @elseif($query->status_ortu == 'Y')
+                                                                @elseif($query->status_ortu == 'Y' && $query->catatan_ortu == '')
                                                                     <tr>
                                                                         <th scope='row'>Status Verifikasi</th>
                                                                         <td>
                                                                             <span class="badge bg-success">Verifikasi diterima</span>
                                                                         </td>
                                                                     </tr>
-                                                                    
-                                                                @else
-                                                                    <tr>
-                                                                        <th scope='row'>Status Verifikasi</th>
-                                                                        <td>
-                                                                            <span class="badge bg-primary">Belum Diverifikasi</span>
-                                                                        </td>
-                                                                    </tr>
+                                                                @elseif($query->status_ortu == 'Y' && $query->catatan_ortu != '')
+                                                                <tr>
+                                                                    <th scope='row'>Status Verifikasi</th>
+                                                                    <td>
+                                                                        <span class="badge bg-warning">Menunggu diverifikasi ulang</span>
+                                                                    </td>
+                                                                </tr>
+                                                                @elseif($query->status_ortu == 'belum diverifikasi' && $query->catatan_ortu == '')
+                                                                <tr>
+                                                                    <th scope='row'>Status Verifikasi</th>
+                                                                    <td>
+                                                                        <span class="badge bg-primary">Belum diverifikasi</span>
+                                                                    </td>
+                                                                </tr>
                                                                 @endif
+                                                  
+                                                            
 
                                                                 <tr>
                                                                     <th scope='row'>NIK Ayah</th>
@@ -163,8 +174,18 @@
 
                                                     </div>
 
-                                                    @if ($query->status_ortu == 'N')
-                                                            <button type="button" class="mb-2 btn btn-outline-success block"
+                                                    @if ($query->status_ortu == 'N' && $query->catatan_ortu != '') 
+                                                    <button type="button" class="mb-2 btn btn-outline-success block"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                                                    &nbsp;Diterima
+                                                    </button>
+
+                                                    <button type="button" class="mb-2 btn btn-outline-danger block"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModalTolak">
+                                                    &nbsp;Ditolak
+                                                    </button> 
+                                                @elseif($query->status_ortu == 'Y' && $query->catatan_ortu != '')
+                                                        <button type="button" class="mb-2 btn btn-outline-success block"
                                                             data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
                                                             &nbsp;Diterima
                                                             </button>
@@ -172,17 +193,17 @@
                                                             <button type="button" class="mb-2 btn btn-outline-danger block"
                                                             data-bs-toggle="modal" data-bs-target="#exampleModalTolak">
                                                             &nbsp;Ditolak
-                                                            </button>   
-                                                    @elseif($query->status_ortu == 'belum diverifikasi')   
-                                                            <button type="button" class="mb-2 btn btn-outline-success block"
+                                                        </button> 
+                                                @elseif($query->status_ortu == 'belum diverifikasi' && $query->catatan_ortu == '')
+                                                        <button type="button" class="mb-2 btn btn-outline-success block"
                                                             data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
                                                             &nbsp;Diterima
                                                             </button>
-
+    
                                                             <button type="button" class="mb-2 btn btn-outline-danger block"
                                                             data-bs-toggle="modal" data-bs-target="#exampleModalTolak">
                                                             &nbsp;Ditolak
-                                                            </button>                       
+                                                        </button> 
                                                     @endif
                                                             
 
