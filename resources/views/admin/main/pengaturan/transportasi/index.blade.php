@@ -21,7 +21,12 @@
             <section class="section">
                 <div class="card">
                     <div class="card-header text-right">
-                    
+
+                        <button type="button" class="mr-3 btn btn-outline-primary block"
+                        data-bs-toggle="modal" data-bs-target="#catatan_penolakan">
+                        &nbsp;Tambah Data
+                        </button>
+
                     </div>
 
 
@@ -48,8 +53,10 @@
 
                                     <td>
                                             {{-- aturan default resource tambahakan edit di belakang --}}
-                                        <a href=""  class="badge bg-warning">  <i class="fa fa-edit"> </i>  </a>
-                                                                    
+                                           
+
+                                        <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $item->id }}">  <i class="fa fa-edit"> </i>  </a>
+
                                         <form action="" method="POST" class="d-inline">
                                             {{ csrf_field() }}  {{ method_field("DELETE") }}
                                             <button class="badge bg-danger border-0" onclick="return confirm('Data akan dihapus secara sementara, data bisa dikembalikan kembali oleh admin')" >  <i class="fa fa-trash"> </i>
@@ -69,4 +76,84 @@
         </section>
     </div>
         
+    <div class="modal fade" id="catatan_penolakan" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+        role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle"> Tambah Data
+                </h5>
+                <button type="button" class="close" data-bs-dismiss="modal"
+                    aria-label="Close">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <form action="{{ route('data-transportasi.store') }}" method="POST">
+                @csrf 
+                <div class="modal-body">
+                    <h6 class="modal-title" id="exampleModalCenterTitle"> Nama  </h6>
+                   <input type="text" class="form-control" name="nama">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light-secondary"
+                        data-bs-dismiss="modal">
+                        <i class="bx bx-x d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Kembali</span>
+                    </button>
+    
+                      
+                        <button type="submit" class="btn btn-primary ml-1">
+                            <i class="bx bx-check d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Simpan</span>
+                        </button>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
+    @foreach ($data as $item1)
+    <div class="modal fade" id="edit_data{{ $item1->id  }}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+            role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle"> Edit Data
+                    </h5>
+                    <button type="button" class="close" data-bs-dismiss="modal"
+                        aria-label="Close">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                <form action="{{ route('data-transportasi.update', $item1->id) }}" method="POST">
+                    @csrf  @method('put')
+                    <div class="modal-body">
+                        <h6 class="modal-title" id="exampleModalCenterTitle"> Nama  </h6>
+                        <input type="text" value="{{  old('nama', $item1->nama)  }}" class="form-control" name="nama">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-secondary"
+                            data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Kembali</span>
+                        </button>
+        
+                        
+                            <button type="submit" class="btn btn-primary ml-1">
+                                <i class="bx bx-check d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Simpan</span>
+                            </button>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+        
+    @endforeach
+
 @endsection
+

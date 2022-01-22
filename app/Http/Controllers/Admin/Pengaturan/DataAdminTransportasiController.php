@@ -38,7 +38,10 @@ class DataAdminTransportasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        mode_transportasi::create($data);
+        return redirect()->route('data-transportasi.index')->with(['success' =>  'Data Berhasil Di simpan']);
     }
 
     /**
@@ -72,7 +75,12 @@ class DataAdminTransportasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+
+        $item = mode_transportasi::findorfail($id);
+        $item->update($data); 
+        
+        return redirect()->route('data-transportasi.index')->with(['success' =>  'Data Berhasil diperbarui']);
     }
 
     /**
