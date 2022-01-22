@@ -16,6 +16,8 @@ use App\Http\Controllers\admin\GenerateSiswaController;
 use App\Http\Controllers\admin\BiodatadiriAdminController;
 use App\Http\Controllers\admin\DataOrtuAdminController;
 
+//Pengaturan
+use App\Http\Controllers\admin\pengaturan\DataAdminTransportasiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -114,6 +116,12 @@ Route::group([
         Route::patch('{nisn}/verifikasiOrangtua', [DataOrtuAdminController::Class, 'verifikasi'])->name('admin.data-ortu.verifikasi');
         Route::patch('{nisn}/verifikasiOrangtuaTolak', [DataOrtuAdminController::Class, 'verifikasi_tolak'])->name('admin.data-ortu.verifikasi_tolak');
     });
+
+    Route::group(['prefix'  => 'pengaturan/'],function(){
+        Route::resource('data-transportasi', DataAdminTransportasiController::class);
+    });
+
+
 
    
 

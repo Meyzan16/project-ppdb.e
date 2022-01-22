@@ -41,6 +41,40 @@
                    
                 </li>
 
+                <li class="sidebar-item has-sub">
+                    <a class='sidebar-link'>
+                        <i class="bi bi-collection-fill"></i>
+                        <span>Pengaturan</span>
+                    </a>
+                    <ul class="submenu ">
+                        <li class="submenu-item {{ request()->is('admin/generate-akun') ? 'active' : '' }} ">
+                            <a href="{{ route('data-transportasi.index') }}"> Data Transportasi</a>
+                        </li>
+
+                        <li class="submenu-item">
+                            <a href="{{ route('generate-akun.index') }}"> Data Agama</a>
+                        </li>
+
+                        <li class="submenu-item">
+                            <a href="{{ route('generate-akun.index') }}"> Data Jenis Tinggal</a>
+                        </li>
+                        
+                        <li class="submenu-item">
+                            <a href="{{ route('generate-akun.index') }}"> Data Pekerjaan</a>
+                        </li>
+
+                        <li class="submenu-item">
+                            <a href="{{ route('generate-akun.index') }}"> Data Pendidikan</a>
+                        </li>
+                        
+                        <li class="submenu-item">
+                            <a href="{{ route('generate-akun.index') }}"> Data Penghasilan</a>
+                        </li>
+
+                    </ul>
+                   
+                </li>
+
              
 
                 <li class="sidebar-title">Data Siswa</li>
@@ -56,7 +90,7 @@
                 <li class="sidebar-item  ">
                     <a href="https://github.com/zuramai/mazer/blob/main/CONTRIBUTING.md" class='sidebar-link'>
                         <i class="bi bi-puzzle"></i>
-                        <span>Data Orang Tua</span>
+                        <span></span>
                     </a>
                 </li>
 
