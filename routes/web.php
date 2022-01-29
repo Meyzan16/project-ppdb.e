@@ -119,6 +119,9 @@ Route::group([
 
     Route::group(['prefix'  => 'pengaturan/'],function(){
         Route::resource('data-transportasi', DataAdminTransportasiController::class);
+
+        Route::get('data-tranportasi-trash', [DataAdminTransportasiController::Class, 'trash'])->name('admin.data-transportasi.trash');
+        Route::get('{id}/data-tranpostasi-restore', [DataAdminTransportasiController::class, 'restore'])->name('admin.data-transportasi.restore');
     });
 
 

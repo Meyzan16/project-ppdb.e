@@ -17,6 +17,16 @@
         @endif
     </div>
 
+    <div class="div">
+        @if(session()->has('error'))
+        <div class="autohide">
+            <div class="alert alert-danger autohide" role="alert">
+             {{ session('error') }}
+            </div>    
+        </div>
+        @endif
+    </div>
+
     <div class="page-content">
             <section class="section">
                 <div class="card">
@@ -26,6 +36,11 @@
                         data-bs-toggle="modal" data-bs-target="#catatan_penolakan">
                         &nbsp;Tambah Data
                         </button>
+
+                        <a href="{{ route('admin.data-transportasi.trash') }}" class='sidebar-link'>
+                            <i class="fas fa-trash-alt"></i>
+                            <span>Tempat Sampah</span>
+                        </a>
 
                     </div>
 
@@ -57,9 +72,9 @@
 
                                         <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $item->id }}">  <i class="fa fa-edit"> </i>  </a>
 
-                                        <form action="" method="POST" class="d-inline">
+                                        <form action="{{ route('data-transportasi.destroy', $item->id) }}" method="POST" class="d-inline">
                                             {{ csrf_field() }}  {{ method_field("DELETE") }}
-                                            <button class="badge bg-danger border-0" onclick="return confirm('Data akan dihapus secara sementara, data bisa dikembalikan kembali oleh admin')" >  <i class="fa fa-trash"> </i>
+                                            <button class="badge bg-danger border-0" onclick="return confirm('Data akan dihapus secara sementara')" >  <i class="fa fa-trash"> </i>
                                             </button>
                                         </form>
                                     </td>
