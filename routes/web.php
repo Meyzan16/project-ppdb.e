@@ -21,6 +21,8 @@ use App\Http\Controllers\admin\pengaturan\DataAdminTransportasiController;
 use App\Http\Controllers\admin\pengaturan\DataAdminAgamaController;
 use App\Http\Controllers\admin\pengaturan\DataAdminJenisTinggalController;
 use App\Http\Controllers\admin\pengaturan\DataAdminPekerjaanController;
+use App\Http\Controllers\admin\pengaturan\DataAdminPendidikanController;
+use App\Http\Controllers\admin\pengaturan\DataAdminPenghasilanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -146,6 +148,20 @@ Route::group([
 
         Route::get('data-pekerjaan-trash', [DataAdminPekerjaanController::Class, 'trash'])->name('admin.data-pekerjaan.trash');
         Route::get('{id}/data-pekerjaan-restore', [DataAdminPekerjaanController::class, 'restore'])->name('admin.data-pekerjaan.restore');
+    });
+
+    Route::group(['prefix'  => 'pengaturan/'],function(){
+        Route::resource('data-pendidikan', DataAdminPendidikanController::class);
+
+        Route::get('data-pendidikan-trash', [DataAdminPendidikanController::Class, 'trash'])->name('admin.data-pendidikan.trash');
+        Route::get('{id}/data-pendidikan-restore', [DataAdminPendidikanController::class, 'restore'])->name('admin.data-pendidikan.restore');
+    });
+
+    Route::group(['prefix'  => 'pengaturan/'],function(){
+        Route::resource('data-penghasilan', DataAdminPenghasilanController::class);
+
+        Route::get('data-penghasilan-trash', [DataAdminPenghasilanController::Class, 'trash'])->name('admin.data-penghasilan.trash');
+        Route::get('{id}/data-penghasilan-restore', [DataAdminPenghasilanController::class, 'restore'])->name('admin.data-penghasilan.restore');
     });
 
     

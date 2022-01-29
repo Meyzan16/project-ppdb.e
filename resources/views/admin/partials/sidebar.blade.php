@@ -64,7 +64,7 @@
                         </li>
 
                         <li class="submenu-item">
-                            <a href="{{ route('generate-akun.index') }}"> Data Pendidikan</a>
+                            <a href="{{ route('data-pendidikan.index') }}"> Data Pendidikan</a>
                         </li>
                         
                         <li class="submenu-item">
