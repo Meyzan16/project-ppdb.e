@@ -20,6 +20,7 @@ use App\Http\Controllers\admin\DataOrtuAdminController;
 use App\Http\Controllers\admin\pengaturan\DataAdminTransportasiController;
 use App\Http\Controllers\admin\pengaturan\DataAdminAgamaController;
 use App\Http\Controllers\admin\pengaturan\DataAdminJenisTinggalController;
+use App\Http\Controllers\admin\pengaturan\DataAdminPekerjaanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -139,6 +140,17 @@ Route::group([
         Route::get('data-jenis-tinggal-trash', [DataAdminJenisTinggalController::Class, 'trash'])->name('admin.data-jenis-tinggal.trash');
         Route::get('{id}/data-jenis-tinggal-restore', [DataAdminJenisTinggalController::class, 'restore'])->name('admin.data-jenis-tinggal.restore');
     });
+
+    Route::group(['prefix'  => 'pengaturan/'],function(){
+        Route::resource('data-pekerjaan', DataAdminPekerjaanController::class);
+
+        Route::get('data-pekerjaan-trash', [DataAdminPekerjaanController::Class, 'trash'])->name('admin.data-pekerjaan.trash');
+        Route::get('{id}/data-pekerjaan-restore', [DataAdminPekerjaanController::class, 'restore'])->name('admin.data-pekerjaan.restore');
+    });
+
+    
+
+
 
     
 

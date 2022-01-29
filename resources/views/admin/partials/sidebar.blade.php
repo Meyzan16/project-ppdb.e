@@ -60,7 +60,7 @@
                         </li>
                         
                         <li class="submenu-item">
-                            <a href="{{ route('generate-akun.index') }}"> Data Pekerjaan</a>
+                            <a href="{{ route('data-pekerjaan.index') }}"> Data Pekerjaan</a>
                         </li>
 
                         <li class="submenu-item">
