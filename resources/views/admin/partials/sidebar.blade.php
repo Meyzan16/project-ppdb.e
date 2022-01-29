@@ -56,7 +56,7 @@
                         </li>
 
                         <li class="submenu-item">
-                            <a href="{{ route('generate-akun.index') }}"> Data Jenis Tinggal</a>
+                            <a href="{{ route('data-jenis-tinggal.index') }}"> Data Jenis Tinggal</a>
                         </li>
                         
                         <li class="submenu-item">
