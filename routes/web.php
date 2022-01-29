@@ -17,12 +17,15 @@ use App\Http\Controllers\admin\BiodatadiriAdminController;
 use App\Http\Controllers\admin\DataOrtuAdminController;
 
 //Pengaturan
-use App\Http\Controllers\admin\pengaturan\DataAdminTransportasiController;
-use App\Http\Controllers\admin\pengaturan\DataAdminAgamaController;
-use App\Http\Controllers\admin\pengaturan\DataAdminJenisTinggalController;
-use App\Http\Controllers\admin\pengaturan\DataAdminPekerjaanController;
-use App\Http\Controllers\admin\pengaturan\DataAdminPendidikanController;
-use App\Http\Controllers\admin\pengaturan\DataAdminPenghasilanController;
+use App\Http\Controllers\Admin\pengaturan\DataAdminTransportasiController;
+use App\Http\Controllers\Admin\pengaturan\DataAdminAgamaController;
+use App\Http\Controllers\Admin\pengaturan\DataAdminJenisTinggalController;
+use App\Http\Controllers\Admin\pengaturan\DataAdminPekerjaanController;
+use App\Http\Controllers\Admin\pengaturan\DataAdminPendidikanController;
+use App\Http\Controllers\Admin\pengaturan\DataAdminPenghasilanController;
+
+//Homepage
+use App\Http\Controllers\Homepage\HomepageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,9 +37,9 @@ use App\Http\Controllers\admin\pengaturan\DataAdminPenghasilanController;
 |
 */
 
-Route::get('/', function () {
-    return view('homepage.layout_homepage.layout');
-});
+
+    Route::get('/', [HomepageController::Class, 'index'])->name('homepage');
+
 
 // Route::group(['prefix' => 'siswa/'], function(){
 //     Route::get('/', [DashboardSiswaController::Class, 'index'])->name('dashboard-siswa');
