@@ -46,21 +46,16 @@
             <div class="row align-items-center">
                 <div class="col-lg-5 col-md-12 col-12">
                     <div class="hero-content">
-                        <h4 class="wow fadeInUp" data-wow-delay=".2s">We Are Creative Digital Agency</h4>
-                        <h1 class="wow fadeInUp" data-wow-delay=".4s">Strategic Concepts For Businesses.</h1>
-                        <p class="wow fadeInUp" data-wow-delay=".6s">Invest your spare change in Bitcoin and save
-                            with<br> crypto to e arn interest in real time.
+                        <h4 class="wow fadeInUp" data-wow-delay=".2s">Siap menghadapi teknologi 4.0</h4>
+                        <h1 class="wow fadeInUp" data-wow-delay=".4s">PPDB ONLINE SMANSA LAIS</h1>
+                        <p class="wow fadeInUp" data-wow-delay=".6s">Pendaftaran peserta didik secara online membantu kami dalam memeriksa,mengelola dan mengkonfirmasi data secara mudah dan efisien
                         </p>
                         <div class="button wow fadeInUp" data-wow-delay=".8s">
-                            <a href="about-us.html" class="btn ">Discover More</a>
+                            <a href="{{ route('login') }}" class="btn">Login</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-7 col-12">
-                    <div class="hero-image">
-                        <img class="main-image" src="template-depan/halaman/assets/images/hero/hero-image.png" alt="#">
-                    </div>
-                </div>
+               
             </div>
         </div>
     </section>

@@ -7,7 +7,7 @@
                     <!-- Start Navbar -->
                     <nav class="navbar navbar-expand-lg">
                         <a class="navbar-brand" href="index.html">
-                            <img src="assets/images/logo/white-logo.svg" alt="Logo">
+                            <img src="template-depan/halaman/assets/images/logo/white-logo.svg" alt="Logo">
                         </a>
                         <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -53,9 +53,7 @@
                                 </li>
                             </ul>
                         </div> <!-- navbar collapse -->
-                        <div class="button">
-                            <a href="{{ route('login') }}" class="btn">Login</a>
-                        </div>
+          
                     </nav>
                     <!-- End Navbar -->
                 </div>
