@@ -18,6 +18,7 @@ use App\Http\Controllers\admin\DataOrtuAdminController;
 
 //Pengaturan
 use App\Http\Controllers\admin\pengaturan\DataAdminTransportasiController;
+use App\Http\Controllers\admin\pengaturan\DataAdminAgamaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -123,6 +124,15 @@ Route::group([
         Route::get('data-tranportasi-trash', [DataAdminTransportasiController::Class, 'trash'])->name('admin.data-transportasi.trash');
         Route::get('{id}/data-tranpostasi-restore', [DataAdminTransportasiController::class, 'restore'])->name('admin.data-transportasi.restore');
     });
+
+    Route::group(['prefix'  => 'pengaturan/'],function(){
+        Route::resource('data-agama', DataAdminAgamaController::class);
+
+        Route::get('data-agama-trash', [DataAdminAgamaController::Class, 'trash'])->name('admin.data-agama.trash');
+        Route::get('{id}/data-agama-restore', [DataAdminAgamaController::class, 'restore'])->name('admin.data-agama.restore');
+    });
+
+    
 
 
 

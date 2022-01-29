@@ -16,6 +16,7 @@ class CreateTbPenghasilansTable extends Migration
         Schema::create('tb_penghasilans', function (Blueprint $table) {
             $table->id();
             $table->string('nama',100)->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

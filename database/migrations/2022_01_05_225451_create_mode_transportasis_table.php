@@ -16,6 +16,7 @@ class CreateModeTransportasisTable extends Migration
         Schema::create('mode_transportasis', function (Blueprint $table) {
             $table->id();
             $table->string('nama',100)->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

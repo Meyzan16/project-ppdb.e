@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class tb_jenis_tinggal extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+    protected $dates = ['deleted_at'];
+
+    protected $fillable = [
+        'nama'
+    ];
 
     public function tb_biodata(){
         return $this->hasMany(tb_biodata::class);

@@ -16,6 +16,7 @@ class CreateTbPendidikansTable extends Migration
         Schema::create('tb_pendidikans', function (Blueprint $table) {
             $table->id();
             $table->string('nama',100)->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@
 @section('content')
 <div id="main-content">
     <div class="page-heading">
-        <h3>Data Mode Transportasi Yang Dihapus</h3>
+        <h3>Data Agama Yang Dihapus</h3>
     </div>
 
     <div class="div">
@@ -55,7 +55,7 @@
                                     <td>{{ $item->deleted_at }}</td>    
 
                                     <td>
-                                            <a href="{{ route('admin.data-transportasi.restore', $item->id) }}"  class="badge bg-success"><span data-feather="eye">Restore</span></a>
+                                            <a href="{{ route('admin.data-agama.restore', $item->id) }}"  class="badge bg-success"><span data-feather="eye">Restore</span></a>
                                     </td>
                                     
 
@@ -66,7 +66,7 @@
                             </tbody>
                         </table>
 
-                        <button type="button" class="mb-2 btn btn-warning" aria-label="Left Align" onclick="location.href='{{ route('data-transportasi.index') }}'">
+                        <button type="button" class="mb-2 btn btn-warning" aria-label="Left Align" onclick="location.href='{{ route('data-agama.index') }}'">
                             <i class="fa fa-arrow-circle-left"> </i> Kembali
                         </button>
 

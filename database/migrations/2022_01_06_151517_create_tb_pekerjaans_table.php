@@ -16,6 +16,7 @@ class CreateTbPekerjaansTable extends Migration
         Schema::create('tb_pekerjaans', function (Blueprint $table) {
             $table->id();
             $table->string('nama',100)->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

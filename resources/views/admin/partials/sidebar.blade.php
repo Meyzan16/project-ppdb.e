@@ -52,7 +52,7 @@
                         </li>
 
                         <li class="submenu-item">
-                            <a href="{{ route('generate-akun.index') }}"> Data Agama</a>
+                            <a href="{{ route('data-agama.index') }}"> Data Agama</a>
                         </li>
 
                         <li class="submenu-item">
@@ -90,7 +90,7 @@
                 <li class="sidebar-item  ">
                     <a href="https://github.com/zuramai/mazer/blob/main/CONTRIBUTING.md" class='sidebar-link'>
                         <i class="bi bi-puzzle"></i>
-                        <span></span>
+                        <span>sadsa</span>
                     </a>
                 </li>
 
