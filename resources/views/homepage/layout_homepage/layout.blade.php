@@ -5,10 +5,10 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>PPDB SMA 1 LAIS</title>
+    <title>PPDB SMANSA LAIS</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.svg" />
+    <link rel="shortcut icon" type="image/x-icon" href="template-depan/halaman/assets/images/favicon.svg" />
 
     <!-- ========================= CSS here ========================= -->
     <link rel="stylesheet" href="template-depan/halaman/assets/css/bootstrap.min.css" />
@@ -21,13 +21,7 @@
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-        your experience and security.
-      </p>
-    <![endif]-->
+   
 
     <!-- Preloader -->
     <div class="preloader">
@@ -40,91 +34,41 @@
     </div>
     <!-- /End Preloader -->
 
+    <!-- Start Header Area -->
+
     @include('homepage.partial.header')
+    
+    <!-- End Header Area -->
 
-   
-
-    <!-- Start Services Area -->
-    <div class="services section">
+    <!-- Start Hero Area -->
+    <section class="hero-area">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title">
-                        <h3 class="wow zoomIn" data-wow-delay=".2s">What we offer</h3>
-                        <h2 class="wow fadeInUp" data-wow-delay=".4s">Our Services</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".6s">There are many variations of passages of Lorem
-                            Ipsum available, but the majority have suffered alteration in some form.</p>
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-12 col-12">
+                    <div class="hero-content">
+                        <h4 class="wow fadeInUp" data-wow-delay=".2s">We Are Creative Digital Agency</h4>
+                        <h1 class="wow fadeInUp" data-wow-delay=".4s">Strategic Concepts For Businesses.</h1>
+                        <p class="wow fadeInUp" data-wow-delay=".6s">Invest your spare change in Bitcoin and save
+                            with<br> crypto to e arn interest in real time.
+                        </p>
+                        <div class="button wow fadeInUp" data-wow-delay=".8s">
+                            <a href="about-us.html" class="btn ">Discover More</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".2s">
-                    <div class="single-service">
-                        <div class="main-icon">
-                            <i class="lni lni-grid-alt"></i>
-                        </div>
-                        <h4 class="text-title">Brand Identity Design</h4>
-                        <p>Invest in Bitcoin on the regular or save with one of the highest interest rates on the
-                            market.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".4s">
-                    <div class="single-service">
-                        <div class="main-icon">
-                            <i class="lni lni-keyword-research"></i>
-                        </div>
-                        <h4 class="text-title">Digital Marketing</h4>
-                        <p>Invest in Bitcoin on the regular or save with one of the highest interest rates on the
-                            market.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".6s">
-                    <div class="single-service">
-                        <div class="main-icon">
-                            <i class="lni lni-vector"></i>
-                        </div>
-                        <h4 class="text-title">Design and Development</h4>
-                        <p>Invest in Bitcoin on the regular or save with one of the highest interest rates on the
-                            market.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".2s">
-                    <div class="single-service">
-                        <div class="main-icon">
-                            <i class="lni lni-book"></i>
-                        </div>
-                        <h4 class="text-title">IT Consulting Service</h4>
-                        <p>Invest in Bitcoin on the regular or save with one of the highest interest rates on the
-                            market.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".4s">
-                    <div class="single-service">
-                        <div class="main-icon">
-                            <i class="lni lni-cloud-network"></i>
-                        </div>
-                        <h4 class="text-title">Cloud Computing</h4>
-                        <p>Invest in Bitcoin on the regular or save with one of the highest interest rates on the
-                            market.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".6s">
-                    <div class="single-service">
-                        <div class="main-icon">
-                            <i class="lni lni-display-alt"></i>
-                        </div>
-                        <h4 class="text-title">Graphics Design</h4>
-                        <p>Invest in Bitcoin on the regular or save with one of the highest interest rates on the
-                            market.</p>
+                <div class="col-lg-7 col-12">
+                    <div class="hero-image">
+                        <img class="main-image" src="template-depan/halaman/assets/images/hero/hero-image.png" alt="#">
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End Services Area -->
+    </section>
+    <!-- End Hero Area -->
+
     
     <!-- Start About Area -->
-    {{-- <section class="about section">
+    <section class="about section">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-12">
@@ -165,35 +109,10 @@
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
     <!-- End About Area -->
 
-    <!-- Start Call Action Area -->
-    {{-- <section class="call-action">
-        <div class="container">
-            <div class="inner-content">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-7 col-12">
-                        <div class="text">
-                            <h2>You are using free
-                                <br> <span>Lite version of Craft.</span>
-                            </h2>
-                            <p style="display: block;margin-top: 10px;">Please, purchase full version of the template to
-                                get all pages,
-                                features and commercial license. </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-5 col-12">
-                        <div class="button">
-                            <a href="#" class="btn">Buy Pro Version
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <!-- End Call Action Area -->
+    
 
     <!-- Start Footer Area -->
     <footer class="footer section">
@@ -205,11 +124,11 @@
                         <div class="col-lg-4 col-md-6 col-12">
                             <!-- Single Widget -->
                             <div class="single-footer f-about">
-                                {{-- <div class="logo">
+                                <div class="logo">
                                     <a href="index.html">
                                         <img src="assets/images/logo/white-logo.svg" alt="#">
                                     </a>
-                                </div> --}}
+                                </div>
                                 <p>Making the world a better place through constructing elegant hierarchies.</p>
                                 <h4 class="social-title">Follow Us On:</h4>
                                 <ul class="social">

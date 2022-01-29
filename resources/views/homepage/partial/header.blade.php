@@ -53,9 +53,9 @@
                                 </li>
                             </ul>
                         </div> <!-- navbar collapse -->
-                        {{-- <div class="button">
-                            <a href="signup.html" class="btn">Get started</a>
-                        </div> --}}
+                        <div class="button">
+                            <a href="{{ route('login') }}" class="btn">Login</a>
+                        </div>
                     </nav>
                     <!-- End Navbar -->
                 </div>
@@ -65,34 +65,4 @@
 </header>
 <!-- End Header Area -->
 
- <!-- Start Hero Area -->
- <section class="hero-area">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-5 col-md-12 col-12">
-                <div class="hero-content">
-                    <h4 class="wow fadeInUp" data-wow-delay=".2s">We Are Creative Digital Agency</h4>
-                    <h1 class="wow fadeInUp" data-wow-delay=".4s">Strategic Concepts For Businesses.</h1>
-                    <p class="wow fadeInUp" data-wow-delay=".6s">Invest your spare change in Bitcoin and save
-                        with<br> crypto to e arn interest in real time.
-                    </p>
-
-                    <div class="button wow fadeInUp" data-wow-delay=".8s">
-                        <a href="{{ route('login') }}" class="btn"> Login </a>
-                      
-                    </div>
-
-                    {{-- <div >
-                        <a href="about-us.html" >Register</a>
-                    </div> --}}
-                </div>
-            </div>
-            {{-- <div class="col-lg-7 col-12">
-                <div class="hero-image">
-                    <img class="main-image" src="assets/images/hero/hero-image.png" alt="#">
-                </div>
-            </div> --}}
-        </div>
-    </div>
-</section>
-<!-- End Hero Area -->
+ 
