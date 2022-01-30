@@ -84,7 +84,7 @@
                                 
 
                                     <td>
-                                        <span class="badge bg-primary">Belum Diverifikasi</span>
+                                        <span class="badge bg-primary">Belum Selesai</span>
                                     </td>
 
                                     <td>

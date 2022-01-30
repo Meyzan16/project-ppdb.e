@@ -468,7 +468,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-body">
             <p>
                 Perhatian !!!
-                Data yang sudah di validasi tidak bisa di perbarui, atau pun diedit dimohon untuk
+                Data yang sudah di validasi tidak bisa di validasi ulang, dimohon untuk
                 diteliti kembali data siswa tersebut, kesalahan data bisa 
                 mengakibat kan masalah-masalah berikutnya.....
                 <span class="badge bg-primary" >Untuk memperbarui data kembali, silahkan hubungi Administrator</span>

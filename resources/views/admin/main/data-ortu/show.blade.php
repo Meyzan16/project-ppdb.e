@@ -60,13 +60,11 @@
                                                 <i class="fa fa-arrow-circle-left"> </i> Kembali
                                             </button>
 
-                                            @if ($query->status_ortu == 'Y' && $query->catatan_ortu == '')
 
-                                            @else
                                                 <button type="button" class="mb-1 btn btn-warning" aria-label="Left Align" onclick="location.href='{{ route('admin.data-ortu.edit', $query->nisn_ortu) }}'">
                                                     <i class="fa fa-edit"> </i> Edit
                                                 </button> 
-                                            @endif
+                          
 
                                          
 
@@ -242,7 +240,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-body">
             <p>
                 Perhatian !!!
-                Data yang sudah di validasi tidak bisa di perbarui, atau pun diedit dimohon untuk
+                Data yang sudah di validasi tidak bisa di validasi ulang, dimohon untuk
                 diteliti kembali data siswa tersebut, kesalahan data bisa 
                 mengakibat kan masalah-masalah berikutnya.....
                 <span class="badge bg-primary" >Untuk validasi data kembali, silahkan hubungi Administrator</span>
@@ -286,7 +284,7 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             @csrf {{ method_field('PATCH') }}
             <div class="modal-body">
                 <h5 class="modal-title" id="exampleModalCenterTitle"> Catatan </h5>
-                <textarea name="catatan_ortu" cols="52" rows="5"> </textarea>
+                <textarea id="editor" name="catatan_ortu" cols="52" rows="5"> </textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light-secondary"
