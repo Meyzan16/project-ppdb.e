@@ -41,14 +41,6 @@ use App\Http\Controllers\Homepage\HomepageController;
     Route::get('/', [HomepageController::Class, 'index'])->name('homepage');
 
 
-// Route::group(['prefix' => 'siswa/'], function(){
-//     Route::get('/', [DashboardSiswaController::Class, 'index'])->name('dashboard-siswa');
-//     Route::group(['prefix'  => 'biodata-diri'],function(){
-//         Route::get('/', [BiodatadiriSiswaController::Class, 'index'])->name('biodata-diri');
-//         Route::get('{nisn}/edit', [BiodatadiriSiswaController::Class, 'edit'])->name('biodataEdit');
-//         Route::post('{nisn}/update', [BiodatadiriSiswaController::Class, 'update'])->name('biodataStore');    
-//     });
-// });
 
 //SISWA
 Route::group([
@@ -58,8 +50,8 @@ Route::group([
 
     Route::group(['prefix'  => 'biodata-diri/'],function(){
         Route::get('/', [BiodatadiriSiswaController::Class, 'index'])->name('biodata-diri');
-        Route::get('{nisn}/edit', [BiodatadiriSiswaController::Class, 'edit'])->name('biodataEdit');
-        Route::patch('{nisn}/update', [BiodatadiriSiswaController::Class, 'update'])->name('biodataStore');    
+        Route::get('/{nisn}/edit', [BiodatadiriSiswaController::Class, 'edit'])->name('biodataEdit');
+        Route::patch('/{nisn}/update', [BiodatadiriSiswaController::Class, 'update'])->name('siswa.biodata-store');    
         
         Route::get('{nisn}/perbaikan-data', [BiodatadiriSiswaController::Class, 'perbaikan_data'])->name('siswa.biodata-diri.perbaikan_data')->middleware('perbaikanDatadiri-siswa');
         Route::patch('{nisn}/update', [BiodatadiriSiswaController::Class, 'update_perbaikan_data'])->name('siswa.biodata-diri.updateperbaikan_data');  

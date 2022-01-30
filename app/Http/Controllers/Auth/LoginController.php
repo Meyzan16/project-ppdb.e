@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 
 use Illuminate\Http\Request;
-use App\Models\user;
+use App\Models\tb_user_siswa;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -45,8 +45,8 @@ class LoginController extends Controller
     
 
         // //ambil query dengan kondisi masing-masing
-        $cek_nisn = user::where('nisn', $request->nisn)->first();
-        $cek_password = user::where('password', $request->password)->first();
+        $cek_nisn = tb_user_siswa::where('nisn', $request->nisn)->first();
+        $cek_password = tb_user_siswa::where('password', $request->password)->first();
 
         if ($cek_nisn && $cek_password) {
                  session(['berhasil_login' => true]);

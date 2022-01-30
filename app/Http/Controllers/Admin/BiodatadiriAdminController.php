@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
-use App\Models\user;
+use App\Models\tb_user_siswa;
 use Illuminate\Http\Request;
 use App\Models\tb_berkas;
 use App\Models\tb_ortu;
@@ -24,7 +24,7 @@ class BiodatadiriAdminController extends Controller
      */
     public function index()
     {
-        $data = User::all()->sortByDesc('updated_at'); 
+        $data = tb_user_siswa::all()->sortByDesc('updated_at'); 
     
         return view('admin.main.biodata-diri.index',compact('data'));
     }
@@ -60,7 +60,7 @@ class BiodatadiriAdminController extends Controller
     {
         $query = tb_biodata::where('nisn_biodata', $nisn)->first();
 
-        // User::where('nisn', session()->get('nisn'))->first(); 
+        // tb_user_siswa::where('nisn', session()->get('nisn'))->first(); 
         
         return view('admin.main.biodata-diri.show',compact('query'));
        
@@ -111,12 +111,12 @@ class BiodatadiriAdminController extends Controller
         $jenis_tinggal = tb_jenis_tinggal::all();
         $mode_trans = mode_transportasi::all();
 
-        $item = DB::table('users')
-        ->join('tb_biodatas', 'users.nisn', '=', 'tb_biodatas.nisn_biodata')
+        $item = DB::table('tb_user_siswas')
+        ->join('tb_biodatas', 'tb_user_siswas.nisn', '=', 'tb_biodatas.nisn_biodata')
         ->join('tb_jenis_tinggals', 'tb_biodatas.jenis_tinggal', '=', 'tb_jenis_tinggals.id')
         ->join('mode_transportasis', 'tb_biodatas.mode_transportasi', '=', 'mode_transportasis.id')
-        ->select('users.*', 'tb_biodatas.*' , 'mode_transportasis.nama as nama_mode_trans', 'tb_jenis_tinggals.nama as nama_jenis_tinggal')
-        ->where('users.nisn', '=', $nisn)
+        ->select('tb_user_siswas.*', 'tb_biodatas.*' , 'mode_transportasis.nama as nama_mode_trans', 'tb_jenis_tinggals.nama as nama_jenis_tinggal')
+        ->where('tb_user_siswas.nisn', '=', $nisn)
         ->first();
         return view('admin.main.biodata-diri.edit', compact('item' , 'agama','jenis_tinggal','mode_trans'));
     }
@@ -130,12 +130,12 @@ class BiodatadiriAdminController extends Controller
      */
     public function update(Request $request, $nisn)
     {
-        $query = DB::table('users')
-        ->join('tb_biodatas', 'users.nisn', '=', 'tb_biodatas.nisn_biodata')
+        $query = DB::table('tb_user_siswas')
+        ->join('tb_biodatas', 'tb_user_siswas.nisn', '=', 'tb_biodatas.nisn_biodata')
         ->join('tb_jenis_tinggals', 'tb_biodatas.jenis_tinggal', '=', 'tb_jenis_tinggals.id')
         ->join('mode_transportasis', 'tb_biodatas.mode_transportasi', '=', 'mode_transportasis.id')
-        ->select('users.*', 'tb_biodatas.*' , 'mode_transportasis.nama as nama_mode_trans', 'tb_jenis_tinggals.nama as nama_jenis_tinggal')
-        ->where('users.nisn', '=', $nisn)
+        ->select('tb_user_siswas.*', 'tb_biodatas.*' , 'mode_transportasis.nama as nama_mode_trans', 'tb_jenis_tinggals.nama as nama_jenis_tinggal')
+        ->where('tb_user_siswas.nisn', '=', $nisn)
         ->first();
 
         
@@ -169,7 +169,7 @@ class BiodatadiriAdminController extends Controller
         ];
 
         if($request->nik != $query->nik){
-            $rules['nik'] = 'required|numeric|digits:16|unique:users';
+            $rules['nik'] = 'required|numeric|digits:16|unique:tb_user_siswas';
         }
         if($request->no_akte != $query->no_akte){
             $rules['no_akte'] = 'required|max:30|unique:tb_biodatas';
@@ -263,7 +263,7 @@ class BiodatadiriAdminController extends Controller
         // return "berhasil/ lolos validasi";
 
 
-        User::where('nisn', $nisn)->update([
+        tb_user_siswa::where('nisn', $nisn)->update([
             'nik' => $request->nik,
             'name' => $request->name,
             'email' => $request->email,
@@ -342,7 +342,7 @@ class BiodatadiriAdminController extends Controller
      */
     public function destroy($id)
     {
-        user::findorfail($id)->delete();   
+        tb_user_siswa::findorfail($id)->delete();   
         return redirect()->route('admin.biodata-diri.index')->with('success', 'Data Berhasil Dihapus');
     }
 
@@ -350,21 +350,21 @@ class BiodatadiriAdminController extends Controller
     public function trash()
     {
       
-        $data = User::onlyTrashed()->latest()->get();
+        $data = tb_user_siswa::onlyTrashed()->latest()->get();
         
         return view('admin.main.biodata-diri.trash',compact('data'));
     }
 
     public function restore($nisn) 
     {
-        User::where('nisn', $nisn)->withTrashed()->restore();
+        tb_user_siswa::where('nisn', $nisn)->withTrashed()->restore();
 
         return redirect()->route('admin.biodata-diri.index')->with('success', 'Data berhasil di kembalikan');
     }
 
     public function restoreAll()
     {
-        User::onlyTrashed()->restore();
+        tb_user_siswa::onlyTrashed()->restore();
         
         return redirect()->route('admin.biodata-diri.index')->with('success', 'Semua data berhasil di kembalikan');
     }
@@ -372,7 +372,7 @@ class BiodatadiriAdminController extends Controller
     public function forcedelete($nisn)
     {
 
-        User::onlyTrashed()->where('nisn',$nisn)->forceDelete();
+        tb_user_siswa::onlyTrashed()->where('nisn',$nisn)->forceDelete();
         tb_biodata::where('nisn_biodata', $nisn)->delete();
         tb_berkas::where('nisn_berkas', $nisn)->delete();
         tb_ortu::where('nisn_ortu', $nisn)->delete();

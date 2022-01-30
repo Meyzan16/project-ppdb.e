@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
-use App\Models\user;
+use App\Models\tb_user_siswa;
 use Illuminate\Http\Request;
 use App\Models\tb_berkas;
 use App\Models\tb_ortu;

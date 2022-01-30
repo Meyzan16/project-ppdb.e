@@ -10,6 +10,7 @@ use App\Models\tb_biodata;
 use App\Models\tb_pendidikan;
 use App\Models\tb_penghasilan;
 use App\Models\tb_pekerjaan;
+use App\Models\tb_user_siswa;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
@@ -26,7 +27,7 @@ class DataOrtuSiswaController extends Controller
         $pekerjaan_ibu = tb_pekerjaan::all();
         $penghasilan_ibu = tb_penghasilan::all();
 
-        $item = User::where('nisn', $nisn)->first();
+        $item = tb_user_siswa::where('nisn', $nisn)->first();
         
         return view('siswa.main.dataortu.index', compact('item', 'pekerjaan' ,'penghasilan' , 'pendidikan', 'pekerjaan_ibu','penghasilan_ibu' ,'pendidikan_ibu' )); 
     }

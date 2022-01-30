@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use App\Models\User;
+use App\Models\tb_user_siswa;
 
 
 class GenerateSiswaController extends Controller
@@ -27,7 +27,7 @@ class GenerateSiswaController extends Controller
     {
          //pasang rules
          $rules = [
-            'nisn' => 'required|digits:10|unique:users',
+            'nisn' => 'required|digits:10|unique:tb_user_siswas',
             'name'=> 'required'
         ];
 
@@ -54,9 +54,9 @@ class GenerateSiswaController extends Controller
                     $data['status_lulus'] = 'N';
                     $data['roles'] = 'SISWA';   
             
-                    User::create($data);
+                    tb_user_siswa::create($data);
 
-                    $item = User::where('nisn', $request->nisn)->first();
+                    $item = tb_user_siswa::where('nisn', $request->nisn)->first();
 
                     DB::table('tb_ortus')->insert([
                         'user_ortu' => $item->id,

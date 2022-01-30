@@ -4,7 +4,7 @@ namespace App\Http\Controllers\siswa;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\tb_user_siswa;
 use App\Models\tb_biodata;
 use App\Models\tb_agama;
 use App\Models\tb_jenis_tinggal;
@@ -18,7 +18,7 @@ class BiodatadiriSiswaController extends Controller
     public function index()
     {
 
-        $item = User::where('nisn', session()->get('nisn'))->first();
+        $item = tb_user_siswa::where('nisn', session()->get('nisn'))->first();
     
         return view('siswa.main.datadiri.biodata', compact('item'));
     }
@@ -29,7 +29,7 @@ class BiodatadiriSiswaController extends Controller
         $jenis_tinggal = tb_jenis_tinggal::all();
         $mode_trans = mode_transportasi::all();       
 
-        $item = User::where('nisn', session()->get('nisn'))->first();
+        $item = tb_user_siswa::where('nisn', session()->get('nisn'))->first();
         
         return view('siswa.main.datadiri.biodata-diri', compact('item','jenis_tinggal' , 'mode_trans','agama')); 
     }
@@ -39,8 +39,8 @@ class BiodatadiriSiswaController extends Controller
     {
        // pasang rules
         $rules = [
-            'nik'=> 'required|numeric|digits:16|unique:users',
-            'email'=> 'required|unique:users',
+            'nik'=> 'required|numeric|digits:16|unique:tb_user_siswas',
+            'email'=> 'required|unique:tb_user_siswas',
             'name' => 'required|max:40',
             'username'=> 'required|alpha_num|min:8',
             'password'=> 'required|min:8',
@@ -69,7 +69,7 @@ class BiodatadiriSiswaController extends Controller
 
         //$password = bcrypt($request->password)
 
-        User::where('nisn', $nisn)->update([
+        tb_user_siswa::where('nisn', $nisn)->update([
             'nik' => $request->nik,
             'name' => $request->name,
             'email' => $request->email,
@@ -94,7 +94,7 @@ class BiodatadiriSiswaController extends Controller
 
     public function update_perbaikan_data(Request $request, $nisn)
     {
-        $query = User::where('nisn', $nisn)->first();
+        $query = tb_user_siswa::where('nisn', $nisn)->first();
 
         
         $rules = [
@@ -124,7 +124,7 @@ class BiodatadiriSiswaController extends Controller
         ];
 
         if($request->nik != $query->nik){
-            $rules['nik'] = 'required|numeric|digits:16|unique:users';
+            $rules['nik'] = 'required|numeric|digits:16|unique:tb_user_siswas';
         }
         if($request->no_akte != $query->tb_biodata->no_akte){
             $rules['no_akte'] = 'required|max:30|unique:tb_biodatas';
@@ -218,7 +218,7 @@ class BiodatadiriSiswaController extends Controller
         // return "berhasil/ lolos validasi";
 
 
-        User::where('nisn', $nisn)->update([
+        tb_user_siswa::where('nisn', $nisn)->update([
             'nik' => $request->nik,
             'name' => $request->name,
         ]);

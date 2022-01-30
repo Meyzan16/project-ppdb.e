@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\siswa;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\tb_user_siswa;
 
 use Illuminate\Http\Request;
 
@@ -15,7 +15,7 @@ class DashboardSiswaController extends Controller
      */
     public function index()
     {
-        $query = User::where('nisn', session()->get('nisn'))->first();
+        $query = tb_user_siswa::where('nisn', session()->get('nisn'))->first();
 
         // User::where('nisn', session()->get('nisn'))->first(); 
         
