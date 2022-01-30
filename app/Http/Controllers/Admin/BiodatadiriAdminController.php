@@ -29,33 +29,7 @@ class BiodatadiriAdminController extends Controller
         return view('admin.main.biodata-diri.index',compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function show($nisn)
     {
         $query = tb_biodata::where('nisn_biodata', $nisn)->first();
@@ -331,7 +305,7 @@ class BiodatadiriAdminController extends Controller
         ]);
 
 
-        return \redirect()->route('admin.biodata-diri.edit', $request->nisn)->with('success', 'Data biodata diri berhasil diperbarui');
+        return \redirect()->route('admin.biodata-diri.show', $nisn)->with('success', 'Data biodata diri berhasil diperbarui');
     }
 
     /**

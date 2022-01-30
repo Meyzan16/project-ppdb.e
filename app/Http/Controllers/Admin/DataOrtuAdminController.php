@@ -116,7 +116,7 @@ class DataOrtuAdminController extends Controller
             'penghasilan_bulanan_ibu' => $request->penghasilan_bulanan_ibu,
         ]);
 
-        return \redirect()->route('admin.data-ortu.edit', $request->nisn)->with('success', 'Data orang tua berhasil diperbarui');
+        return \redirect()->route('admin.data-ortu.show', $request->nisn)->with('success', 'Data orang tua berhasil diperbarui');
 
     }
 

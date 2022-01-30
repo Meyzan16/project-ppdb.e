@@ -58,7 +58,12 @@
                                             <button type="button" class="mb-2 btn btn-danger" aria-label="Left Align" onclick="location.href='{{ route('admin.biodata-diri.index') }}'">
                                                 <i class="fa fa-arrow-circle-left"> </i> Kembali
                                             </button>
-                                            <!-- /.panel-heading -->
+
+                                            <button type="button" class="mb-1 btn btn-warning" aria-label="Left Align" onclick="location.href='{{ route('admin.biodata-diri.edit', $query->user->nisn) }}'">
+                                                <i class="fa fa-edit"> </i> Edit
+                                            </button> 
+
+
                                             <div class="panel-body">
                                                 <div class="table-responsive">
                                                     <div class="row">

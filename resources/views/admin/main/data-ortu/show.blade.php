@@ -64,9 +64,6 @@
                                                 <button type="button" class="mb-1 btn btn-warning" aria-label="Left Align" onclick="location.href='{{ route('admin.data-ortu.edit', $query->nisn_ortu) }}'">
                                                     <i class="fa fa-edit"> </i> Edit
                                                 </button> 
-                          
-
-                                         
 
                                             <!-- /.panel-heading -->
                                             <div class="panel-body">
