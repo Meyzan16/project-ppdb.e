@@ -6,9 +6,7 @@
                 <div class="nav-inner">
                     <!-- Start Navbar -->
                     <nav class="navbar navbar-expand-lg">
-                        <a class="navbar-brand" href="index.html">
-                            <img src="template-depan/halaman/assets/images/logo/white-logo.svg" alt="Logo">
-                        </a>
+
                         <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
