@@ -15,18 +15,12 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nisn',20)->unique()->nullable();
-            $table->string('nik', 25)->unique()->nullable();
-            $table->string('name', 50)->nullable();
-            $table->string('email', 100)->unique()->nullable();
             $table->string('username', 50)->nullable();
+            $table->string('nama')->nullable();
             $table->string('password', 100)->nullable();
-            $table->year('tahun_daftar')->nullable();
-            $table->enum('status_lulus', ['Y', 'N'])->default('N');
-            $table->year('tahun_lulus')->nullable();
-            $table->enum('roles', ['SISWA', 'ALUMNI'])->nullable();
+            $table->enum('role', ['VERIFIKATOR', 'ADMIN'])->default('VERIFIKATOR');
+            $table->enum('status_aktif', ['Y', 'N'])->default('N');
             $table->softDeletes();
-            $table->rememberToken();
             $table->timestamps();
         });
     }

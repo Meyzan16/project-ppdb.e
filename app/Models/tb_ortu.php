@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\tb_pendidikan;
-use App\Models\User;
+use App\Models\tb_user_siswa;
 
 class tb_ortu extends Model
 {
@@ -42,7 +42,7 @@ class tb_ortu extends Model
    
 
     public function user(){
-        return $this->belongsTo(user::class ,'user_ortu');
+        return $this->belongsTo(tb_user_siswa::class ,'user_ortu');
     }
 
     

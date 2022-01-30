@@ -22,42 +22,7 @@ class User extends Authenticatable
      * @var string[]
      */
 
-    protected $primaryKey = 'id';
-    protected $dates = ['deleted_at'];
-    
-    protected $fillable = [
-        'nisn',
-        'name',
-        'password',
-        'tahun_daftar',
-        'status_lulus',
-        'roles',
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password'
-    ];
-
-    public function tb_biodata()
-    {                                      
-        return $this->hasOne(tb_biodata::class, 'user_biodata');
-    }
-
-    public function tb_ortu()
-    {                                      
-        return $this->hasOne(tb_ortu::class, 'user_ortu');
-    }
-
-    public function tb_berkas()
-    {                                      
-        return $this->hasOne(tb_berkas::class, 'user_berkas');
-    }
-
+   
 
     
 

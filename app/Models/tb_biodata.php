@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\tb_ortu;
-use App\Models\User;
+use App\Models\tb_user_siswa;
 use App\Models\tb_jenis_tinggal;
 use App\Models\mode_transportasi;
 
@@ -20,7 +20,7 @@ class tb_biodata extends Model
     ];
 
     public function user(){
-        return $this->belongsTo(user::class ,'user_biodata');
+        return $this->belongsTo(tb_user_siswa::class ,'user_biodata');
     }
 
     public function tb_agama(){
