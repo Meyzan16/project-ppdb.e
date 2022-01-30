@@ -72,49 +72,49 @@
                       Data yang sudah disimpan, tidak bisa diubah. mohon dikoreksi kembali data anda
                   </p>
 
-                  <form class="forms-sample" action="{{ route('siswa.biodata-store', $item->nisn) }}"  method="POST">
-                    {{ method_field('PATCH') }}
-                    @csrf
+                  <form action="{{ route('biodata-diri.update',[$item->nisn]) }}"  method="POST">
+                    @csrf @method('PATCH')
+                    
                       <div class="form-group">
-                      <label>Nisn</label>
-                      <input type="text" name="nisn" style="border-radius: 30px" readonly class="form-control  @error('nisn')is-invalid @enderror"  placeholder="NISN"  value="{{ $item->nisn }}">
-                      <p class="text-danger" style="font-size: 13px">Silahkan perbarui nisn sama admin jika ada kesalahan</p>
-                      @error('nisn') 
-                            <div class="invalid-feedback">
-                              kesalahan : {{ $message }}
-                            </div>
-                      @enderror
-                    </div>
+                        <label>Nisn</label>
+                        <input type="text" name="nisn" style="border-radius: 30px" readonly class="form-control  @error('nisn')is-invalid @enderror"  placeholder="NISN"  value="{{ $item->nisn }}">
+                        <p class="text-danger" style="font-size: 13px">Silahkan perbarui nisn sama admin jika ada kesalahan</p>
+                        @error('nisn') 
+                              <div class="invalid-feedback">
+                                kesalahan : {{ $message }}
+                              </div>
+                        @enderror
+                      </div>
 
                       <div class="form-group">
-                      <label>Nik</label>
-                      <input type="text" name="nik" style="border-radius: 30px" required class="form-control  @error('nik')is-invalid @enderror"  placeholder="NIK" value="{{ old('nik') }}">
-                          @error('nik') 
+                          <label>Nik</label>
+                          <input type="text" name="nik" style="border-radius: 30px" required class="form-control  @error('nik')is-invalid @enderror"  placeholder="NIK" value="{{ old('nik') }}">
+                              @error('nik') 
+                              <div class="invalid-feedback">
+                                kesalahan : {{ $message }}
+                              </div>
+                          @enderror
+                      </div>
+
+                      <div class="form-group">
+                          <label>Nama</label>
+                          <input type="text" name="name" style="border-radius: 30px" required class="form-control  @error('name')is-invalid @enderror"  placeholder="NAMA" value="{{ $item->name; }}">
+                          <p class="text-danger" style="font-size: 13px">Silahkan perbarui nama jika ada kesalahan</p>
+                          @error('name') 
                           <div class="invalid-feedback">
                             kesalahan : {{ $message }}
                           </div>
-                      @enderror
-                    </div>
-
-                      <div class="form-group">
-                      <label>Nama</label>
-                      <input type="text" name="name" style="border-radius: 30px" required class="form-control  @error('name')is-invalid @enderror"  placeholder="NAMA" value="{{ $item->name; }}">
-                      <p class="text-danger" style="font-size: 13px">Silahkan perbarui nama jika ada kesalahan</p>
-                      @error('name') 
-                      <div class="invalid-feedback">
-                        kesalahan : {{ $message }}
+                        @enderror  
                       </div>
-                    @enderror  
-                    </div>
 
                       <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" name="username" style="border-radius: 30px" required class="form-control  @error('username')is-invalid @enderror"  placeholder="USERNAME"  value="{{ old('username') }}" >
-                        @error('username') 
-                        <div class="invalid-feedback">
-                          kesalahan : {{ $message }}
-                        </div>
-                    @enderror
+                            <label>Username</label>
+                            <input type="text" name="username" style="border-radius: 30px" required class="form-control  @error('username')is-invalid @enderror"  placeholder="USERNAME"  value="{{ old('username') }}" >
+                            @error('username') 
+                            <div class="invalid-feedback">
+                              kesalahan : {{ $message }}
+                            </div>
+                        @enderror
                       </div>
 
                       <div class="form-group">
@@ -129,14 +129,14 @@
                       </div>
 
                       <div class="form-group">
-                      <label >Email</label>
-                      <input type="email" name="email" style="border-radius: 30px" required class="form-control  @error('email')is-invalid @enderror"  placeholder="EMAIl" value="{{ old('email') }}">
-                      @error('email') 
-                          <div class="invalid-feedback">
-                            kesalahan : {{ $message }}
-                          </div>
-                      @enderror
-                    </div>
+                          <label >Email</label>
+                          <input type="email" name="email" style="border-radius: 30px" required class="form-control  @error('email')is-invalid @enderror"  placeholder="EMAIl" value="{{ old('email') }}">
+                          @error('email') 
+                              <div class="invalid-feedback">
+                                kesalahan : {{ $message }}
+                              </div>
+                          @enderror
+                      </div>
 
                       <button type="submit" class="btn btn-primary mr-2" style="border-radius: 30px;" onclick="return confirm('Apakah data anda sudah benar ?')" >Kirim</button>
                       <a href="{{ route('biodata-diri') }}" class="btn btn-warning" style="border-radius: 30px;  margin-right:10px">Kembali</a>
@@ -168,7 +168,7 @@
               <p class="card-description text-danger">
                 Data yang sudah disimpan, tidak bisa diubah. mohon dikoreksi kembali data anda
               </p>
-            <form class="forms-sample" action="{{ route('datatambahan.update', [$item->nisn]) }}" method="POST">
+            <form class="forms-sample" action="{{ route('datatambahan.update',[$item->nisn]) }}" method="POST">
               {{ method_field('PATCH') }}
               @csrf
 

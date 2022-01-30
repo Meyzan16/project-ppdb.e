@@ -77,7 +77,7 @@
               <p class="card-description text-danger">
                 Data yang sudah disimpan, tidak bisa diubah. mohon dikoreksi kembali data anda
               </p>
-            <form class="forms-sample" action="{{ route('data-ortu.update', $item->nisn) }}" method="POST">
+            <form class="forms-sample" action="{{ route('siswa.data-ortu.update', [$item->nisn]) }}" method="POST">
               {{ method_field('PATCH') }}
               @csrf
 

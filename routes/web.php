@@ -50,11 +50,13 @@ Route::group([
 
     Route::group(['prefix'  => 'biodata-diri/'],function(){
         Route::get('/', [BiodatadiriSiswaController::Class, 'index'])->name('biodata-diri');
-        Route::get('/{nisn}/edit', [BiodatadiriSiswaController::Class, 'edit'])->name('biodataEdit');
-        Route::patch('/{nisn}/update', [BiodatadiriSiswaController::Class, 'update'])->name('siswa.biodata-store');    
-        
+        Route::get('{nisn}/edit', [BiodatadiriSiswaController::Class, 'edit'])->name('biodataEdit');
+  
+
         Route::get('{nisn}/perbaikan-data', [BiodatadiriSiswaController::Class, 'perbaikan_data'])->name('siswa.biodata-diri.perbaikan_data')->middleware('perbaikanDatadiri-siswa');
-        Route::patch('{nisn}/update', [BiodatadiriSiswaController::Class, 'update_perbaikan_data'])->name('siswa.biodata-diri.updateperbaikan_data');  
+        Route::patch('{nisn}/update-perbaikan-data-biodata-diri', [BiodatadiriSiswaController::Class, 'update_perbaikan_data'])->name('siswa.biodata-diri.updateperbaikan_data');  
+        
+        Route::patch('/{nisn}/update', [BiodatadiriSiswaController::class, 'update'])->name('biodata-diri.update');
     });
 
     Route::group(['prefix'  => 'data-tambahan/'],function(){
@@ -63,10 +65,11 @@ Route::group([
 
     Route::group(['prefix'  => 'data-ortu/'],function(){
         Route::get('{nisn}/edit', [DataOrtuSiswaController::Class, 'edit'])->name('data-ortu.edit');
-        Route::patch('{nisn}/update', [DataOrtuSiswaController::Class, 'update'])->name('data-ortu.update'); 
         
         Route::get('{nisn}/perbaikan-data', [DataOrtuSiswaController::Class, 'perbaikan_data'])->name('siswa.data-ortu.perbaikan_data')->middleware('perbaikanDataortu-siswa');;
-        Route::patch('{nisn}/update', [DataOrtuSiswaController::Class, 'update_perbaikan_data'])->name('siswa.data-ortu.updateperbaikan_data');  
+        Route::patch('{nisn}/update-perbaikan-data-ortu', [DataOrtuSiswaController::Class, 'update_perbaikan_data'])->name('siswa.data-ortu.updateperbaikan_data');  
+       
+        Route::patch('/{nisn}/update', [DataOrtuSiswaController::class, 'update'])->name('siswa.data-ortu.update');
     });
 
     Route::group(['prefix'  => 'data-berkas/'],function(){
