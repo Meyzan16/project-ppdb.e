@@ -46,16 +46,13 @@ public function authenticate(Request $request)
                         $request->session()->regenerate();
                         return \redirect()->intended('/admin')->with('success', 'Selamat datang '. auth()->user()->nama.' sebagai verifikator'  );
                     }
-                    
                     elseif (auth()->user()->role == 'ADMIN') {
                         $request->session()->regenerate();
                         return \redirect()->intended('/admin')->with('success', 'Selamat datang '. auth()->user()->nama.' sebagai admin'  );
                     }
-
                 }else{
                     return redirect()->route('connexion')->with('loginerror','Akun belum diaktivasi');
                 }
-                
             }
         }else{
             return back()->with('loginerror', 'Username Dan Password Salah');
