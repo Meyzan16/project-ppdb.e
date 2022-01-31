@@ -83,14 +83,13 @@ Route::group([
 
 //Admin
 Route::group([
-    // 'middleware' => 'auth',
+    'middleware' => 'auth',
     'prefix' => 'admin/'], function(){
     Route::get('/', [DashboardAdminController::Class, 'index'] )->name('dashboard-admin');
 
     Route::resource('generate-akun', GenerateSiswaController::class)->middleware('cek_sidebar');
 
-    Route::resource('generate-akun-verifikator', GenerateVerifikatorController::class);
-    // ->middleware('cek_sidebar');
+    Route::resource('generate-akun-verifikator', GenerateVerifikatorController::class)->middleware('cek_sidebar');
 
     Route::group(['prefix'  => 'biodata-diri/'],function(){
         Route::get('/', [BiodatadiriAdminController::Class, 'index'])->name('admin.biodata-diri.index');

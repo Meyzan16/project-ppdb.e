@@ -123,7 +123,8 @@ class DataOrtuAdminController extends Controller
     public function verifikasi($nisn){
         tb_ortu::where('nisn_ortu',$nisn)->update([
             'catatan_ortu'   => NULL,
-            'status_ortu'    =>  'Y'
+            'status_ortu'    =>  'Y',
+            'id_verifikasi_ortu' => auth()->user()->id
         ]);
         return redirect()->route('admin.data-ortu.show', $nisn)->with(['success' =>  'Data Berhasil Di Verifikasi !!']);
     }
@@ -132,7 +133,8 @@ class DataOrtuAdminController extends Controller
 
         tb_ortu::where('nisn_ortu',$nisn)->update([
             'catatan_ortu'   => $request->catatan_ortu,
-            'status_ortu'    =>  'N'
+            'status_ortu'    =>  'N',
+            'id_verifikasi_ortu' => auth()->user()->id
         ]);
         return redirect()->route('admin.data-ortu.show', $nisn)->with(['success_tolak' =>  'Data Berhasil Di Verifikasi !!']);
     }

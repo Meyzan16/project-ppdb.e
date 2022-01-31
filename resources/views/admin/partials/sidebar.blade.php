@@ -22,7 +22,7 @@
                 </li>
 
                 
-                {{-- @if (auth()->user()->role == 'ADMIN'  ) --}}
+                @if (auth()->user()->role == 'ADMIN'  )
                     
                     <li class="sidebar-item  {{ request()->is('admin/generate-akun*') ? 'active' : '' }} has-sub">
                         <a class='sidebar-link'>
@@ -75,7 +75,7 @@
                         </ul>
                     
                     </li>
-                {{-- @endif --}}
+                @endif
 
 
              
