@@ -19,7 +19,8 @@ class GenerateSiswaController extends Controller
      */
     public function index()
     {
-        return view('admin.main.generate-akun');
+        $data = tb_user_siswa::orderBy('id','desc')->get();
+        return view('admin.main.generate-akun', compact('data'));
     }
 
     

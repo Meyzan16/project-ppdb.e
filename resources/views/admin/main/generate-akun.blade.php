@@ -65,6 +65,37 @@
                                 </div>
                             </form>
 
+                            <table class="table table-striped" id="table1">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nisn</th>
+                                        <th>Nama</th>
+                                        <th>Password</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($data as $item)
+                                    <tr>
+
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->nisn }}</td>
+                                        <td>{{ $item->name }}</td>   
+                                        <td>{{ $item->password }}</td> 
+  
+                                        <td>    
+                                            <a class="badge bg-primary"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $item->id }}">  <i class="fa fa-print"> </i>  </a>
+                                        </td>
+                                        
+    
+                                    
+                                        
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+
                         </div>
                     </div>
                 </div>
