@@ -83,11 +83,13 @@ Route::group([
 
 //Admin
 Route::group([
+    'middleware' => 'auth',
     'prefix' => 'admin/'], function(){
     Route::get('/', [DashboardAdminController::Class, 'index'] )->name('dashboard-admin');
-    Route::resource('generate-akun', GenerateSiswaController::class);
 
-    Route::resource('generate-akun-verifikator', GenerateVerifikatorController::class);
+    Route::resource('generate-akun', GenerateSiswaController::class)->middleware('cek_sidebar');
+
+    Route::resource('generate-akun-verifikator', GenerateVerifikatorController::class)->middleware('cek_sidebar');
 
     Route::group(['prefix'  => 'biodata-diri/'],function(){
         Route::get('/', [BiodatadiriAdminController::Class, 'index'])->name('admin.biodata-diri.index');
@@ -122,42 +124,54 @@ Route::group([
         Route::patch('{nisn}/verifikasiOrangtuaTolak', [DataOrtuAdminController::Class, 'verifikasi_tolak'])->name('admin.data-ortu.verifikasi_tolak');
     });
 
-    Route::group(['prefix'  => 'pengaturan/'],function(){
+    Route::group([
+        'middleware' => 'cek_sidebar',
+        'prefix'  => 'pengaturan/'],function(){
         Route::resource('data-transportasi', DataAdminTransportasiController::class);
 
         Route::get('data-tranportasi-trash', [DataAdminTransportasiController::Class, 'trash'])->name('admin.data-transportasi.trash');
         Route::get('{id}/data-tranpostasi-restore', [DataAdminTransportasiController::class, 'restore'])->name('admin.data-transportasi.restore');
     });
 
-    Route::group(['prefix'  => 'pengaturan/'],function(){
+    Route::group([
+        'middleware' => 'cek_sidebar',
+        'prefix'  => 'pengaturan/'],function(){
         Route::resource('data-agama', DataAdminAgamaController::class);
 
         Route::get('data-agama-trash', [DataAdminAgamaController::Class, 'trash'])->name('admin.data-agama.trash');
         Route::get('{id}/data-agama-restore', [DataAdminAgamaController::class, 'restore'])->name('admin.data-agama.restore');
     });
 
-    Route::group(['prefix'  => 'pengaturan/'],function(){
+    Route::group([
+        'middleware' => 'cek_sidebar',
+        'prefix'  => 'pengaturan/'],function(){
         Route::resource('data-jenis-tinggal', DataAdminJenisTinggalController::class);
 
         Route::get('data-jenis-tinggal-trash', [DataAdminJenisTinggalController::Class, 'trash'])->name('admin.data-jenis-tinggal.trash');
         Route::get('{id}/data-jenis-tinggal-restore', [DataAdminJenisTinggalController::class, 'restore'])->name('admin.data-jenis-tinggal.restore');
     });
 
-    Route::group(['prefix'  => 'pengaturan/'],function(){
+    Route::group([
+        'middleware' => 'cek_sidebar',
+        'prefix'  => 'pengaturan/'],function(){
         Route::resource('data-pekerjaan', DataAdminPekerjaanController::class);
 
         Route::get('data-pekerjaan-trash', [DataAdminPekerjaanController::Class, 'trash'])->name('admin.data-pekerjaan.trash');
         Route::get('{id}/data-pekerjaan-restore', [DataAdminPekerjaanController::class, 'restore'])->name('admin.data-pekerjaan.restore');
     });
 
-    Route::group(['prefix'  => 'pengaturan/'],function(){
+    Route::group([
+        'middleware' => 'cek_sidebar',
+        'prefix'  => 'pengaturan/'],function(){
         Route::resource('data-pendidikan', DataAdminPendidikanController::class);
 
         Route::get('data-pendidikan-trash', [DataAdminPendidikanController::Class, 'trash'])->name('admin.data-pendidikan.trash');
         Route::get('{id}/data-pendidikan-restore', [DataAdminPendidikanController::class, 'restore'])->name('admin.data-pendidikan.restore');
     });
 
-    Route::group(['prefix'  => 'pengaturan/'],function(){
+    Route::group([
+        'middleware' => 'cek_sidebar',
+        'prefix'  => 'pengaturan/'],function(){
         Route::resource('data-penghasilan', DataAdminPenghasilanController::class);
 
         Route::get('data-penghasilan-trash', [DataAdminPenghasilanController::Class, 'trash'])->name('admin.data-penghasilan.trash');
