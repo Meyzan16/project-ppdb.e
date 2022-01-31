@@ -83,13 +83,14 @@ Route::group([
 
 //Admin
 Route::group([
-    'middleware' => 'auth',
+    // 'middleware' => 'auth',
     'prefix' => 'admin/'], function(){
     Route::get('/', [DashboardAdminController::Class, 'index'] )->name('dashboard-admin');
 
     Route::resource('generate-akun', GenerateSiswaController::class)->middleware('cek_sidebar');
 
-    Route::resource('generate-akun-verifikator', GenerateVerifikatorController::class)->middleware('cek_sidebar');
+    Route::resource('generate-akun-verifikator', GenerateVerifikatorController::class);
+    // ->middleware('cek_sidebar');
 
     Route::group(['prefix'  => 'biodata-diri/'],function(){
         Route::get('/', [BiodatadiriAdminController::Class, 'index'])->name('admin.biodata-diri.index');
@@ -106,7 +107,9 @@ Route::group([
         Route::patch('{nisn}/verifikasiBiodataTolak', [BiodatadiriAdminController::Class, 'verifikasi_tolak'])->name('admin.biodata-diri.verifikasi_tolak');
     });
 
-    Route::group(['prefix'  => 'restore-data/'],function(){
+    Route::group([
+        'middleware' => 'cek_sidebar',
+        'prefix'  => 'restore-data/'],function(){
         //retsore mana yang ingin dipilih
         Route::get('{nisn}/restore', [BiodatadiriAdminController::class, 'restore'])->name('admin.sampah.restore');
         //delete secara permanenen yang ingin dipilih

@@ -30,6 +30,7 @@ class CreateTbBerkasTable extends Migration
             $table->enum('status_file_nisn', ['Y','N','Belum Diverifikasi'])->default('Belum Diverifikasi');
 
             $table->enum('status_akhir', ['Y','N','belum diverifikasi'])->default('belum diverifikasi');
+            $table->foreignId('id_verifikasi_berkas')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

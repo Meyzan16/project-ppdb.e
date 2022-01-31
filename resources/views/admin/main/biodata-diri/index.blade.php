@@ -20,13 +20,14 @@
     <div class="page-content">
             <section class="section">
                 <div class="card">
+                @if (auth()->user()->role == 'ADMIN')
                     <div class="card-header text-right">
                         <a href="{{ route('admin.biodata-diri.trash') }}" class='sidebar-link'>
                             <i class="fas fa-trash-alt"></i>
                             <span>Tempat Sampah</span>
                         </a>
-                    
                     </div>
+                @endif
 
 
                     
