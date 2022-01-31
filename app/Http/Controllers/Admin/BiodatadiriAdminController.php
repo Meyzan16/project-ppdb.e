@@ -251,6 +251,8 @@ class BiodatadiriAdminController extends Controller
         $item_nomor_kip = "";
         $item_nama_kip = "";
 
+        
+
         if($request->status_KKS == 'false'){
             $item_nomor_kks = NULL;
         }else {
