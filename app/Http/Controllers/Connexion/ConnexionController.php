@@ -40,19 +40,22 @@ public function authenticate(Request $request)
 
         //jika berhasil jalankan script berrikut
         if(Auth::attempt(['username' => $request->username, 'password' => $request->password])){
-            if (Auth::check(['status_aktif' => 'Y'])) {
-                if (auth()->user()->role == 'VERIFIKATOR') {
-                    $request->session()->regenerate();
-                    return \redirect()->intended('/admin')->with('success', 'Selamat datang '. auth()->user()->nama.' sebagai verifikator'  );
+            if (Auth::check()) {
+                if(auth()->user()->status_aktif == 'Y'){
+                    if (auth()->user()->role == 'VERIFIKATOR') {
+                        $request->session()->regenerate();
+                        return \redirect()->intended('/admin')->with('success', 'Selamat datang '. auth()->user()->nama.' sebagai verifikator'  );
+                    }
+                    
+                    elseif (auth()->user()->role == 'ADMIN') {
+                        $request->session()->regenerate();
+                        return \redirect()->intended('/admin')->with('success', 'Selamat datang '. auth()->user()->nama.' sebagai admin'  );
+                    }
+
+                }else{
+                    return redirect()->route('connexion')->with('loginerror','Akun belum diaktivasi');
                 }
                 
-                elseif (auth()->user()->role == 'ADMIN') {
-                    $request->session()->regenerate();
-                    return \redirect()->intended('/admin')->with('success', 'Selamat datang'. auth()->user()->nama.' Admin'  );
-                }
-                
-            }else{
-                return redirect()->route('connexion')->with('loginerror','Akun belum diaktivasi');
             }
         }else{
             return back()->with('loginerror', 'Username Dan Password Salah');
