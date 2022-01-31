@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 
 class ConnexionController extends Controller
 {
@@ -14,6 +15,7 @@ class ConnexionController extends Controller
         $data = [
             'title' => 'Connexion',
         ];
+
         return view('login.connexion', $data);
     } 
 

@@ -19,7 +19,9 @@ class GenerateVerifikatorController extends Controller
      */
     public function index()
     {
-        return view('admin.main.generate-akun-verifikator');
+        $data = User::orderBy('id','desc')->get();
+
+        return view('admin.main.generate-akun-verifikator', compact('data'));
     }
 
     /**
@@ -65,7 +67,6 @@ class GenerateVerifikatorController extends Controller
                     $data = $request->all();
 
                     $data['password'] = Hash::make($data['password']);
-                    $data['role'] ='VERIFIKATOR';
                     $data['status_aktif'] = 'N'; 
             
                     user::create($data);
@@ -106,7 +107,30 @@ class GenerateVerifikatorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $datalama = User::where('id', $id)->first();
+
+        $rules = [
+         
+        ];
+        
+        if($data['username'] != $datalama->username){
+            $rules['username'] = 'required|unique:users';
+        }
+
+        $validator = Validator::make($data,$rules);
+        //jika rules tidak sesuai kembalikan ke login bawak pesan error dan bawak request nya agar bisa dipakai denga old di view
+        if($validator->fails()){
+            return redirect()->back()->with('error', 'Username sudah terdaftar');
+        }
+
+        $item = User::findorfail($id);
+        $item->update($data); 
+        return redirect()->route('generate-akun-verifikator.index')->with(['success' =>  'Data Berhasil diperbarui']);
+
+
+
+        
     }
 
     /**
