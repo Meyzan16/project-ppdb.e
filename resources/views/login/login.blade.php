@@ -43,22 +43,22 @@
 
               <form  action="{{ route('proses_login') }}" method="POST">
                 @csrf
-                <div class="form-group">
-                  <input type="text" name="nisn" required class="form-control  @error('nisn')is-invalid @enderror"   value="{{ old('nisn') }}" placeholder="nisn">
-                  @error('nisn') 
-                    <div class="invalid-feedback">
-                      {{ $message }}
-                    </div>
-                 @enderror
-                </div>
-                <div class="form-group">
-                  <input type="password" name="password" required class="form-control  @error('password')is-invalid @enderror"   placeholder=" Password ">
-                    @error('password') 
+                  <div class="form-group">
+                    <input type="text" name="nisn" required class="form-control  @error('nisn')is-invalid @enderror"   value="{{ old('nisn') }}" placeholder="nisn">
+                    @error('nisn') 
                       <div class="invalid-feedback">
                         {{ $message }}
                       </div>
                   @enderror
-                </div>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="password" required class="form-control  @error('password')is-invalid @enderror"   placeholder=" Password ">
+                      @error('password') 
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                    @enderror
+                  </div>
 
                 <div class="mt-3">
                   <button type="submit"  class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" >

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Connexion\ConnexionController;
 
 //SISWA
 use App\Http\Controllers\siswa\DashboardSiswaController;
@@ -170,13 +171,15 @@ Route::group([
 
 
 
-//Login
+//Login siswa
 Route::get('/login', [LoginController::Class, 'index'] )->name('login');
 Route::post('/login', [LoginController::Class, 'authenticate'] )->name('proses_login');
 Route::post('/logout', [LoginController::Class, 'logout']);
 
 //login admin dan verifikator
-
+Route::get('/connexion', [ConnexionController::Class, 'index'] )->name('connexion');
+Route::post('/connexion', [ConnexionController::Class, 'authenticate'] )->name('proses_connexion');
+Route::post('/logout-connexion', [ConnexionController::Class, 'logout_connexion'])->name('logout-connexion');
 
 
 //uji coba setry

@@ -7,6 +7,14 @@
     <h3>Profile Statistics</h3>
 </div>
 
+                            @if(session()->has('success'))
+                                <div class="autohide">
+                                    <div class="alert alert-success autohide" role="alert">
+                                    {{ session('success') }}
+                                    </div>    
+                                </div>
+                            @endif
+
 <div class="page-content">
     <section class="row">
         {{-- <div class="col-12 col-lg-9">
