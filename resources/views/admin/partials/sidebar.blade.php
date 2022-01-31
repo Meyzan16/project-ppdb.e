@@ -34,7 +34,7 @@
                         </li>
 
                         <li class="submenu-item">
-                            <a href="{{ route('generate-akun.index') }}"> Akun Verifikator</a>
+                            <a href="{{ route('generate-akun-verifikator.index') }}"> Akun Verifikator</a>
                         </li>
 
                     </ul>

@@ -13,6 +13,7 @@ use App\Http\Controllers\siswa\DataBerkasSiswaController;
 //ADMIN
 use App\Http\Controllers\admin\DashboardAdminController;
 use App\Http\Controllers\admin\GenerateSiswaController;
+use App\Http\Controllers\admin\GenerateVerifikatorController;
 use App\Http\Controllers\admin\BiodatadiriAdminController;
 use App\Http\Controllers\admin\DataOrtuAdminController;
 
@@ -80,12 +81,12 @@ Route::group([
 });
 
 //Admin
-
-
 Route::group([
     'prefix' => 'admin/'], function(){
     Route::get('/', [DashboardAdminController::Class, 'index'] )->name('dashboard-admin');
     Route::resource('generate-akun', GenerateSiswaController::class);
+
+    Route::resource('generate-akun-verifikator', GenerateVerifikatorController::class);
 
     Route::group(['prefix'  => 'biodata-diri/'],function(){
         Route::get('/', [BiodatadiriAdminController::Class, 'index'])->name('admin.biodata-diri.index');
@@ -162,30 +163,19 @@ Route::group([
         Route::get('{id}/data-penghasilan-restore', [DataAdminPenghasilanController::class, 'restore'])->name('admin.data-penghasilan.restore');
     });
 
-    
 
-
-
-    
-
-
-
-   
 
 });
 
 
-
-//admin
-Route::prefix('admin')->group(function() {
-  
-});
 
 
 //Login
 Route::get('/login', [LoginController::Class, 'index'] )->name('login');
 Route::post('/login', [LoginController::Class, 'authenticate'] )->name('proses_login');
 Route::post('/logout', [LoginController::Class, 'logout']);
+
+//login admin dan verifikator
 
 
 
