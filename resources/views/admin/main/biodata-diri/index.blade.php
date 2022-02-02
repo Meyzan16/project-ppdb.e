@@ -38,8 +38,9 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nisn</th>
-                                    <th>Jenis Kelamin</th>
+                                    <th>Jenkel</th>
                                     <th>Nama</th>
+                                    <th>Tahun Masuk</th>
                                     <th>Status Lulus</th> 
                                     <th>Status Data Diri</th>
                                     <th>Status Akhir</th>
@@ -53,6 +54,7 @@
                                     <td>{{ $item->nisn }}</td>
                                     <td>{{ $item->tb_biodata->jenkel }}</td>   
                                     <td>{{ $item->name }}</td> 
+                                    <td>{{ $item->tahun_daftar }}</td> 
 
                                     @if ($item->status_lulus == 'N') 
                                         <td>
@@ -70,7 +72,14 @@
                                         </td>
                                     @elseif($item->tb_biodata->status_tb_biodata == 'Y' && $item->tb_biodata->catatan_biodata == '')
                                         <td>
-                                            <span class="badge bg-success">Verifikasi Diterima</span>
+                                            <span class="badge bg-success">Verifikasi Diterima
+                                            
+                                                {{-- @if(auth()->user()->role == 'ADMIN')
+                                                (Verifikasi data : {{ $item->users->nama_verifi }})
+                                                @endif --}}
+                                        
+                                            
+                                            </span>
                                         </td>
                                     @elseif($item->tb_biodata->status_tb_biodata == 'Y' && $item->tb_biodata->catatan_biodata != '')
                                         <td>

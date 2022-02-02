@@ -8,6 +8,7 @@ use App\Models\tb_ortu;
 use App\Models\tb_user_siswa;
 use App\Models\tb_jenis_tinggal;
 use App\Models\mode_transportasi;
+use App\Models\User;
 
 class tb_biodata extends Model
 {
@@ -33,6 +34,10 @@ class tb_biodata extends Model
 
     public function transportasi(){
         return $this->belongsTo(mode_transportasi::class, 'mode_transportasi');
+    }
+
+    public function users(){
+        return $this->belongsTo(User::class ,'id_verifikasi_biodata');
     }
 
 

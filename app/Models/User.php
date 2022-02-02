@@ -30,6 +30,10 @@ class User extends Authenticatable
         'status_aktif'
     ];
 
+    public function tb_biodata(){
+        return $this->hasMany(tb_biodata::class);
+    }
+
     
 
     /**

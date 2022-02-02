@@ -26,6 +26,7 @@ class CreateTbUserSiswasTable extends Migration
             $table->year('tahun_lulus')->nullable();
             $table->enum('roles', ['SISWA', 'ALUMNI'])->nullable();
             $table->softDeletes();
+            $table->foreignId('id_verifikasi_softdelete')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

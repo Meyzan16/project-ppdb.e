@@ -25,6 +25,14 @@ class BiodatadiriAdminController extends Controller
     public function index()
     {
         $data = tb_user_siswa::all()->sortByDesc('updated_at'); 
+        
+        // $data =  DB::table('tb_user_siswas')
+        // ->join('tb_biodatas', 'tb_user_siswas.nisn', '=', 'tb_biodatas.nisn_biodata')
+        // ->join('tb_ortus', 'tb_user_siswas.nisn', '=', 'tb_ortus.nisn_ortu')
+        // ->join('tb_berkas', 'tb_user_siswas.nisn', '=', 'tb_berkas.nisn_berkas')
+        // ->join('users', 'users.id', '=', 'tb_biodatas.id_verifikasi_biodata')
+        // ->select('tb_user_siswas.*', 'tb_biodatas.*' , 'users.nama as nama_verifi')
+        // ->get();
     
         return view('admin.main.biodata-diri.index',compact('data'));
     }
